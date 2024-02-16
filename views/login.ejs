@@ -1,0 +1,89 @@
+<%- include('./partials/header/header.ejs'); %>
+
+<body class="is-preload">
+    <%- include('./partials/nav/nav.ejs'); %>
+    <!-- Heading -->
+    <div id="heading">
+        <h1>Login</h1>
+    </div>
+
+    <!-- Main -->
+    <section id="main" class="wrapper">
+        <div class="inner" style="display: flex; justify-content: center; align-items: center;">
+            <div class="content" style="background-color: #f1eeee; width: 42%;">
+                <div class="row">
+                    <div class="col-12 col-12-medium" >
+                        <h2 style="padding: 40px; text-align: center;">Login</h2>
+                        <!-- Registration Form -->
+                        <form action="login" method="post" >
+                            <div class="row gtr-uniform">
+                                <% if(messages.error) {%>
+                                    <div class="col-12">
+                                        <h4 style="text-align: center; color: red;"> <%= messages.error %></h4>
+                                    </div>
+                                <% } %>
+                                <div class="col-12 col-12-xsmall">
+                                    <input type="email" name="email" id="email" value="" placeholder="Email" required/>
+                                </div>
+                                <div class="col-12 col-12-xsmall">
+                                    <input type="password" name="password" id="password" value="" placeholder="Password" required/>
+                                </div>
+                                <!-- Break -->
+                                <div class="col-12" style="justify-content: center; align-items: center; display: flex;">
+                                    <ul class="actions">
+                                        <li><input type="submit" value="Submit" class="primary" /></li>
+                                        <li><input type="reset" value="Reset" /></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="footer">
+        <div class="inner">
+            <div class="content">
+                <section>
+                    <h3>Accumsan montes viverra</h3>
+                    <p>Nunc lacinia ante nunc ac lobortis. Interdum adipiscing gravida odio porttitor sem non mi integer
+                        non faucibus ornare mi ut ante amet placerat aliquet. Volutpat eu sed ante lacinia sapien lorem
+                        accumsan varius montes viverra nibh in adipiscing. Lorem ipsum dolor vestibulum ante ipsum
+                        primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing sed
+                        feugiat eu faucibus. Integer ac sed amet praesent. Nunc lacinia ante nunc ac gravida.</p>
+                </section>
+                <section>
+                    <h4>Sem turpis amet semper</h4>
+                    <ul class="alt">
+                        <li><a href="#">Dolor pulvinar sed etiam.</a></li>
+                        <li><a href="#">Etiam vel lorem sed amet.</a></li>
+                        <li><a href="#">Felis enim feugiat viverra.</a></li>
+                        <li><a href="#">Dolor pulvinar magna etiam.</a></li>
+                    </ul>
+                </section>
+                <section>
+                    <h4>Magna sed ipsum</h4>
+                    <ul class="plain">
+                        <li><a href="#"><i class="icon fa-twitter">&nbsp;</i>Twitter</a></li>
+                        <li><a href="#"><i class="icon fa-facebook">&nbsp;</i>Facebook</a></li>
+                        <li><a href="#"><i class="icon fa-instagram">&nbsp;</i>Instagram</a></li>
+                        <li><a href="#"><i class="icon fa-github">&nbsp;</i>Github</a></li>
+                    </ul>
+                </section>
+            </div>
+            <div class="copyright">
+                &copy; Untitled. Photos <a href="https://unsplash.co">Unsplash</a>, Video <a
+                    href="https://coverr.co">Coverr</a>.
+            </div>
+        </div>
+    </footer>
+    <script>
+        <% if (messages.message) { %>
+        window.alert('<%= messages.message %>');
+        <% } %>
+        </script>
+    <!-- Scripts -->
+    <%- include('./partials/footer/footer.ejs') %>
