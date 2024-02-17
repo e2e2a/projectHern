@@ -29,7 +29,7 @@ module.exports.doLogin = async (req, res) => {
                         return res.redirect('/login');
                     }
                     req.session.login = user.id;
-                    return res.redirect('/');
+                    return res.redirect('/deceased');
                 });
             }else{
                 req.flash('error', 'Users not found.');
@@ -42,12 +42,12 @@ module.exports.doLogin = async (req, res) => {
 }
 
 module.exports.logout = (req, res) => {
-    const userId = req.session.userId;
+    const login = req.session.login;
     req.session.destroy((err) => {
         if (err) {
             console.error('error destroying session', err);
         } else {
-            console.log('user logout', userId)
+            console.log('user logout', login)
             return res.redirect('/');
         }
     })

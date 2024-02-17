@@ -1,0 +1,216 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <title>
+        <%= title %> | <%= site_title %>
+    </title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <link rel="stylesheet" href="public/css/main.css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+</head>
+
+<body class="is-preload">
+    <%- include('./partials/nav/nav.ejs'); %>
+        <!-- Heading -->
+        <div id="heading">
+            <h1>Edit</h1>
+        </div>
+        <div class="container-fluid d-flex justify-content-center align-items-center pt-5 pb-5 ">
+            <form action="doEdit" method="post" class="border border-1 rounded p-3" style="width: 80%; background-color: #f7f7f7;">
+                <div class="row" >
+                    <h4 class="text-center p-5">Edit Profile</h4>
+                    <div class="col-sm-12 col-md-6 col-lg-6">
+                        <div class="mb-3">
+                            <label for="fullname" class="form-label">Full Name</label>
+                            <input type="text" class="form-control" name="fullname" id="fullname" value="<%= user.fullname %>"
+                                placeholder="Surname, Firstname Middlename" style="text-transform:capitalize;">
+                        </div>
+                    </div>
+                    <div class="col-sm-12 col-md-6 col-lg-6">
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Email address</label>
+                            <input type="email" class="form-control" name="email" id="email" value="<%= user.email %>"
+                                placeholder="name@example.com">
+                        </div>
+                    </div>
+                    <div class="col-sm-12 col-md-6 col-lg-6">
+                        <div class="mb-3">
+                            <label for="address" class="form-label">Address</label>
+                            <input type="text" class="form-control" name="address" id="address" value="<%= user.address %>"
+                                placeholder="St. name">
+                        </div>
+                    </div>
+                    <div class="col-sm-12 col-md-6 col-lg-6">
+                        <div class="mb-3">
+                            <label for="contact" class="form-label">Contact</label>
+                            <input type="text" class="form-control" name="contact" id="contact" value="<%= user.contact %>"
+                                placeholder="+63912-345-6789" pattern="(\+639\d{2}-\d{3}-\d{4}|\+639\d{9}|09\d{2}-\d{3}-\d{4}|09\d{9})" required/>
+                        </div>
+                    </div>
+                    
+                    <div class="col-12" id="create">
+                        <div class="mb-3">
+                            <label for="relatives" class="form-label">Relatives:</label>
+                            <% if (user.relatives && user.relatives.length > 0) { %>
+                                <% user.relatives.forEach(function(relative, index) { %>
+                            <div class="input-group mb-3" id="relativeInputGroup">
+                                <input type="text" class="form-control relativeName<%= index %>" name="relativeName" id="relativeName" value="<%= relative.relativeName %>"
+                                placeholder="Surname, Firstname Middlename" style="text-transform:capitalize;">
+                                <input type="email" class="form-control relativeEmail<%= index %>" name="relativeEmail" id="relativeEmail" value="<%= relative.relativeEmail %>"
+                                placeholder="name@example.com">
+                                <button type="button" class="rounded removeRelativeBtn2" data-index="<%= index %>" style="padding: 12px;"><i class="fa fa-trash"></i></button>
+                            </div>
+                            <% }); %>
+                            <% } %>
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-12 mt-3" id="addBeforeTheButton">
+                        <div class="btn-group" role="group">
+                            <input type="button" value="+ Add" class="primary" id="addRelativeBtn" />
+                            <!-- <input type="button" value="- Remove" id="removeRelativeBtn"  /> -->
+                        </div>
+                    </div>
+                    <div class="col-sm-12 col-md-6 col-lg-6 mt-3">
+                        <div class="mb-3">
+                            <label for="password" class="form-label">Password</label>
+                            <input type="password" class="form-control" name="password" id="password"
+                                placeholder="Password ( old or new )" required/>
+                        </div>
+                    </div>
+                    <div class="col-sm-12 col-md-6 col-lg-6 mt-3">
+                        <div class="mb-3">
+                            <label for="confirmPassword" class="form-label">Confirm Password</label>
+                            <input type="password" class="form-control" name="confirmPassword" id="confirmPassword"
+                                placeholder="Confirm Password" required/>
+                        </div>
+                    </div>
+                    <div class="col-12 justify-content-center d-flex mt-3 mb-3">
+                        <ul class="actions">
+                            <li><input type="submit" value="Submit" class="primary" /></li>
+                            <li><input type="reset" value="Reset" /></li>
+                        </ul>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <!-- Footer -->
+        <footer id="footer">
+            <div class="inner">
+                <div class="content">
+                    <section>
+                        <h3>Accumsan montes viverra</h3>
+                        <p>Nunc lacinia ante nunc ac lobortis. Interdum adipiscing gravida odio porttitor sem non mi
+                            integer
+                            non faucibus ornare mi ut ante amet placerat aliquet. Volutpat eu sed ante lacinia sapien
+                            lorem
+                            accumsan varius montes viverra nibh in adipiscing. Lorem ipsum dolor vestibulum ante ipsum
+                            primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing
+                            sed
+                            feugiat eu faucibus. Integer ac sed amet praesent. Nunc lacinia ante nunc ac gravida.</p>
+                    </section>
+                    <section>
+                        <h4>Sem turpis amet semper</h4>
+                        <ul class="alt">
+                            <li><a href="#">Dolor pulvinar sed etiam.</a></li>
+                            <li><a href="#">Etiam vel lorem sed amet.</a></li>
+                            <li><a href="#">Felis enim feugiat viverra.</a></li>
+                            <li><a href="#">Dolor pulvinar magna etiam.</a></li>
+                        </ul>
+                    </section>
+                    <section>
+                        <h4>Magna sed ipsum</h4>
+                        <ul class="plain">
+                            <li><a href="#"><i class="icon fa-twitter">&nbsp;</i>Twitter</a></li>
+                            <li><a href="#"><i class="icon fa-facebook">&nbsp;</i>Facebook</a></li>
+                            <li><a href="#"><i class="icon fa-instagram">&nbsp;</i>Instagram</a></li>
+                            <li><a href="#"><i class="icon fa-github">&nbsp;</i>Github</a></li>
+                        </ul>
+                    </section>
+                </div>
+                <div class="copyright">
+                    &copy; Untitled. Photos <a href="https://unsplash.co">Unsplash</a>, Video <a
+                        href="https://coverr.co">Coverr</a>.
+                </div>
+            </div>
+        </footer>
+        <script>
+        <% if (messages.message) { %>
+                window.alert('<%= messages.message %>');
+        <% } %>
+        document.addEventListener("DOMContentLoaded", function () {
+    const addRelativeBtn = document.getElementById('addRelativeBtn');
+    const addBeforeTheButtonDiv = document.getElementById('addBeforeTheButton');
+
+    addRelativeBtn.addEventListener('click', function () {
+        const newRelativeDiv = document.createElement('div');
+        newRelativeDiv.className = 'col-12 relative-inputs'; // Add a specific class to identify relative input fields
+
+        const newRelativeInputGroup = document.createElement('div');
+        newRelativeInputGroup.className = 'input-group mb-3'; // Add the necessary class
+
+        // Create the relative name input field
+        const newRelativeNameInput = document.createElement('input');
+        newRelativeNameInput.type = 'text';
+        newRelativeNameInput.className = 'form-control';
+        newRelativeNameInput.name = 'relativeName'; // Make sure the name matches the server-side expectation
+        newRelativeNameInput.placeholder = 'Surname, Firstname Middlename';
+        newRelativeNameInput.style.textTransform = 'capitalize';
+
+        // Create the relative email input field
+        const newRelativeEmailInput = document.createElement('input');
+        newRelativeEmailInput.type = 'email';
+        newRelativeEmailInput.className = 'form-control';
+        newRelativeEmailInput.name = 'relativeEmail'; // Make sure the name matches the server-side expectation
+        newRelativeEmailInput.placeholder = 'name@example.com';
+
+        // Create the remove button for the relative input group
+        const removeRelativeBtn = document.createElement('button');
+        removeRelativeBtn.type = 'button';
+        removeRelativeBtn.className = 'rounded removeRelativeBtn2'; // Add the necessary class
+        removeRelativeBtn.style.padding = '12px';
+        removeRelativeBtn.innerHTML = '<i class="fa fa-trash"></i>';
+
+        // Add event listener to remove the relative input group
+        removeRelativeBtn.addEventListener('click', function () {
+            newRelativeDiv.remove();
+        });
+
+        // Append the inputs and remove button to the new input group
+        newRelativeInputGroup.appendChild(newRelativeNameInput);
+        newRelativeInputGroup.appendChild(newRelativeEmailInput);
+        newRelativeInputGroup.appendChild(removeRelativeBtn);
+
+        // Append the new input group to the relatives container
+        newRelativeDiv.appendChild(newRelativeInputGroup);
+        addBeforeTheButtonDiv.parentNode.insertBefore(newRelativeDiv, addBeforeTheButtonDiv);
+    });
+});
+
+
+
+document.addEventListener("DOMContentLoaded", function() {
+    document.querySelectorAll('.removeRelativeBtn2').forEach(function(button) {
+        button.addEventListener('click', function() {
+            const index = this.dataset.index;
+            document.querySelector('.relativeName' + index).parentNode.remove(); // Remove relative name input and its parent div
+            document.querySelector('.relativeEmail' + index).parentNode.remove(); // Remove relative email input and its parent div
+            this.remove(); // Remove the "Remove Relative" button
+        });
+    });
+});
+
+
+
+
+
+
+
+
+        </script>
+        <%- include('./partials/footer/footer.ejs') %>

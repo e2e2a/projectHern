@@ -17,6 +17,7 @@ app.use(session({
 }));
 app.use(bodyparser.urlencoded({ extended: true }));
 app.set('view engine', 'ejs');
+app.use('/public/admin', express.static(path.join(__dirname, 'public/admin')));
 app.use('/public', express.static(path.join(__dirname, 'public')));
 app.set('views', path.join(__dirname, '/views'));
 app.use(flash());

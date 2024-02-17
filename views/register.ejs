@@ -1,5 +1,18 @@
-<%- include('./partials/header/header.ejs'); %>
+<!DOCTYPE HTML>
+<html>
 
+<head>
+    <title>
+        <%= title %> | <%= site_title %>
+    </title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <link rel="stylesheet" href="public/css/main.css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+</head>
 <body class="is-preload">
     <%- include('./partials/nav/nav.ejs'); %>
     <!-- Heading -->
@@ -7,61 +20,79 @@
         <h1>Registration</h1>
     </div>
 
-    <!-- Main -->
-    <section id="main" class="wrapper">
-        <div class="inner">
-            <div class="content" style="background-color: #f1eeee;">
-                <div class="row">
-                    <div class="col-12 col-12-medium" >
-                        <h2 style="padding: 40px; text-align: center;">Registration</h2>
-                        <!-- Registration Form -->
-                        <form action="doRegister" method="post" >
-                            <div class="row gtr-uniform">
-                                <div class="col-12">
-                                    <h3>Information</h3>
-                                </div>
-                                <div class="col-6 col-12-xsmall">
-                                    <input type="text" name="fullname" id="fullname" value="" placeholder="Surname, Firstname Middlename" required/>
-                                </div>
-                                <div class="col-6 col-12-xsmall">
-                                    <input type="email" name="email" id="email" value="" placeholder="Email" required/>
-                                </div>
-                                <div class="col-8 col-12-xsmall">
-                                    <input type="text" name="address" id="address" value="" placeholder="Address" required/>
-                                </div>
-                                <div class="col-4 col-12-xsmall">
-                                    <input type="text" name="contact" id="contact" value="" placeholder="Contact Ex. 09123456789" required/>
-                                </div>
-                                <div class="col-12">
-                                    <h3>Relatives</h3>
-                                </div>
-                                <div class="col-12 col-12-xsmall">
-                                    <ul class="actions" id="relativesList">
-                                        <li><input type="text" name="relativeName" id="relativeName" value="" placeholder="Surname, Firstname Middlename" required/></li>
-                                        <li><input type="email" name="relativeEmail" id="relativeEmail" value="" placeholder="Email" required/></li>
-                                    </ul>
-                                    <input type="button" value="+ Add Relatives" class="primary" id="addRelativeBtn" />
-                                </div>
-                                <div class="col-8 col-12-xsmall">
-                                    <input type="password" name="password" id="password" value="" placeholder="Password" required/>
-                                </div>
-                                <div class="col-8 col-12-xsmall">
-                                    <input type="password" name="confirmPassword" id="confirmPassword" value="" placeholder="Confirm Password" required/>
-                                </div>
-                                <!-- Break -->
-                                <div class="col-12">
-                                    <ul class="actions">
-                                        <li><input type="submit" value="Submit" class="primary" /></li>
-                                        <li><input type="reset" value="Reset" /></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </form>
+    <div class="container-fluid d-flex justify-content-center align-items-center pt-5 pb-5 ">
+        <form action="doRegister" method="post" class="border border-1 rounded p-3" style="width: 80%; background-color: #f7f7f7;">
+            <div class="row" >
+                <h4 class="text-center p-5">Registration</h4>
+                <div class="col-sm-12 col-md-6 col-lg-6">
+                    <div class="mb-3">
+                        <label for="fullname" class="form-label">Full Name</label>
+                        <input type="text" class="form-control" name="fullname" id="fullname"
+                            placeholder="Surname, Firstname Middlename" style="text-transform:capitalize;">
                     </div>
                 </div>
+                <div class="col-sm-12 col-md-6 col-lg-6">
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Email address</label>
+                        <input type="email" class="form-control" name="email" id="email"
+                            placeholder="name@example.com">
+                    </div>
+                </div>
+                <div class="col-sm-12 col-md-6 col-lg-6">
+                    <div class="mb-3">
+                        <label for="address" class="form-label">Address</label>
+                        <input type="text" class="form-control" name="address" id="address"
+                            placeholder="St. name">
+                    </div>
+                </div>
+                <div class="col-sm-12 col-md-6 col-lg-6">
+                    <div class="mb-3">
+                        <label for="contact" class="form-label">Contact</label>
+                        <input type="text" class="form-control" name="contact" id="contact"
+                            placeholder="+639123456789" pattern="(\+639\d{2}-\d{3}-\d{4}|\+639\d{9}|09\d{2}-\d{3}-\d{4}|09\d{9})">
+                    </div>
+                </div>
+                <div class="col-12" id="create">
+                    <div class="mb-3">
+                        <label for="relatives" class="form-label">Relatives:</label>
+                        <div class="input-group mb-3" id="relatives">
+                            <input type="text" class="form-control" name="relativeName" id="relativeName"
+                            placeholder="Surname, Firstname Middlename" style="text-transform:capitalize;">
+                            <input type="email" class="form-control" name="relativeEmail" id="relativeEmail"
+                            placeholder="name@example.com">
+                        </div>
+                        <!-- put it here -->
+                    </div>
+                </div>
+                <div class="col-12 col-sm-12 mt-3" id="addBeforeTheButton">
+                    <div class="btn-group" role="group">
+                        <input type="button" value="+ Add" class="primary" id="addRelativeBtn" />
+                        <input type="button" value="- Remove" id="removeRelativeBtn"  />
+                    </div>
+                </div>
+                <div class="col-sm-12 col-md-6 col-lg-6">
+                    <div class="mb-3">
+                        <label for="password" class="form-label">Password</label>
+                        <input type="password" class="form-control" name="password" id="password"
+                            placeholder="Password">
+                    </div>
+                </div>
+                <div class="col-sm-12 col-md-6 col-lg-6">
+                    <div class="mb-3">
+                        <label for="confirmPassword" class="form-label">Confirm Password</label>
+                        <input type="password" class="form-control" name="confirmPassword" id="confirmPassword"
+                            placeholder="Confirm Password">
+                    </div>
+                </div>
+                <div class="col-12 justify-content-center d-flex mt-3 mb-3">
+                    <ul class="actions">
+                        <li><input type="submit" value="Submit" class="primary" /></li>
+                        <li><input type="reset" value="Reset" /></li>
+                    </ul>
+                </div>
             </div>
-        </div>
-    </section>
+        </form>
+    </div>
 
     <!-- Footer -->
     <footer id="footer">
@@ -104,38 +135,43 @@
         <% if (messages.message) { %>
         window.alert('<%= messages.message %>');
         <% } %>
-        document.addEventListener("DOMContentLoaded", function() {
-            const addRelativeBtn = document.getElementById('addRelativeBtn');
-            
-            addRelativeBtn.addEventListener('click', function() {
-                const newRelativesDiv = document.createElement('div');
-                newRelativesDiv.className = 'col-12 col-12-xsmall';
-                
-                const newRelativesUl = document.createElement('ul');
-                newRelativesUl.className = 'actions';
-                
-                const newRelativeNameLi = document.createElement('li');
-                const newRelativeNameInput = document.createElement('input');
-                newRelativeNameInput.setAttribute('type', 'text');
-                newRelativeNameInput.setAttribute('name', 'relativeName');
-                newRelativeNameInput.setAttribute('placeholder', 'Surname, Firstname Middlename');
-                newRelativeNameLi.appendChild(newRelativeNameInput);
-                
-                const newRelativeEmailLi = document.createElement('li');
-                const newRelativeEmailInput = document.createElement('input');
-                newRelativeEmailInput.setAttribute('type', 'email');
-                newRelativeEmailInput.setAttribute('name', 'relativeEmail');
-                newRelativeEmailInput.setAttribute('placeholder', 'Email');
-                newRelativeEmailLi.appendChild(newRelativeEmailInput);
-                
-                newRelativesUl.appendChild(newRelativeNameLi);
-                newRelativesUl.appendChild(newRelativeEmailLi);
-                
-                newRelativesDiv.appendChild(newRelativesUl);
-                
-                const relativesContainer = document.querySelector('.col-12.col-12-xsmall');
-                relativesContainer.insertBefore(newRelativesDiv, addRelativeBtn);
-            });
-        });
+        document.addEventListener("DOMContentLoaded", function () {
+    const addRelativeBtn = document.getElementById('addRelativeBtn');
+    const addBeforeTheButtonDiv = document.getElementById('addBeforeTheButton');
+
+    addRelativeBtn.addEventListener('click', function () {
+        const newRelativeDiv = document.createElement('div');
+        newRelativeDiv.className = 'col-12 relative-inputs'; // Add a specific class to identify relative input fields
+
+        const relativesInputGroup = document.getElementById('relatives');
+        const newRelativesInputGroup = relativesInputGroup.cloneNode(true); // Clone the original relatives input group
+
+        // Clear the values of the cloned input group
+        newRelativesInputGroup.querySelector('#relativeName').value = '';
+        newRelativesInputGroup.querySelector('#relativeEmail').value = '';
+
+        newRelativeDiv.appendChild(newRelativesInputGroup);
+
+        addBeforeTheButtonDiv.parentNode.insertBefore(newRelativeDiv, addBeforeTheButtonDiv);
+    });
+
+    const removeRelativeBtn = document.getElementById('removeRelativeBtn');
+    removeRelativeBtn.addEventListener('click', function () {
+        // Select all divs containing relative input fields
+        const relativeDivs = document.querySelectorAll('.relative-inputs');
+        // If there are more than one relative divs, remove the last one
+        if (relativeDivs.length > 0) {
+            relativeDivs[relativeDivs.length - 1].remove();
+        }
+    });
+});
+
+
+
+
+
+
+
+
         </script>
 <%- include('./partials/footer/footer.ejs') %>

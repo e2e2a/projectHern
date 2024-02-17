@@ -6,7 +6,8 @@ const verifyController = require('../controllers/verifyController');
 const indexController = require('../controllers/indexController');
 const aboutController = require('../controllers/aboutController');
 const deceasedController = require('../controllers/deceasedController');
-
+const editController = require('../controllers/editController');
+const verifyEditController = require('../controllers/verifyEditController');
 module.exports = function(app){
     //users
     app.get('/', indexController.index);
@@ -20,9 +21,15 @@ module.exports = function(app){
     app.post('/doLogin', loginController.doLogin);
     app.get('/verify', verifyController.verify);
     app.post('/verify', verifyController.doVerify);
-    
+    app.get('/edit', editController.index);
+    app.post('/doEdit', editController.doEdit);
+    app.get('/verifyEdit', verifyEditController.verify);
+    app.post('/verifyDoEdit', verifyEditController.doVerify);
     app.get('/elements', (req,res) => {
         res.render('elements');
     });
     //admin
+    app.get('/admin', (req,res) => {
+        res.render('admin/index')
+    })
 }

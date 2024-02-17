@@ -83,7 +83,7 @@ module.exports.doVerify = async (req, res) => {
                 if (verificationCode === userToken.verificationCode) {
                     if (userToken.expirationCodeDate > new Date()) {
                         const user = await User.findByIdAndUpdate(decodedToken.userId, { isVerified: true });
-                        req.session.userId = user._id;
+                        req.session.login = user._id;
                         await UserToken.findByIdAndDelete(userToken._id);
                         console.log('Email verification successful. Registration completed.');
                         const transporter = nodemailer.createTransport({
