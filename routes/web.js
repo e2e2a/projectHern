@@ -37,9 +37,7 @@ module.exports = function(app){
     app.get('/users', (req,res) => {
         res.render('admin/usertable')
     })
-    app.get('/register-deceased', (req,res) => {
-        res.render('admin/createDeceased')
-    });
+    app.get('/register-deceased', adminDeceasedController.index);
     app.post('/doCreateDeceased', adminDeceasedController.create);
     app.post('/actions', adminDeceasedController.actions);
     app.get('/editDeceased/:id', adminEditDeceasedController.index);

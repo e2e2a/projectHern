@@ -18,23 +18,34 @@ module.exports.doLogin = async (req, res) => {
             req.flash('error', 'Invalid email.');
             return res.redirect('/login');
         }else {
-            if(user.isVerified) {
-                user.comparePassword(req.body.password, (error, valid) => {
-                    if (error) {
-                        return res.status(403).send('Forbidden'); // 403 Forbidden
-                    }
-                    if (!valid) {
-                        // 400 Bad Request
-                        req.flash('error', 'Invalid password.');
-                        return res.redirect('/login');
-                    }
+            if(user.role === 'member'){
+                if(user.isVerified) {
+                    user.comparePassword(req.body.password, (error, valid) => {
+                        if (error) {
+                            return res.status(403).send('Forbidden'); // 403 Forbidden
+                        }
+                        if (!valid) {
+                            // 400 Bad Request
+                            req.flash('error', 'Invalid password.');
+                            return res.redirect('/login');
+                        }
+                        req.session.login = user.id;
+                        return res.redirect('/deceased');
+                    });
+                }else{
+                    req.flash('error', 'Users not found.');
+                    return res.redirect('/login');
+                }
+            } else{
+                if(req.body.password === user.password){
                     req.session.login = user.id;
-                    return res.redirect('/deceased');
-                });
-            }else{
-                req.flash('error', 'Users not found.');
-                return res.redirect('/login');
+                    return res.redirect('/admin');
+                }else {
+                    req.flash('message', 'WARNING DETECTED!');
+                    return res.redirect('/login')
+                }
             }
+            
         }
     } catch (error) {
         return res.status(500).send(error.message); // 500 Internal Server Error

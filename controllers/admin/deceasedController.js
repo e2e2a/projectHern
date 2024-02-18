@@ -8,6 +8,27 @@ const Deceased = require('../../models/deceased');
 const SITE_TITLE = 'Deceased profiling management system with email notification';
 const nodemailer = require('nodemailer');
 
+module.exports.index = async (req, res) => {
+    try {
+        const userLogin = await User.findById(req.session.login)
+        if (userLogin) {
+            if (userLogin.role === 'admin') {
+                res.render('admin/createDeceased', {
+                    site_title: SITE_TITLE,
+                    title: 'Register',
+                })
+            } else {
+                return res.redirect('404')
+            }
+        } else {
+            return res.redirect('/login')
+        }
+    } catch (error) {
+
+    }
+
+}
+
 module.exports.create = async (req, res) => {
     try {
         const capitalizeFirstLetter = (str) => {
@@ -95,10 +116,10 @@ module.exports.actions = async (req, res) => {
     const deceased = await Deceased.findById(req.body.deceasedId);
     if (actions === 'delete') {
         const deleteDeceased = await Deceased.findByIdAndDelete(req.body.deceasedId);
-        if(deleteDeceased){
+        if (deleteDeceased) {
             req.flash('message', 'Data has been deleted successfully!');
             return res.redirect('/admin');
-        } else{
+        } else {
             req.flash('message', 'Data has been failed to delete !');
             return res.redirect('/admin');
         }
@@ -127,7 +148,7 @@ module.exports.actions = async (req, res) => {
 
             // Set response headers to indicate PDF content
             res.setHeader('Content-Type', 'application/pdf');
-            res.setHeader(`Content-Disposition', 'inline; filename="${deceased._id}"`);
+            res.setHeader('Content-Disposition', `inline; filename="${deceased._id}.pdf"`);
 
             // Send the PDF content as the response
             res.send(pdfBuffer);

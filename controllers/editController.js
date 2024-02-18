@@ -12,12 +12,14 @@ const sixDigitCode = customAlphabet('ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789', 6);
 module.exports.index = async (req, res) => {
     if (req.session.login) {
         const user = await User.findById(req.session.login);
+        const userLogin = await User.findById(req.session.login);
         res.render('edit_profile', {
             site_title: SITE_TITLE,
             title: 'Profile',
             messages: req.flash(),
             login: req.session.login,
             user: user,
+            userLogin: userLogin,
         })
     } else {
         return res.redirect('/login')

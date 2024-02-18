@@ -13,10 +13,18 @@
         <li><a href="/">Home</a></li>
         <li><a href="/about">About</a></li>
         <li><a href="/deceased">Deceased</a></li>
-        <% if(login) {%>
-            <li><a href="/edit">Account Profile</a></li>
-            <li style="text-align: center;"><a href="">
-                <form action="/logout" method="post" style="margin-top: 0.5rem;"><button type="submit">Logout</button></form></a></li>
+        <% if (login){ %>
+        <% if(userLogin) {%>
+            <% if(userLogin.role === 'member'){ %>
+                <li><a href="/edit">Account Profile</a></li>
+                <li style="text-align: center;"><a href="">
+                    <form action="/logout" method="post" style="margin-top: 0.5rem;"><button type="submit">Logout</button></form></a></li>
+            <% } else if(userLogin.role === 'admin'){ %>
+                <li><a href="/admin">Dashboard</a></li>
+                <li style="text-align: center;"><a href="">
+                    <form action="/logout" method="post" style="margin-top: 0.5rem;"><button type="submit">Logout</button></form></a></li>
+                <% } %>
+            <% } %>
         <% }else { %>
             <li><a href="/register">Register</a></li>
             <li><a href="/login">Login</a></li>

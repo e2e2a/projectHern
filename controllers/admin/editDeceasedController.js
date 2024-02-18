@@ -2,20 +2,34 @@ const User = require('../../models/user')
 const Deceased = require('../../models/deceased');
 const SITE_TITLE = 'Deceased profiling management system with email notification';
 
-module.exports.index = async (req,res) => {
-    const deceasedId = req.params.id;
-    const deceased = await Deceased.findById(deceasedId)
-    console.log(deceasedId)
-    res.render('admin/editDeceased',{
-        site_title: SITE_TITLE,
-        title: 'Edit',
-        deceased:deceased,
-    });
+module.exports.index = async (req, res) => {
+    try {
+        
+        const userLogin = await User.findById(req.session.login)
+        if (!userLogin) {
+            return res.redirect('/login')
+        }
+        if (userLogin.role === 'admin') {
+            const deceasedId = req.params.id;
+            const deceased = await Deceased.findById(deceasedId)
+            res.render('admin/editDeceased', {
+                site_title: SITE_TITLE,
+                title: 'Edit',
+                deceased: deceased,
+                userLogin: userLogin,
+            });
+        } else {
+            return res.redirect('404');
+        }
+    } catch (err) {
+        console.log('err:', err);
+        return res.status(500).render('500')
+    }
 }
 
 module.exports.doEdit = async (req, res) => {
     const deceasedId = req.params.id;
-    
+
     const data = {
         fullname: req.body.fullname,
         deathDate: req.body.deathDate,
@@ -32,11 +46,11 @@ module.exports.doEdit = async (req, res) => {
         causeDeath: req.body.causeDeath,
         nameCemetery: req.body.nameCemetery,
     };
-    const deceased = await Deceased.findByIdAndUpdate(deceasedId, data, { new:true});
-    if(deceased){
+    const deceased = await Deceased.findByIdAndUpdate(deceasedId, data, { new: true });
+    if (deceased) {
         req.flash('message', 'Updated Successfully!');
         return res.redirect('/index');
-    } else{
+    } else {
         req.flash('message', 'Failed to Update Successfully!');
         return res.redirect('/index');
     }

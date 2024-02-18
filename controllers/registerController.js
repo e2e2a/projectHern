@@ -66,6 +66,7 @@ module.exports.doRegister = async (req, res) => {
                     address: req.body.address,
                     relatives: allRelatives,
                     password: req.body.password,
+                    role: 'member',
                     isVerified: false,
                 });
                 await user.save();
@@ -163,6 +164,7 @@ module.exports.doRegister = async (req, res) => {
                     address: req.body.address,
                     relatives: allRelatives,
                     password: req.body.password,
+                    role: 'member',
                     isVerified: false,
                 });
                 await user.save();
