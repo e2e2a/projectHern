@@ -8,6 +8,10 @@ const aboutController = require('../controllers/aboutController');
 const deceasedController = require('../controllers/deceasedController');
 const editController = require('../controllers/editController');
 const verifyEditController = require('../controllers/verifyEditController');
+//admin
+const adminDeceasedController = require('../controllers/admin/deceasedController');
+const adminIndexController = require('../controllers/admin/indexController');
+const adminEditDeceasedController = require('../controllers/admin/editDeceasedController');
 module.exports = function(app){
     //users
     app.get('/', indexController.index);
@@ -29,7 +33,30 @@ module.exports = function(app){
         res.render('elements');
     });
     //admin
-    app.get('/admin', (req,res) => {
-        res.render('admin/index')
+    app.get('/admin', adminIndexController.index);
+    app.get('/users', (req,res) => {
+        res.render('admin/usertable')
+    })
+    app.get('/register-deceased', (req,res) => {
+        res.render('admin/createDeceased')
+    });
+    app.post('/doCreateDeceased', adminDeceasedController.create);
+    app.post('/actions', adminDeceasedController.actions);
+    app.get('/editDeceased/:id', adminEditDeceasedController.index);
+    app.post('/editDeceased/:id', adminEditDeceasedController.doEdit);
+    app.get('/table', (req,res) => {
+        res.render('admin/table')
+    })
+    app.get('/404', (req,res) => {
+        res.render('admin/404')
+    })
+    app.get('/button', (req,res) => {
+        res.render('admin/button')
+    })
+    app.get('/form', (req,res) => {
+        res.render('admin/form')
+    })
+    app.get('/element', (req,res) => {
+        res.render('admin/element')
     })
 }

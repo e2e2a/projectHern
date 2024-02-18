@@ -1,3 +1,5 @@
 .env
 node_modules
 task.md
+.chrome
+.cache

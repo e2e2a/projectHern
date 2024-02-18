@@ -1,0 +1,307 @@
+<%- include('./partials/header/header.ejs'); %>
+
+    <body>
+        <style>
+            th {
+                white-space: nowrap;
+            }
+        </style>
+        <div class="container-xxl position-relative bg-white d-flex p-0">
+            <!-- Spinner Start -->
+            <!-- <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+            <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
+                <span class="sr-only">Loading...</span>
+            </div>
+        </div> -->
+            <!-- Spinner End -->
+
+
+            <%- include('./partials/sidebar/sidebar.ejs'); %>
+
+
+                <!-- Content Start -->
+                <div class="content">
+                    <%- include('./partials/navbar/navbar.ejs'); %>
+
+                            <!-- Deceased Table Start -->
+                            <div class="container-fluid pt-4 px-4">
+                                <form action="doCreateDeceased" method="post">
+                                    <div class="bg-light rounded h-100 p-4">
+                                        <div class="row">
+                                            <h6 class="mb-4">Adding Deceased Person</h6>
+                                            <div class="col-12 col-sm-12 col-lg-6 col-xl-6">
+                                                <div class="form-floating mb-3">
+                                                    <input type="text" class="form-control" id="fullname" name="fullname" style="text-transform: capitalize;"
+                                                        placeholder="Alpha, Alpha Alpha" required/>
+                                                    <label for="fullname">Full Name<small>(Surname, Firstname Middlename)</small></label>
+                                                </div>
+                                            </div>
+                                            <div class="col-12 col-sm-12 col-lg-6 col-xl-6">
+                                                <div class="form-floating mb-3">
+                                                    <input type="date" class="form-control" id="deathDate" name="deathDate"
+                                                        placeholder="MM/DD/YYYY" required/>
+                                                    <label for="deathDate">Death of Date</label>
+                                                </div>
+                                            </div>
+                                            <div class="col-12 col-sm-12 col-lg-6 col-xl-6">
+                                                <div class="form-floating mb-3">
+                                                    <input type="text" class="form-control" id="placeDeath" name="placeDeath"
+                                                        placeholder="Place Of Death" required/>
+                                                    <label for="placeDeath">Place Of Death</label>
+                                                </div>
+                                            </div>
+                                            <div class="col-12 col-sm-12 col-lg-6 col-xl-6">
+                                                <div class="form-floating mb-3">
+                                                    <input type="date" class="form-control" id="birthDate" name="birthDate"
+                                                        placeholder="Birthdate" required/>
+                                                    <label for="birthDate">Birthdate</label>
+                                                </div>
+                                            </div>
+                                            <div class="col-12 col-sm-12 col-lg-6 col-xl-6">
+                                                <div class="form-floating mb-3">
+                                                    <input type="text" class="form-control" id="placeBirth" name="placeBirth"
+                                                        placeholder="Place Of Birth" required/>
+                                                    <label for="placeBirth">Place Of Birth</label>
+                                                </div>
+                                            </div>
+                                            <div class="col-12 col-sm-12 col-lg-6 col-xl-6">
+                                                <div class="form-floating mb-3">
+                                                    <input type="number" class="form-control" id="ageDeath" name="ageDeath"
+                                                        placeholder="Age of Death" required/>
+                                                    <label for="ageDeath">Age of Death</label>
+                                                </div>
+                                            </div>
+                                            <div class="col-12 col-sm-12 col-lg-6 col-xl-6">
+                                                <div class="form-floating mb-3">
+                                                    <select class="form-select" id="gender" name="gender"
+                                                        aria-label="Floating label select example" required>
+                                                        <option value="" selected hidden>Select menu</option>
+                                                        <option value="Male">Male</option>
+                                                        <option value="Female">Female</option>
+                                                    </select>
+                                                    <label for="gender">Gender</label>
+                                                </div>
+                                            </div>
+                                            <div class="col-12 col-sm-12 col-lg-6 col-xl-6">
+                                                <div class="form-floating mb-3">
+                                                    <input type="text" class="form-control" id="occupation" name="occupation"
+                                                        placeholder="Occupation" required/>
+                                                    <label for="occupation">Occupation</label>
+                                                </div>
+                                            </div>
+                                            <div class="col-12 col-sm-12 col-lg-6 col-xl-6">
+                                                <div class="form-floating mb-3">
+                                                    <select class="form-select" id="civilStatus" name="civilStatus"
+                                                        aria-label="Floating label select example" required>
+                                                        <option value="" selected hidden>Select menu</option>
+                                                        <option value="Married">Married</option>
+                                                        <option value="Single">Single</option>
+                                                        <option value="Widow">Widow</option>
+                                                    </select>
+                                                    <label for="civilStatus">Civil Status</label>
+                                                </div>
+                                            </div>
+                                            <div class="col-12 col-sm-12 col-lg-6 col-xl-6">
+                                                <div class="form-floating mb-3">
+                                                    <input type="text" class="form-control" id="religion" name="religion"
+                                                        placeholder="Religion" required/>
+                                                    <label for="religion">Religion</label>
+                                                </div>
+                                            </div>
+                                            <div class="col-12 col-sm-12 col-lg-6 col-xl-6">
+                                                <div class="form-floating mb-3">
+                                                    <input type="text" class="form-control" id="citizenship" name="citizenship"
+                                                        placeholder="Citizenship" required/>
+                                                    <label for="citizenship">Citizenship</label>
+                                                </div>
+                                            </div>
+                                            <div class="col-12 col-sm-12 col-lg-6 col-xl-6">
+                                                <div class="form-floating mb-3">
+                                                    <select class="form-select" id="nameCemetery" name="nameCemetery"
+                                                        aria-label="Floating label select example" required>
+                                                        <option value="" selected hidden>Select menu</option>
+                                                        <option value="Block A">Block A</option>
+                                                        <option value="Block B">Block B</option>
+                                                    </select>
+                                                    <label for="nameCemetery">Name of Cemetery</label>
+                                                </div>
+                                            </div>
+                                            <div class="col-12 col-sm-12 col-lg-12 col-xl-12">
+                                                <div class="form-floating mb-3">
+                                                    <select class="form-select" id="causeDeath" name="causeDeath"
+                                                        aria-label="Floating label select example" required>
+                                                        <option value="" selected hidden>Select menu</option>
+                                                        <option value="Natural">Natural</option>
+                                                        <option value="Accident">Accident</option>
+                                                        <option value="Murder">Murder</option>
+                                                        <option value="Suicide">Suicide</option>
+                                                        <option value="Homicide">Homicide</option>
+                                                        <option value="Unknown">Unknown</option>
+                                                    </select>
+                                                    <label for="causeDeath">Cause of Death</label>
+                                                </div>
+                                            </div>
+                                            <div class="col-12 col-sm-12 col-lg-12 col-xl-12">
+                                                <div class="form-floating">
+                                                    <textarea class="form-control" placeholder="Leave a Description here"
+                                                        id="description" name="description" style="height: 150px;" required></textarea>
+                                                    <label for="description">Description</label>
+                                                </div>
+                                            </div>
+                                            <div class="col-12 mt-3 text-center">
+                                                <button class="btn btn-primary w-50" type="submit">Submit</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                            
+                            
+
+
+                            <!-- Widgets Start -->
+                            <!-- <div class="container-fluid pt-4 px-4">
+                <div class="row g-4">
+                    <div class="col-sm-12 col-md-6 col-xl-4">
+                        <div class="h-100 bg-light rounded p-4">
+                            <div class="d-flex align-items-center justify-content-between mb-2">
+                                <h6 class="mb-0">Messages</h6>
+                                <a href="">Show All</a>
+                            </div>
+                            <div class="d-flex align-items-center border-bottom py-3">
+                                <img class="rounded-circle flex-shrink-0" src="public/admin/img/user.jpg" alt="" style="width: 40px; height: 40px;">
+                                <div class="w-100 ms-3">
+                                    <div class="d-flex w-100 justify-content-between">
+                                        <h6 class="mb-0">Jhon Doe</h6>
+                                        <small>15 minutes ago</small>
+                                    </div>
+                                    <span>Short message goes here...</span>
+                                </div>
+                            </div>
+                            <div class="d-flex align-items-center border-bottom py-3">
+                                <img class="rounded-circle flex-shrink-0" src="public/admin/img/user.jpg" alt="" style="width: 40px; height: 40px;">
+                                <div class="w-100 ms-3">
+                                    <div class="d-flex w-100 justify-content-between">
+                                        <h6 class="mb-0">Jhon Doe</h6>
+                                        <small>15 minutes ago</small>
+                                    </div>
+                                    <span>Short message goes here...</span>
+                                </div>
+                            </div>
+                            <div class="d-flex align-items-center border-bottom py-3">
+                                <img class="rounded-circle flex-shrink-0" src="public/admin/img/user.jpg" alt="" style="width: 40px; height: 40px;">
+                                <div class="w-100 ms-3">
+                                    <div class="d-flex w-100 justify-content-between">
+                                        <h6 class="mb-0">Jhon Doe</h6>
+                                        <small>15 minutes ago</small>
+                                    </div>
+                                    <span>Short message goes here...</span>
+                                </div>
+                            </div>
+                            <div class="d-flex align-items-center pt-3">
+                                <img class="rounded-circle flex-shrink-0" src="public/admin/img/user.jpg" alt="" style="width: 40px; height: 40px;">
+                                <div class="w-100 ms-3">
+                                    <div class="d-flex w-100 justify-content-between">
+                                        <h6 class="mb-0">Jhon Doe</h6>
+                                        <small>15 minutes ago</small>
+                                    </div>
+                                    <span>Short message goes here...</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-12 col-md-6 col-xl-4">
+                        <div class="h-100 bg-light rounded p-4">
+                            <div class="d-flex align-items-center justify-content-between mb-4">
+                                <h6 class="mb-0">Calender</h6>
+                                <a href="">Show All</a>
+                            </div>
+                            <div id="calender"></div>
+                        </div>
+                    </div>
+                    <div class="col-sm-12 col-md-6 col-xl-4">
+                        <div class="h-100 bg-light rounded p-4">
+                            <div class="d-flex align-items-center justify-content-between mb-4">
+                                <h6 class="mb-0">To Do List</h6>
+                                <a href="">Show All</a>
+                            </div>
+                            <div class="d-flex mb-2">
+                                <input class="form-control bg-transparent" type="text" placeholder="Enter task">
+                                <button type="button" class="btn btn-primary ms-2">Add</button>
+                            </div>
+                            <div class="d-flex align-items-center border-bottom py-2">
+                                <input class="form-check-input m-0" type="checkbox">
+                                <div class="w-100 ms-3">
+                                    <div class="d-flex w-100 align-items-center justify-content-between">
+                                        <span>Short task goes here...</span>
+                                        <button class="btn btn-sm"><i class="fa fa-times"></i></button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="d-flex align-items-center border-bottom py-2">
+                                <input class="form-check-input m-0" type="checkbox">
+                                <div class="w-100 ms-3">
+                                    <div class="d-flex w-100 align-items-center justify-content-between">
+                                        <span>Short task goes here...</span>
+                                        <button class="btn btn-sm"><i class="fa fa-times"></i></button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="d-flex align-items-center border-bottom py-2">
+                                <input class="form-check-input m-0" type="checkbox" checked>
+                                <div class="w-100 ms-3">
+                                    <div class="d-flex w-100 align-items-center justify-content-between">
+                                        <span><del>Short task goes here...</del></span>
+                                        <button class="btn btn-sm text-primary"><i class="fa fa-times"></i></button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="d-flex align-items-center border-bottom py-2">
+                                <input class="form-check-input m-0" type="checkbox">
+                                <div class="w-100 ms-3">
+                                    <div class="d-flex w-100 align-items-center justify-content-between">
+                                        <span>Short task goes here...</span>
+                                        <button class="btn btn-sm"><i class="fa fa-times"></i></button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="d-flex align-items-center pt-2">
+                                <input class="form-check-input m-0" type="checkbox">
+                                <div class="w-100 ms-3">
+                                    <div class="d-flex w-100 align-items-center justify-content-between">
+                                        <span>Short task goes here...</span>
+                                        <button class="btn btn-sm"><i class="fa fa-times"></i></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div> -->
+                            <!-- Widgets End -->
+
+
+                            <!-- Footer Start -->
+                            <div class="container-fluid pt-4 px-4">
+                                <div class="bg-light rounded-top p-4">
+                                    <div class="row">
+                                        <div class="col-12 col-sm-6 text-center text-sm-start">
+                                            &copy; <a href="#">Your Site Name</a>, All Right Reserved.
+                                        </div>
+                                        <div class="col-12 col-sm-6 text-center text-sm-end">
+                                            <!--/*** This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/-->
+                                            Designed By <a href="https://htmlcodex.com">RRG</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Footer End -->
+                </div>
+                <!-- Content End -->
+
+
+                <!-- Back to Top -->
+                <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
+        </div>
+
+        <%- include('./partials/footer/footer.ejs'); %>

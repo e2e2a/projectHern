@@ -21,6 +21,9 @@ var schema = mongoose.Schema({
     ageDeath: {
         type: String,
     },
+    gender: {
+        type: String,
+    },
     occupation: {
         type: String,
     },
@@ -37,12 +40,12 @@ var schema = mongoose.Schema({
         type: String,
         unique: false
     },
-    categoryCOD: {
+    causeDeath: {
         type: String,
         enum: ['Natural', 'Accident', 'Murder', 'Unknown', 'Suicide', 'Homicide'],
         required: true
     },
-    nameCementery: {
+    nameCemetery: {
         type: String,
     },
 }, {
@@ -52,4 +55,4 @@ var schema = mongoose.Schema({
 );
 schema.set('toJSON', { getters: true });
 
-module.exports = mongoose.model('Product', schema);
+module.exports = mongoose.model('Deceaseds', schema ,'Deceaseds');

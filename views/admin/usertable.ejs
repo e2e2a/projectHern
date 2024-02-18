@@ -29,105 +29,177 @@
                             <div class="container-fluid pt-4 px-4">
                                 <div class="bg-light text-center rounded p-4">
                                     <div class="d-flex align-items-center justify-content-between mb-4">
-                                        <form class="d-flex d-md-flex  align-items-center ">
+                                        <form class="d-none d-md-flex ms-4 align-items-center">
                                             <h6 class="mb-0 p-1" style="white-space: nowrap;">Search :</h6>
-                                            <input class="form-control border-0" id="searchInput" type="search"
+                                            <input class="form-control border-0" type="search"
                                                 placeholder="Search Name">
                                         </form>
-                                        <form class="d-md-flex  align-items-center text-sm">
-                                            <a href="register-deceased" class="btn btn-primary d-flex d-md-block d-lg-block m-2"><i
-                                                    class="fas fa-plus me-2"></i>Add</a>
+                                        <form class="d-none d-md-flex ms-4 align-items-center">
+                                            <button type="button" class="btn btn-primary m-2"><i
+                                                    class="fas fa-plus me-2"></i>Add</button>
                                         </form>
                                     </div>
-                                    <!-- <div class="row">
-                                        <div class="d-flex col-6 col-sm-6 col-md-3 col-lg-3 col-xl-3 mb-3">
-                                                <select class="form-select" aria-label="Default select example">
-                                                    <option value="" selected hidden>Filter By:</option>
-                                                    <option value="Select All">Select All</option>
-                                                    <option value="Natural">Natural</option>
-                                                    <option value="Accident">Accident</option>
-                                                    <option value="Murder">Murder</option>
-                                                    <option value="Unknown">Unknown</option>
-                                                    <option value="Suicide">Suicide</option>
-                                                    <option value="Homicide">Homicide</option>
-                                                </select>
-                                                
-                                        </div>
-                                        <div class="d-flex col-6 col-sm-6 col-md-3 col-lg-3 col-xl-3 mb-3">
-                                            <select class="form-select" aria-label="Default select example">
-                                                <option value="" selected hidden>Filter By:</option>
-                                                <option value="Select All">Select All</option>
-                                                <option value="Male">Male</option>
-                                                <option value="Female">Female</option>
-                                            </select>
-                                        </div>
-                                    </div> -->
                                     <div class="table-responsive">
                                         <table class="table text-start align-middle table-bordered table-hover mb-0">
                                             <thead>
                                                 <tr class="text-dark">
                                                     <!-- <th scope="col"><input class="form-check-input" type="checkbox"></th> -->
-                                                    <th scope="col">Name</th>
-                                                    <th scope="col">Birthdate</th>
-                                                    <th scope="col">Place of Birth</th>
-                                                    <th scope="col">Age Death</th>
-                                                    <th scope="col">Occupation</th>
-                                                    <th scope="col">Gender</th>
-                                                    <th scope="col">CivilStatus</th>
-                                                    <th scope="col">Religion</th>
-                                                    <th scope="col">Citizenship</th>
-                                                    <th scope="col">description</th>
-                                                    <th scope="col">Date of Death</th>
-                                                    <th scope="col">Place of Death</th>
-                                                    <th scope="col">Cuase of Death</th>
-                                                    <th scope="col">Name of Cementery</th>
+                                                    <th scope="col">ID</th>
+                                                    <th scope="col">Full Name</th>
+                                                    <th scope="col">Email</th>
+                                                    <th scope="col">Contact</th>
+                                                    <th scope="col">Address</th>
+                                                    <th scope="col">Relatives</th>
+                                                    <th scope="col">Password</th>
                                                     <th scope="col" class="text-center">Actions</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <% if(deceaseds && deceaseds.length > 0) { %>
                                                 <tr>
-                                                    <% deceaseds.forEach(deceased => { %>
                                                     <!-- <td><input class="form-check-input" type="checkbox"></td> -->
-                                                    <td style="white-space: nowrap;"><%= deceased.fullname %></td>
-                                                    <td style="white-space: nowrap;"><%= deceased.birthDate %></td>
-                                                    <td><%= deceased.placeBirth %></td>
-                                                    <td><%= deceased.ageDeath %></td>
-                                                    <td><%= deceased.occupation %></td>
-                                                    <td><%= deceased.gender %></td>
-                                                    <td><%= deceased.civilStatus %></td>
-                                                    <td><%= deceased.religion %></td>
-                                                    <td><%= deceased.citizenship %></td>
+                                                    <td style="white-space: nowrap;">63255487q4we125</td>
+                                                    <td style="white-space: nowrap;">Example Name</td>
+                                                    <td style="white-space: nowrap;">example@gmail.com</td>
+                                                    <td style="white-space: nowrap;">+639123456789</td>
+                                                    <td style="white-space: nowrap;">Looc, Estaka Dipolog City</td>
                                                     <td>
                                                         <button type="button" class="btn btn-sm btn-primary"
-                                                            data-bs-toggle="modal" data-bs-target="#modal<%= deceased._id %>">
+                                                            data-bs-toggle="modal" data-bs-target="#exampleModal">
                                                             Detail
                                                         </button>
                                                     </td>
-                                                    <td><%= deceased.deathDate %></td>
-                                                    <td><%= deceased.placeDeath %></td>
-                                                    <td><%= deceased.causeDeath %></td>
-                                                    <td><%= deceased.nameCemetery %></td>
+                                                    <td>123</td>
                                                     <td>
-                                                        <form action="actions" method="post" class="text-center">
+                                                        <form action="" method="post" class="text-center">
                                                             <div class="btn-group">
-                                                                <input type="hidden" name="deceasedId" value="<%= deceased._id %>">
-                                                                <a href="editDeceased/<%= deceased._id %>" class="btn btn-sm btn-primary"
+                                                                <a href="#" class="btn btn-sm btn-primary"
                                                                     title="Edit"><i class="far fa-edit me-1"></i></a>
-                                                                <button type="submit" name="actions" value="delete" class="btn btn-sm btn-danger"
+                                                                <button type="submit" class="btn btn-sm btn-danger"
                                                                     title="Delete"><i
                                                                         class="fas fa-trash me-1"></i></button>
-                                                                <button type="submit" name="actions" value="print" class="btn btn-sm btn-secondary"
+                                                                <button type="submit" class="btn btn-sm btn-secondary"
                                                                     title="Print"><i
                                                                         class="fas fa-download me-1"></i></button>
                                                             </div>
                                                         </form>
                                                     </td>
                                                 </tr>
-                                                <% }); %>
-                                                <% } else { %>
-                                                    <p>No Deceased Found.</p>
-                                                <% } %>
+                                                <tr>
+                                                    <!-- <td><input class="form-check-input" type="checkbox"></td> -->
+                                                    <td style="white-space: nowrap;">63255487q4we125</td>
+                                                    <td style="white-space: nowrap;">Example Name</td>
+                                                    <td style="white-space: nowrap;">example@gmail.com</td>
+                                                    <td style="white-space: nowrap;">+639123456789</td>
+                                                    <td style="white-space: nowrap;">Looc, Estaka Dipolog City</td>
+                                                    <td>
+                                                        <button type="button" class="btn btn-sm btn-primary"
+                                                            data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                                            Detail
+                                                        </button>
+                                                    </td>
+                                                    <td>123</td>
+                                                    <td>
+                                                        <form action="" method="post" class="text-center">
+                                                            <div class="btn-group">
+                                                                <a href="#" class="btn btn-sm btn-primary"
+                                                                    title="Edit"><i class="far fa-edit me-1"></i></a>
+                                                                <button type="submit" class="btn btn-sm btn-danger"
+                                                                    title="Delete"><i
+                                                                        class="fas fa-trash me-1"></i></button>
+                                                                <button type="submit" class="btn btn-sm btn-secondary"
+                                                                    title="Print"><i
+                                                                        class="fas fa-download me-1"></i></button>
+                                                            </div>
+                                                        </form>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <!-- <td><input class="form-check-input" type="checkbox"></td> -->
+                                                    <td style="white-space: nowrap;">63255487q4we125</td>
+                                                    <td style="white-space: nowrap;">Example Name</td>
+                                                    <td style="white-space: nowrap;">example@gmail.com</td>
+                                                    <td style="white-space: nowrap;">+639123456789</td>
+                                                    <td style="white-space: nowrap;">Looc, Estaka Dipolog City</td>
+                                                    <td>
+                                                        <button type="button" class="btn btn-sm btn-primary"
+                                                            data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                                            Detail
+                                                        </button>
+                                                    </td>
+                                                    <td>123</td>
+                                                    <td>
+                                                        <form action="" method="post" class="text-center">
+                                                            <div class="btn-group">
+                                                                <a href="#" class="btn btn-sm btn-primary"
+                                                                    title="Edit"><i class="far fa-edit me-1"></i></a>
+                                                                <button type="submit" class="btn btn-sm btn-danger"
+                                                                    title="Delete"><i
+                                                                        class="fas fa-trash me-1"></i></button>
+                                                                <button type="submit" class="btn btn-sm btn-secondary"
+                                                                    title="Print"><i
+                                                                        class="fas fa-download me-1"></i></button>
+                                                            </div>
+                                                        </form>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <!-- <td><input class="form-check-input" type="checkbox"></td> -->
+                                                    <td style="white-space: nowrap;">63255487q4we125</td>
+                                                    <td style="white-space: nowrap;">Example Name</td>
+                                                    <td style="white-space: nowrap;">example@gmail.com</td>
+                                                    <td style="white-space: nowrap;">+639123456789</td>
+                                                    <td style="white-space: nowrap;">Looc, Estaka Dipolog City</td>
+                                                    <td>
+                                                        <button type="button" class="btn btn-sm btn-primary"
+                                                            data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                                            Detail
+                                                        </button>
+                                                    </td>
+                                                    <td>123</td>
+                                                    <td>
+                                                        <form action="" method="post" class="text-center">
+                                                            <div class="btn-group">
+                                                                <a href="#" class="btn btn-sm btn-primary"
+                                                                    title="Edit"><i class="far fa-edit me-1"></i></a>
+                                                                <button type="submit" class="btn btn-sm btn-danger"
+                                                                    title="Delete"><i
+                                                                        class="fas fa-trash me-1"></i></button>
+                                                                <button type="submit" class="btn btn-sm btn-secondary"
+                                                                    title="Print"><i
+                                                                        class="fas fa-download me-1"></i></button>
+                                                            </div>
+                                                        </form>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <!-- <td><input class="form-check-input" type="checkbox"></td> -->
+                                                    <td style="white-space: nowrap;">63255487q4we125</td>
+                                                    <td style="white-space: nowrap;">Example Name</td>
+                                                    <td style="white-space: nowrap;">example@gmail.com</td>
+                                                    <td style="white-space: nowrap;">+639123456789</td>
+                                                    <td style="white-space: nowrap;">Looc, Estaka Dipolog City</td>
+                                                    <td>
+                                                        <button type="button" class="btn btn-sm btn-primary"
+                                                            data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                                            Detail
+                                                        </button>
+                                                    </td>
+                                                    <td>123</td>
+                                                    <td>
+                                                        <form action="" method="post" class="text-center">
+                                                            <div class="btn-group">
+                                                                <a href="#" class="btn btn-sm btn-primary"
+                                                                    title="Edit"><i class="far fa-edit me-1"></i></a>
+                                                                <button type="submit" class="btn btn-sm btn-danger"
+                                                                    title="Delete"><i
+                                                                        class="fas fa-trash me-1"></i></button>
+                                                                <button type="submit" class="btn btn-sm btn-secondary"
+                                                                    title="Print"><i
+                                                                        class="fas fa-download me-1"></i></button>
+                                                            </div>
+                                                        </form>
+                                                    </td>
+                                                </tr>
                                             </tbody>
                                         </table>
                                     </div>
@@ -136,21 +208,20 @@
                             <!-- Deceased Table End -->
                             <!-- MODAL DETAIL START -->
                             <!-- Modal -->
-                            <% deceaseds.forEach(deceased => { %>
-                            <div class="modal fade" id="modal<%= deceased._id %>" tabindex="-1" aria-labelledby="exampleModalLabel"
+                            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
                                 aria-hidden="true">
                                 <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
                                     <div class="modal-content">
                                         <div class="modal-header">
-                                            <h5 class="modal-title" id="exampleModalLabel">Description</h5>
+                                            <h5 class="modal-title" id="exampleModalLabel">Relatives</h5>
                                         </div>
                                         <div class="modal-body">
-                                            <%= deceased.description %> 
+                                            <h6>Relatives 1:</h6>
+                                            <p>Relavtive Name: Beta, Beta Beta</p>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <% }); %>
                             <!-- MODAL DETAIL END -->
 
 
@@ -298,24 +369,5 @@
                 <!-- Back to Top -->
                 <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
         </div>
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-    const searchInput = document.getElementById('searchInput');
-    const deceasedRows = document.querySelectorAll('tbody tr');
 
-    searchInput.addEventListener('input', function() {
-        const searchQuery = this.value.trim().toLowerCase();
-
-        deceasedRows.forEach(row => {
-            const fullName = row.querySelector('td:first-child').textContent.trim().toLowerCase();
-
-            if (fullName.includes(searchQuery)) {
-                row.style.display = '';
-            } else {
-                row.style.display = 'none';
-            }
-        });
-    });
-});
-</script>
         <%- include('./partials/footer/footer.ejs'); %>

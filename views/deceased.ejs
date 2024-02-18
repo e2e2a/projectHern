@@ -6,22 +6,33 @@
     <div id="heading">
         <h1>DECEASED PERSON</h1>
     </div>
-
+<style>
+    th,td {
+        white-space: nowrap;
+    }
+</style>
     <!-- Main -->
     <section id="main" class="wrapper">
         <div class="inner">
             <div class="content">
                 <div class="row">
+                    <div class="col-12 col-12-medium" style="margin-bottom: 20px;">
+                        <div class="w-50" style="border: 1px solid #ce1b28; padding: 23px; border-radius: 6px; background-color:rgb(252, 252, 252);">
+                            <h4 style="font-weight: bold;">Place of Cemetery</h4>
+                                <p>Block A : Lorem ipsum dolor sit amet Cemetery</p>
+                                <p>Block A : Lorem ipsum dolor sit amet consectetur adipisicing. Cemetery</p>
+                        </div>
+                    </div>
                     <div class="col-12 col-12-medium">
-                        <h2>Deceased Persons</h2>
+                        
                         <!-- Form -->
                         <form method="post" action="#">
                             <div class="row gtr-uniform">
-                                <div class="col-4 col-12-xsmall">
-                                    <input type="text" name="name" id="name" value="" placeholder="Search By Name" />
+                                <div class="col-8 col-12-medium col-12-xsmall">
+                                    <h2>Deceased Persons</h2>
                                 </div>
-                                <div class="col-6 col-12-xsmall">
-                                        <input type="submit" value="Search" class="primary" />
+                                <div class="col-4 col-12-medium col-12-xsmall">
+                                    <input type="text" name="name" id="searchUserSide" value="" placeholder="Search(Surname, Firstname Middlename)" style="text-transform: capitalize;" />
                                 </div>
                             </div>
                         </form>
@@ -30,39 +41,29 @@
                                 <thead>
                                     <tr>
                                         <th>Name</th>
-                                        <th>deceased’s usual address</th>
-                                        <th>date and place of birth</th>
-                                        <th>date and place of death</th>
-                                        <th>occupation of the deceased</th>
+                                        <th>Deceased’s Citizenship</th>
+                                        <th>Date and place of birth</th>
+                                        <th>Date and place of death</th>
+                                        <th>Gender of the deceased</th>
                                         <!-- <th>name of cementery</th> -->
                                         <th>Cause of Death</th>
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    <% if(deceaseds && deceaseds.length > 0) { %>
+                                        <% deceaseds.forEach(deceased => { %>
                                     <tr>
-                                        <td>Alpha, Alpha Alpha</td>
-                                        <td>Ante turpis integer aliquet porttitor.</td>
-                                        <td>11-00-1995, <br />aliquet City.</td>
-                                        <td>11-00-1995, <br />aliquet City.</td>
-                                        <td>occupation</td>
-                                        <td>Illness</td>
+                                        <td><%= deceased.fullname %></td>
+                                        <td><%= deceased.citizenship %></td>
+                                        <td><%= deceased.birthDate %>, <br /><%= deceased.placeBirth %></td>
+                                        <td><%= deceased.deathDate %>, <br /><%= deceased.placeDeath %></td>
+                                        <td><%= deceased.gender %></td>
+                                        <td><%= deceased.causeDeath %></td>
                                     </tr>
-                                    <tr>
-                                        <td>Beta, Beta Beta</td>
-                                        <td>Vis ac commodo adipiscing arcu aliquet.</td>
-                                        <td>11-00-1995, <br />aliquet City.</td>
-                                        <td>11-00-1995, <br />aliquet City.</td>
-                                        <td>occupation</td>
-                                        <td>Murder</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Gamma, Gamma Gamma</td>
-                                        <td>Morbi faucibus arcu accumsan lorem.</td>
-                                        <td>11-00-1995, <br />aliquet City.</td>
-                                        <td>11-00-1995, <br />aliquet City.</td>
-                                        <td>occupation</td>
-                                        <td>Illness</td>
-                                    </tr>
+                                    <% }); %>
+                                    <% } else { %>
+                                        <p class="text-center">No Deceased Person Found.</p>
+                                    <% } %>
                                 </tbody>
                             </table>
                         </div>
@@ -110,5 +111,24 @@
             </div>
         </div>
     </footer>
-
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const searchInput = document.getElementById('searchUserSide');
+            const deceasedRows = document.querySelectorAll('tbody tr');
+        
+            searchInput.addEventListener('input', function() {
+                const searchQuery = this.value.trim().toLowerCase();
+        
+                deceasedRows.forEach(row => {
+                    const fullName = row.querySelector('td:first-child').textContent.trim().toLowerCase();
+        
+                    if (fullName.includes(searchQuery)) {
+                        row.style.display = '';
+                    } else {
+                        row.style.display = 'none';
+                    }
+                });
+            });
+        });
+        </script>
     <%- include('./partials/footer/footer.ejs') %>

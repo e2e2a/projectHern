@@ -28,22 +28,26 @@ module.exports.doRegister = async (req, res) => {
                 return res.redirect('/register');
             } else {
                 let relativesInputed;
-                if (Array.isArray(req.body.relativeName)) {
-                    relativesInputed = req.body.relativeName.map((name, index) => ({
-                        relativeName: name,
-                        relativeEmail: req.body.relativeEmail[index]
-                    }));
-                } else {
-                    relativesInputed = [{
-                        relativeName: req.body.relativeName,
-                        relativeEmail: req.body.relativeEmail
-                    }];
-                }
-
-                const allRelatives = relativesInputed.map(relative => ({
-                    relativeName: relative.relativeName,
-                    relativeEmail: relative.relativeEmail
+            const capitalizeFirstLetter = (str) => {
+                return str.replace(/\b\w/g, (char) => char.toUpperCase());
+            };
+            if (Array.isArray(req.body.relativeName)) {
+                relativesInputed = req.body.relativeName.map((name, index) => ({
+                    relativeName: capitalizeFirstLetter(name),
+                    relativeEmail: req.body.relativeEmail[index]
                 }));
+            } else {
+                const capitalizedRelativeName = capitalizeFirstLetter(req.body.relativeName);
+                relativesInputed = [{
+                    relativeName: capitalizedRelativeName,
+                    relativeEmail: req.body.relativeEmail
+                }];
+            }
+            const capitalizedFullname = capitalizeFirstLetter(req.body.fullname);
+            const allRelatives = relativesInputed.map(relative => ({
+                relativeName: relative.relativeName,
+                relativeEmail: relative.relativeEmail
+            }));
                 console.log('Relatives:', allRelatives);
                 const noRelativesInputed = allRelatives.some(relative => relative.relativeName === undefined || relative.relativeEmail === undefined);
                 if (noRelativesInputed) {
@@ -56,7 +60,7 @@ module.exports.doRegister = async (req, res) => {
                     return res.redirect('/register');
                 }
                 const user = new User({
-                    fullname: req.body.fullname,
+                    fullname: capitalizedFullname,
                     email: req.body.email,
                     contact: req.body.contact,
                     address: req.body.address,
@@ -121,22 +125,26 @@ module.exports.doRegister = async (req, res) => {
             }
         } else {
             let relativesInputed;
-                if (Array.isArray(req.body.relativeName)) {
-                    relativesInputed = req.body.relativeName.map((name, index) => ({
-                        relativeName: name,
-                        relativeEmail: req.body.relativeEmail[index]
-                    }));
-                } else {
-                    relativesInputed = [{
-                        relativeName: req.body.relativeName,
-                        relativeEmail: req.body.relativeEmail
-                    }];
-                }
-
-                const allRelatives = relativesInputed.map(relative => ({
-                    relativeName: relative.relativeName,
-                    relativeEmail: relative.relativeEmail
+            const capitalizeFirstLetter = (str) => {
+                return str.replace(/\b\w/g, (char) => char.toUpperCase());
+            };
+            if (Array.isArray(req.body.relativeName)) {
+                relativesInputed = req.body.relativeName.map((name, index) => ({
+                    relativeName: capitalizeFirstLetter(name),
+                    relativeEmail: req.body.relativeEmail[index]
                 }));
+            } else {
+                const capitalizedRelativeName = capitalizeFirstLetter(req.body.relativeName);
+                relativesInputed = [{
+                    relativeName: capitalizedRelativeName,
+                    relativeEmail: req.body.relativeEmail
+                }];
+            }
+            const capitalizedFullname = capitalizeFirstLetter(req.body.fullname);
+            const allRelatives = relativesInputed.map(relative => ({
+                relativeName: relative.relativeName,
+                relativeEmail: relative.relativeEmail
+            }));
                 console.log('Relatives:', allRelatives);
                 const noRelativesInputed = allRelatives.some(relative => relative.relativeName === undefined || relative.relativeEmail === undefined);
                 if (noRelativesInputed) {
@@ -149,7 +157,7 @@ module.exports.doRegister = async (req, res) => {
                     return res.redirect('/register');
                 }
                 const user = new User({
-                    fullname: req.body.fullname,
+                    fullname: capitalizedFullname,
                     email: req.body.email,
                     contact: req.body.contact,
                     address: req.body.address,
