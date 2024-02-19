@@ -52,9 +52,9 @@ module.exports.doEdit = async (req, res) => {
     const deceased = await Deceased.findByIdAndUpdate(deceasedId, data, { new: true });
     if (deceased) {
         req.flash('message', 'Updated Successfully!');
-        return res.redirect('/index');
+        return res.redirect('/admin');
     } else {
         req.flash('message', 'Failed to Update Successfully!');
-        return res.redirect('/index');
+        return res.redirect('/admin');
     }
 }

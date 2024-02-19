@@ -1,0 +1,131 @@
+
+<style>
+    /* Reset default table styles */
+    table {
+        border-collapse: collapse;
+        width: 100%;
+        
+    }
+
+    /* Style table headers */
+    th {
+        background-color: #f2f2f2;
+        border: 1px solid #dddddd;
+        padding: 6px;
+        text-align: left;
+    }
+
+    /* Style table cells */
+    td {
+        border: 1px solid #dddddd;
+        padding: 8px;
+        font-size: 16px;
+    }
+
+
+    /* Hover effect on rows */
+    tr:hover {
+        background-color: #e2e2e2;
+    }
+    h3{
+        
+        text-align: center;
+    }
+</style>
+    <% if(month === 01) {%>
+        <h3>January, <%= year %></h3>
+        <% }else if(month === 02) {%>
+        <h3>February, <%= year %></h3>
+        <% }else if(month === 03) {%>
+        <h3>March, <%= year %></h3>
+        <% }else if(month === 04) {%>
+        <h3>April, <%= year %></h3>
+        <% }else if(month === 05) {%>
+        <h3>May, <%= year %></h3>
+        <% }else if(month === 06) {%>
+        <h3>June, <%= year %></h3>
+        <% }else if(month === 07) {%>
+        <h3>July, <%= year %></h3>
+        <% }else if(month === 08) {%>
+        <h3>August, <%= year %></h3>
+        <% }else if(month === 09) {%>
+        <h3>September, <%= year %></h3>
+        <% }else if(month === 10) {%>
+        <h3>October, <%= year %></h3>
+        <% }else if(month === 11) {%>
+        <h3>November, <%= year %></h3>
+        <% }else if(month === 12) {%>
+        <h3>December, <%= year %></h3>
+        <% }%>
+    <table>
+        <thead>
+            <tr>
+                <th >Name</th>
+                <th >Birthdate</th>
+                <th >Place of Birth</th>
+                <th >Age Death</th>
+                <th >Occupation</th>
+                <th >Gender</th>
+                <th >CivilStatus</th>
+                <th >Religion</th>
+                <th >Citizenship</th>
+                <th >description</th>
+                <th >Date of Death</th>
+                <th >Place of Death</th>
+                <th >Cuase of Death</th>
+                <th >Name of Cementery</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% if(filteredDeceaseds && filteredDeceaseds.length> 0) { %>
+                <% filteredDeceaseds.forEach(deceased=> { %>
+            <tr>
+                <td>
+                    <%= deceased.fullname %>
+                </td>
+                <td>
+                    <%= deceased.birthDate %>
+                </td>
+                <td>
+                    <%= deceased.placeBirth %>
+                </td>
+                <td>
+                    <%= deceased.ageDeath %>
+                </td>
+                <td>
+                    <%= deceased.occupation %>
+                </td>
+                <td>
+                    <%= deceased.gender %>
+                </td>
+                <td>
+                    <%= deceased.civilStatus %>
+                </td>
+                <td>
+                    <%= deceased.religion %>
+                </td>
+                <td>
+                    <%= deceased.citizenship %>
+                </td>
+                <td>
+                    <%= deceased.description %>
+                </td>
+                <td>
+                    <%= deceased.deathDate %>
+                </td>
+                <td>
+                    <%= deceased.placeDeath %>
+                </td>
+                <td>
+                    <%= deceased.causeDeath %>
+                </td>
+                <td>
+                    <%= deceased.nameCemetery %>
+                </td>
+            </tr>
+                <% }); %>
+            <% } else { %>
+                <p>No Deceased Found.</p>
+                <% } %>
+        </tbody>
+    </table>

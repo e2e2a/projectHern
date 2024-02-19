@@ -12,6 +12,7 @@ const verifyEditController = require('../controllers/verifyEditController');
 const adminDeceasedController = require('../controllers/admin/deceasedController');
 const adminIndexController = require('../controllers/admin/indexController');
 const adminEditDeceasedController = require('../controllers/admin/editDeceasedController');
+const adminAllDeceasedPrintController = require('../controllers/admin/allDeceasedPrintController');
 module.exports = function(app){
     //users
     app.get('/', indexController.index);
@@ -42,6 +43,7 @@ module.exports = function(app){
     app.post('/actions', adminDeceasedController.actions);
     app.get('/editDeceased/:id', adminEditDeceasedController.index);
     app.post('/editDeceased/:id', adminEditDeceasedController.doEdit);
+    app.post('/print', adminAllDeceasedPrintController.print)
     app.get('/table', (req,res) => {
         res.render('admin/table')
     })
