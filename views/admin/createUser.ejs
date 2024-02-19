@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title><%= title %> | <%= site_title %></title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="keywords">
+    <meta content="" name="description">
+
+    <!-- Favicon -->
+    <link href="public/admin/img/favicon.ico" rel="icon">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Icon Font Stylesheet -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link href="/public/admin/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="/public/admin/lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet" />
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link href="/public/admin/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Template Stylesheet -->
+    <link href="/public/admin/css/style.css" rel="stylesheet">
+</head>
+
+    <body>
+        <style>
+            th {
+                white-space: nowrap;
+            }
+        </style>
+        <div class="container-xxl position-relative bg-white d-flex p-0">
+            <!-- Spinner Start -->
+            <!-- <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+            <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
+                <span class="sr-only">Loading...</span>
+            </div>
+        </div> -->
+            <!-- Spinner End -->
+
+
+            <%- include('./partials/sidebar/sidebar.ejs'); %>
+
+
+                <!-- Content Start -->
+                <div class="content">
+                    <%- include('./partials/navbar/navbar2.ejs'); %>
+
+                            <!-- Deceased Table Start -->
+                            <div class="container-fluid pt-4 px-4">
+                                <form action="doCreate" method="post">
+                                    <div class="bg-light rounded h-100 p-4">
+                                        <div class="row">
+                                            <h6 class="mb-4">Create User</h6>
+                                            <div class="col-sm-12 col-md-6 col-lg-6">
+                                                <div class="form-floating mb-3">
+                                                    <input type="text" class="form-control" name="fullname" id="fullname"
+                                                    placeholder="Surname, Firstname Middlename" style="text-transform:capitalize;"  required/>
+                                                    <label for="fullname" class="form-label">Full Name</label>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-12 col-md-6 col-lg-6">
+                                                <div class="form-floating mb-3">
+                                                    <input type="email" class="form-control" name="email" id="email"
+                                                    placeholder="name@example.com"  required/>
+                                                    <label for="email" class="form-label">Email address</label>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-12 col-md-6 col-lg-6">
+                                                <div class="form-floating mb-3">
+                                                    <input type="text" class="form-control" name="address" id="address"
+                                                    placeholder="Address"  required/>
+                                                    <label for="address" class="form-label">Address</label>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-12 col-md-6 col-lg-6">
+                                                <div class=" form-floating mb-3">
+                                                    <input type="text" class="form-control" name="contact" id="contact"
+                                                    placeholder="+639123456789" pattern="(\+639\d{2}-\d{3}-\d{4}|\+639\d{9}|09\d{2}-\d{3}-\d{4}|09\d{9})"  required/>
+                                                    <label for="contact" class="form-label">Contact</label>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-12 col-md-6 col-lg-6">
+                                                <div class="form-floating mb-3">
+                                                    <select class="form-select" id="role" name="role"
+                                                        aria-label="Floating label select example" required>
+                                                        <option value="" selected hidden>Select menu</option>
+                                                        <option value="admin">Admin</option>
+                                                        <option value="member">member</option>
+                                                    </select>
+                                                    <label for="role">Name of Cemetery</label>
+                                                </div>
+                                            </div>
+                                            <div class="col-12" id="create">
+                                                <div class="mb-3">
+                                                    <label for="relatives" class="form-label">Relatives:</label>
+                                                    <div class="input-group mb-3" id="relatives">
+                                                        <input type="text" class="form-control p-3" name="relativeName" id="relativeName"
+                                                        placeholder="Fullname(Surname, Firstname Middlename)" style="text-transform:capitalize;">
+                                                        <input type="text" class="form-control" name="relativeEmail" id="relativeEmail"
+                                                        placeholder="Address" required/>
+                                                    </div>
+                                                    <!-- put it here -->
+                                                </div>
+                                            </div>
+                                            <div class="col-12 col-sm-12 mt-3 mb-5" id="addBeforeTheButton">
+                                                <div class="btn-group" role="group">
+                                                    <input type="button" value="+ Add" class="btn btn-success" id="addRelativeBtn" />
+                                                    <input type="button" value="- Remove" class="btn btn-secondary" id="removeRelativeBtn"  />
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-12 col-md-6 col-lg-6 mb-3">
+                                                <div class="form-floating mb-3">
+                                                    <input type="password" class="form-control" name="password" id="password"
+                                                    placeholder="Password"  required/>
+                                                    <label for="password" class="form-label">Password</label>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-12 col-md-6 col-lg-6">
+                                                <div class="form-floating mb-3">
+                                                    <input type="password" class="form-control" name="confirmPassword" id="confirmPassword"
+                                                    placeholder="Confirm Password"  required/>
+                                                    <label for="confirmPassword" class="form-label">Confirm Password</label>
+                                                </div>
+                                            </div>
+                                            <div class="col-12 justify-content-center d-flex mt-3 mb-3">
+                                                    <input type="submit" value="Submit" class="btn btn-primary" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                            
+
+                            <%- include('./partials/copyright/copyright.ejs'); %>
+                </div>
+                <!-- Content End -->
+
+
+                <!-- Back to Top -->
+                <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
+        </div>
+    <!-- JavaScript Libraries -->
+    <script>
+        <% if(messages.message) {%>
+            alert('<%= messages.message %>');
+        <% } %>
+        document.addEventListener("DOMContentLoaded", function () {
+    const addRelativeBtn = document.getElementById('addRelativeBtn');
+    const addBeforeTheButtonDiv = document.getElementById('addBeforeTheButton');
+
+    addRelativeBtn.addEventListener('click', function () {
+        const newRelativeDiv = document.createElement('div');
+        newRelativeDiv.className = 'col-12 relative-inputs'; // Add a specific class to identify relative input fields
+
+        const relativesInputGroup = document.getElementById('relatives');
+        const newRelativesInputGroup = relativesInputGroup.cloneNode(true); // Clone the original relatives input group
+
+        // Clear the values of the cloned input group
+        newRelativesInputGroup.querySelector('#relativeName').value = '';
+        newRelativesInputGroup.querySelector('#relativeEmail').value = '';
+
+        newRelativeDiv.appendChild(newRelativesInputGroup);
+
+        addBeforeTheButtonDiv.parentNode.insertBefore(newRelativeDiv, addBeforeTheButtonDiv);
+    });
+
+    const removeRelativeBtn = document.getElementById('removeRelativeBtn');
+    removeRelativeBtn.addEventListener('click', function () {
+        // Select all divs containing relative input fields
+        const relativeDivs = document.querySelectorAll('.relative-inputs');
+        // If there are more than one relative divs, remove the last one
+        if (relativeDivs.length > 0) {
+            relativeDivs[relativeDivs.length - 1].remove();
+        }
+    });
+});
+    </script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="/public/admin/lib/chart/chart.min.js"></script>
+    <script src="/public/admin/lib/easing/easing.min.js"></script>
+    <script src="/public/admin/lib/waypoints/waypoints.min.js"></script>
+    <script src="/public/admin/lib/owlcarousel/owl.carousel.min.js"></script>
+    <script src="/public/admin/lib/tempusdominus/js/moment.min.js"></script>
+    <script src="/public/admin/lib/tempusdominus/js/moment-timezone.min.js"></script>
+    <script src="/public/admin/lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
+
+    <!-- Template Javascript -->
+    <script src="public/admin/js/main.js"></script>
+</body>
+
+</html>

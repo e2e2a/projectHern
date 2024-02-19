@@ -13,6 +13,7 @@ module.exports.index = async (req, res) => {
                     title: 'Dashboard',
                     deceaseds: deceaseds,
                     messages: req.flash(),
+                    userLogin:userLogin,
                 })
             } else {
                 return res.status(404).render('404',{

@@ -17,6 +17,7 @@ module.exports.index = async (req, res) => {
                 title: 'Edit',
                 deceased: deceased,
                 userLogin: userLogin,
+                messages: req.flash(),
             });
         } else {
             return res.status(404).render('404',{

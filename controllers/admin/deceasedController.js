@@ -16,6 +16,8 @@ module.exports.index = async (req, res) => {
                 res.render('admin/createDeceased', {
                     site_title: SITE_TITLE,
                     title: 'Register',
+                    userLogin:userLogin,
+                    messages: req.flash(),
                 })
             } else {
                 return res.status(404).render('404',{
