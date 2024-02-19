@@ -19,11 +19,14 @@ module.exports.index = async (req, res) => {
                 userLogin: userLogin,
             });
         } else {
-            return res.redirect('404');
+            return res.status(404).render('404',{
+                login: req.session.login,
+                userLogin: userLogin,
+            });
         }
     } catch (err) {
         console.log('err:', err);
-        return res.status(500).render('500')
+        return res.status(500).render('500');
     }
 }
 

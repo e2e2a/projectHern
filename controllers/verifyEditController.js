@@ -14,39 +14,30 @@ module.exports.verify = async (req, res) => {
         const verificationToken = req.query.token;
         const sendcode = req.query.sendcode === 'true';
         if (!verificationToken) {
-            res.status(404).render('404', {
-                site_title: SITE_TITLE,
-                title: '404',
-                session: req.session,
-                currentUrl: req.originalUrl,
-                err: 'We’re sorry, the page you have looked for does not exist in our website! Maybe go to our home page or check the link on the browser and try again.',
+            const userLogin = await User.findById(req.session.login)
+            return res.status(404).render('404', {
+                login: req.session.login,
+                userLogin: userLogin,
             });
-            return;
         }
         // Checking
         const userToken = await UserToken.findOne({ token: verificationToken });
         // Checking 
         if (!userToken) {
-            res.status(404).render('404', {
-                site_title: SITE_TITLE,
-                title: '404',
-                session: req.session,
-                currentUrl: req.originalUrl,
-                err: 'We’re sorry, the page you have looked for does not exist in our website! Maybe go to our home page or check the link on the browser and try again.',
+            const userLogin = await User.findById(req.session.login)
+            return res.status(404).render('404', {
+                login: req.session.login,
+                userLogin: userLogin,
             });
-            return;
         }
         const expirationCodeDate = userToken.expirationCodeDate;
         const remainingTimeInSeconds = Math.floor((expirationCodeDate - new Date().getTime()) / 1000);
         if (!userToken || userToken.expirationDate < new Date()) {
-            res.status(404).render('404', {
-                site_title: SITE_TITLE,
-                title: '404',
-                session: req.session,
-                currentUrl: req.originalUrl,
-                err: 'We’re sorry, the page you have looked for does not exist in our website! Maybe go to our home page or check the link on the browser and try again.',
+            const userLogin = await User.findById(req.session.login)
+            return res.status(404).render('404', {
+                login: req.session.login,
+                userLogin: userLogin,
             });
-            return;
         }
         const userEdit = await UserEdit.findById({ _id: userToken.userId });
         res.render('VerifyEdit', {
@@ -62,12 +53,7 @@ module.exports.verify = async (req, res) => {
         });
     } catch (error) {
         console.error('Error rendering verification input form:', error);
-        res.status(500).render('500', {
-            site_title: SITE_TITLE,
-            title: 'Internal Server Error',
-            session: req.session,
-            currentUrl: req.originalUrl
-        });
+        return res.status(500).render('500');
     }
 };
 
@@ -83,16 +69,16 @@ module.exports.doVerify = async (req, res) => {
             if (userToken && userToken.expirationDate > new Date()) {
                 if (verificationCode === userToken.verificationCode) {
                     if (userToken.expirationCodeDate > new Date()) {
-                        const userEdit = await UserEdit.findOne({_id: userToken.userId})
+                        const userEdit = await UserEdit.findOne({ _id: userToken.userId })
                         console.log(userEdit)
-                        const user = await User.findByIdAndUpdate(userEdit.userId, { 
+                        const user = await User.findByIdAndUpdate(userEdit.userId, {
                             fullname: userEdit.fullname,
                             email: userEdit.email,
                             contact: userEdit.contact,
                             address: userEdit.fullname,
                             relatives: userEdit.relatives,
                             password: userEdit.password,
-                            isVerified: true ,
+                            isVerified: true,
                         });
                         req.session.login = user._id;
                         await UserToken.findByIdAndDelete(userToken._id);
@@ -143,22 +129,15 @@ module.exports.doVerify = async (req, res) => {
                 }
             } else {
                 console.log('Invalid or expired verification code.');
-                res.status(404).redirect('404', {
-                    site_title: SITE_TITLE,
-                    title: '404',
-                    session: req.session,
-                    currentUrl: req.originalUrl,
-                    err: 'We’re sorry, the page you have looked for does not exist in our website! Maybe go to our home page or check the link on the browser and try again.',
+                const userLogin = await User.findById(req.session.login)
+                return res.status(404).render('404', {
+                    login: req.session.login,
+                    userLogin: userLogin,
                 });
             }
         } catch (error) {
             console.error('Verification failed:', error);
-            res.status(500).render('500', {
-                site_title: SITE_TITLE,
-                title: 'Internal Server Error',
-                session: req.session,
-                currentUrl: req.originalUrl
-            });
+            return res.status(500).render('500');
         }
     } else if (action === 'resend') {
         try {
@@ -193,12 +172,7 @@ module.exports.doVerify = async (req, res) => {
                             console.log('Email sent:', info.response);
                         } catch (error) {
                             console.error('Error sending email:', error);
-                            res.status(500).render('500', {
-                                site_title: SITE_TITLE,
-                                title: 'Internal Server Error',
-                                session: req.session,
-                                currentUrl: req.originalUrl
-                            });
+                            return res.status(500).render('500');
                         }
                     };
                     // link
@@ -232,12 +206,10 @@ module.exports.doVerify = async (req, res) => {
                 } else {
                     // Codes in req.body do not match
                     console.log('Verification codes do not match.');
-                    res.status(404).redirect('404', {
-                        site_title: SITE_TITLE,
-                        title: '404',
-                        session: req.session,
-                        currentUrl: req.originalUrl,
-                        err: 'We’re sorry, the page you have looked for does not exist in our website! Maybe go to our home page or check the link on the browser and try again.',
+                    const userLogin = await User.findById(req.session.login)
+                    return res.status(404).render('404', {
+                        login: req.session.login,
+                        userLogin: userLogin,
                     });
                 }
             }
@@ -253,20 +225,10 @@ module.exports.doVerify = async (req, res) => {
             res.redirect('/register')
         } catch (error) {
             console.error('Deletion error:', error.message);
-            res.status(500).render('500', {
-                site_title: SITE_TITLE,
-                title: 'Internal Server Error',
-                session: req.session,
-                currentUrl: req.originalUrl
-            });
+            return res.status(500).render('500');
         }
     } else {
         //this must be status 400 invalid action
-        res.status(500).render('500', {
-            site_title: SITE_TITLE,
-            title: 'Internal Server Error',
-            session: req.session,
-            currentUrl: req.originalUrl
-        });
+        return res.status(500).render('500');
     }
 };

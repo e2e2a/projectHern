@@ -18,13 +18,17 @@ module.exports.index = async (req, res) => {
                     title: 'Register',
                 })
             } else {
-                return res.redirect('404')
+                return res.status(404).render('404',{
+                    login: req.session.login,
+                    userLogin: userLogin,
+                });
             }
         } else {
             return res.redirect('/login')
         }
     } catch (error) {
-
+        console.log('error:', error);
+        return res.status(500).render('500');
     }
 
 }
@@ -107,7 +111,7 @@ module.exports.create = async (req, res) => {
     } catch (error) {
         console.error('Error creating deceased:', error);
         // Handle error appropriately
-        res.status(500).send('An error occurred while creating deceased');
+        return res.status(500).render('500');
     }
 };
 

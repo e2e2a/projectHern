@@ -15,12 +15,16 @@ module.exports.index = async (req, res) => {
                     messages: req.flash(),
                 })
             } else {
-                return res.redirect('404');
+                return res.status(404).render('404',{
+                    login: req.session.login,
+                    userLogin: userLogin,
+                });
             }
         } else {
             return res.redirect('/login')
         }
     } catch (error) {
-        console.log('error:', error)
+        console.log('error:', error);
+        return res.status(500).render('500');
     }
 }

@@ -122,7 +122,7 @@ module.exports.doEdit = async (req, res) => {
                     } catch (error) {
                         console.error("Error updating user:", error);
                         req.flash('message', 'An error occurred. Please try again.');
-                        return res.redirect('/edit');
+                        return res.status(500).render('500');
                     }
                 });
 

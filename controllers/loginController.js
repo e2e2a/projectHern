@@ -48,7 +48,8 @@ module.exports.doLogin = async (req, res) => {
             
         }
     } catch (error) {
-        return res.status(500).send(error.message); // 500 Internal Server Error
+        console.log('error:', error)
+        return res.status(500).render('500');
     }
 }
 
