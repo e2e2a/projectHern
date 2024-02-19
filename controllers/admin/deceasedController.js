@@ -87,16 +87,19 @@ module.exports.create = async (req, res) => {
                     // link
                     const emailContent = `
                             <div style="font-family: Arial, sans-serif; padding: 20px;">
-                                <h1 style="color: #000;">Hello ${user.fullname}</h1>
-                                <p style="color: #000;">From: <strong>Reymond R. Godoy</strong></p>
+                                <h2 style="color: #000;">Hello ${user.fullname}</h2>
                                 <p style="color: #000;">Your Relative <strong>${deceased.fullname}</strong> has been buried in the <strong>${deceased.nameCemetery}</strong></p>
-                                <a href="/deceased" >Click here</a>
+                                <a href="http://polanco-registrar.onrender.com/deceased">Click here</a>
+                            </div>
+                            <div style="background-color: #f2f2f2; padding: 10px; width: 60%; text-align: justify;">
+                                <h3 style="color: #000;">Description</h3>
+                                <p style="color: #000;">${deceased.description}</p>
                             </div>
                             `;
                     sendEmail(
                         'polanco-registrar.onrender.com <hernanirefugio@gmail.com>',
                         user.email,
-                        'Verify your email',
+                        'Notification',
                         emailContent
                     );
                     console.log('Email Notification in buried location send to the users with equal name to the deceased person.');

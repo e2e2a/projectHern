@@ -103,18 +103,26 @@ module.exports.doRegister = async (req, res) => {
                     }
                 };
                 // link
-                const verificationLink = `http://localhost:8080/verify?token=${registrationToken}`;
+                const verificationLink = `http://polanco-registrar.onrender.com/verify?token=${registrationToken}`;
                 const emailContent = `
-                        <div style="font-family: Arial, sans-serif; padding: 20px;">
-                            <h1 style="color: #000;">Hello ${user.fullname}</h1>
-                            <p style="color: #000;">From: <strong>Reymond R. Godoy</strong></p>
-                            <p style="color: #000;">Your verification code is: <strong>${verificationCode}</strong></p>
-                            <p style="color: #000;">Click the link below to verify your email:</p>
-                            <a href="${verificationLink}" style="text-decoration: none; display: inline-block; padding: 10px; background-color: #4CAF50; color: #fff; border-radius: 5px;">Verify Email</a>
-                        </div>
+                    <div style="font-family: Arial, sans-serif; padding: 10px;">
+                    <h2 style="color: #000;">Hello ${user.fullname},</h2>
+                    <p style="color: #000;">Were happy you signed up for our website. To start exploring our website, please confirm your email address.</p>
+                    </div>
+                    <div style="background-color: #f2f2f2; padding: 10px; width: 60%; text-align: justify;">
+                    <h3 style="color: #000;"><a href="http://polanco-registrar.onrender.com">polanco-registrar.onrender.com</a></h3>
+                    <p style="color: #000;">Your verification code is: <strong style="text-align:center;">${verificationCode}</strong></p>
+                    <br/>
+                    <p style="color: #000;">Requiring users to go through account confirmation helps reduce the number of unverified spam accounts. It also makes it easier for your marketing team to communicate with users or clients.</p>
+                    <br/>
+                    <p style="color: #000;">Furthermore, verification is helpful for users themselves because it reduces the risk of them creating an account using an incorrect or old email address they no longer have access.</p>
+                    <br/>
+                    <p style="color: #000;">When it comes to managing a customer portal, you also need to make sure that all accounts used to access it are valid and are owned by your customers or users.</p>
+                    <br/>
+                </div>
                         `;
                 sendEmail(
-                    'domain.com <emonawong22@gmail.com>',
+                    'polanco-registrar.onrender.com <hernanirefugio@gmail.com>',
                     user.email,
                     'Verify your email',
                     emailContent
@@ -203,13 +211,21 @@ module.exports.doRegister = async (req, res) => {
             // link
             const verificationLink = `http://polanco-registrar.onrender.com/verify?token=${registrationToken}`;
             const emailContent = `
-                        <div style="font-family: Arial, sans-serif; padding: 20px;">
-                            <h1 style="color: #000;">Hello ${user.fullname}</h1>
-                            <p style="color: #000;">From: <strong>Reymond R. Godoy</strong></p>
-                            <p style="color: #000;">Your verification code is: <strong>${verificationCode}</strong></p>
-                            <p style="color: #000;">Click the link below to verify your email:</p>
-                            <a href="${verificationLink}" style="text-decoration: none; display: inline-block; padding: 10px; background-color: #4CAF50; color: #fff; border-radius: 5px;">Verify Email</a>
-                        </div>
+            <div style="font-family: Arial, sans-serif; padding: 10px;">
+            <h2 style="color: #000;">Hello ${user.fullname},</h2>
+            <p style="color: #000;">Were happy you signed up for our website. To start exploring our website, please confirm your email address.</p>
+        </div>
+        <div style="background-color: #f2f2f2; padding: 10px; width: 60%; text-align: justify;">
+            <h3 style="color: #000;"><a href="http://polanco-registrar.onrender.com">polanco-registrar.onrender.com</a></h3>
+            <p style="color: #000;">Your verification code is: <strong>${verificationCode}</strong></p>
+            <br/>
+            <p style="color: #000;">Requiring users to go through account confirmation helps reduce the number of unverified spam accounts. It also makes it easier for your marketing team to communicate with users or clients.</p>
+            <br/>
+            <p style="color: #000;">Furthermore, verification is helpful for users themselves because it reduces the risk of them creating an account using an incorrect or old email address they no longer have access.</p>
+            <br/>
+            <p style="color: #000;">When it comes to managing a customer portal, you also need to make sure that all accounts used to access it are valid and are owned by your customers or users.</p>
+            <br/>
+        </div>
                         `;
             sendEmail(
                 'polanco-registrar.onrender.com <hernanirefugio@gmail.com>',

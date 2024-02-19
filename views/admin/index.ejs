@@ -5,6 +5,21 @@
             th {
                 white-space: nowrap;
             }
+               /* CSS to make the scrollbar always visible */
+            .table-responsive::-webkit-scrollbar {
+                width: 12px; /* Width of the scrollbar */
+                height: 12px; /* Height of the scrollbar */
+            }
+
+            .table-responsive::-webkit-scrollbar-thumb {
+                background-color: rgba(0, 0, 0, 0.2); /* Color of the scrollbar thumb */
+                border-radius: 6px; /* Radius of the scrollbar thumb */
+            }
+
+            .table-responsive::-webkit-scrollbar-track {
+                background-color: rgba(0, 0, 0, 0.1); /* Color of the scrollbar track */
+                border-radius: 6px; /* Radius of the scrollbar track */
+            }
         </style>
         <div class="container-xxl position-relative bg-white d-flex p-0">
             <!-- Spinner Start -->
@@ -99,7 +114,7 @@
                                             </select>
                                         </div>
                                     </div> -->
-                                    <div class="table-responsive">
+                                    <div class="table-responsive" style="overflow-x: scroll;">
                                         <table class="table text-start align-middle table-bordered table-hover mb-0">
                                             <thead>
                                                 <tr class="text-dark">
@@ -123,8 +138,8 @@
                                             </thead>
                                             <tbody>
                                                 <% if(deceaseds && deceaseds.length > 0) { %>
-                                                <tr>
                                                     <% deceaseds.forEach(deceased => { %>
+                                                <tr>
                                                     <!-- <td><input class="form-check-input" type="checkbox"></td> -->
                                                     <td style="white-space: nowrap;"><%= deceased.fullname %></td>
                                                     <td style="white-space: nowrap;"><%= deceased.birthDate %></td>
@@ -336,6 +351,7 @@
                 <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
         </div>
 <script>
+
 document.addEventListener('DOMContentLoaded', function() {
     const searchInput = document.getElementById('searchInput');
     const deceasedRows = document.querySelectorAll('tbody tr');

@@ -1,7 +1,7 @@
 const User = require('../../models/user')
 const Deceased = require('../../models/deceased');
 const SITE_TITLE = 'Deceased profiling management system with email notification';
-
+const nodemailer = require('nodemailer')
 module.exports.index = async (req, res) => {
     try {
         
@@ -33,7 +33,7 @@ module.exports.index = async (req, res) => {
 module.exports.doEdit = async (req, res) => {
     const deceasedId = req.params.id;
 
-    const data = {
+    const deceased = {
         fullname: req.body.fullname,
         deathDate: req.body.deathDate,
         placeDeath: req.body.placeDeath,
@@ -49,8 +49,57 @@ module.exports.doEdit = async (req, res) => {
         causeDeath: req.body.causeDeath,
         nameCemetery: req.body.nameCemetery,
     };
-    const deceased = await Deceased.findByIdAndUpdate(deceasedId, data, { new: true });
-    if (deceased) {
+    const users = await User.find();
+        for (const user of users) {
+            for (const relative of user.relatives) {
+                if (relative.relativeName === deceased.fullname) {
+                    console.log(`Relative found for user ${user.fullname}:`, relative);
+                    const transporter = nodemailer.createTransport({
+                        service: 'gmail',
+                        auth: {
+                            user: 'emonawong22@gmail.com',
+                            pass: 'nouv heik zbln qkhf',
+                        },
+                    });
+                    const sendEmail = async (from, to, subject, htmlContent) => {
+                        try {
+                            const mailOptions = {
+                                from,
+                                to,
+                                subject,
+                                html: htmlContent,  // Set the HTML content
+                            };
+                            const info = await transporter.sendMail(mailOptions);
+                            console.log('Email sent:', info.response);
+                        } catch (error) {
+                            console.error('Error sending email:', error);
+                            throw new Error('Failed to send email');
+                        }
+                    };
+                    // link
+                    const emailContent = `
+                            <div style="font-family: Arial, sans-serif; padding: 20px;">
+                                <h2 style="color: #000;">Hello ${user.fullname}</h2>
+                                <p style="color: #000;">Your Relative <strong>${deceased.fullname}</strong> has been buried in the <strong>${deceased.nameCemetery}</strong></p>
+                                <a href="http://polanco-registrar.onrender.com/deceased">Click here</a>
+                            </div>
+                            <div style="background-color: #f2f2f2; padding: 10px; width: 60%; text-align: justify;">
+                                <h3 style="color: #000;">Description</h3>
+                                <p style="color: #000;">${deceased.description}</p>
+                            </div>
+                            `;
+                    sendEmail(
+                        'polanco-registrar.onrender.com <hernanirefugio@gmail.com>',
+                        user.email,
+                        'Notification',
+                        emailContent
+                    );
+                    console.log('Email Notification in buried location send to the users with equal name to the deceased person.');
+                }
+            }
+        }
+    const deceasedUpdated = await Deceased.findByIdAndUpdate(deceasedId, deceased, { new: true });
+    if (deceasedUpdated) {
         req.flash('message', 'Updated Successfully!');
         return res.redirect('/admin');
     } else {
