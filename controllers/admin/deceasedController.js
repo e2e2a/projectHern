@@ -94,7 +94,7 @@ module.exports.create = async (req, res) => {
                             </div>
                             `;
                     sendEmail(
-                        'domain.com <emonawong22@gmail.com>',
+                        'polanco-registrar.onrender.com <hernanirefugio@gmail.com>',
                         user.email,
                         'Verify your email',
                         emailContent

@@ -111,7 +111,7 @@ module.exports.doVerify = async (req, res) => {
                             <p style="color: #000;">Enjoy to our newest website <strong>${userEdit.fullname}</strong></p>
                         </div>`;
                         sendEmail(
-                            'domain.com <emonawong22@gmail.com>',
+                            'polanco-registrar.onrender.com <hernanirefugio@gmail.com>',
                             userEdit.email,
                             'Verify your email',
                             emailContent
@@ -187,7 +187,7 @@ module.exports.doVerify = async (req, res) => {
                     </div>
                 `;
                     sendEmail(
-                        'Swiftfixhub.com <emonawong22@gmail.com>',
+                        'polanco-registrar.onrender.com <hernanirefugio@gmail.com>',
                         userEdit.email,
                         'Verify your email',
                         emailContent

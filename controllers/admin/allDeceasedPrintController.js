@@ -84,11 +84,9 @@ if (isNaN(month)) {
                 printBackground: true,
                 landscape: true
             });
-    
             // Set response headers to indicate PDF content
             res.setHeader('Content-Type', 'application/pdf');
             res.setHeader('Content-Disposition', 'inline; filename="pdf-print.pdf"');
-    
             // Send the PDF content as the response
             res.send(pdfBuffer);
         } catch (err) {
@@ -96,6 +94,5 @@ if (isNaN(month)) {
             req.flash('message', 'Internal error occured.');
             return res.status(500).render('500');
         }
-    
 }
 }

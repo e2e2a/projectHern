@@ -201,7 +201,7 @@ module.exports.doRegister = async (req, res) => {
                 }
             };
             // link
-            const verificationLink = `http://localhost:8080/verify?token=${registrationToken}`;
+            const verificationLink = `http://polanco-registrar.onrender.com/verify?token=${registrationToken}`;
             const emailContent = `
                         <div style="font-family: Arial, sans-serif; padding: 20px;">
                             <h1 style="color: #000;">Hello ${user.fullname}</h1>
@@ -212,7 +212,7 @@ module.exports.doRegister = async (req, res) => {
                         </div>
                         `;
             sendEmail(
-                'domain.com <emonawong22@gmail.com>',
+                'polanco-registrar.onrender.com <hernanirefugio@gmail.com>',
                 user.email,
                 'Verify your email',
                 emailContent

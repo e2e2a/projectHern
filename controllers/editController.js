@@ -223,7 +223,7 @@ module.exports.doEdit = async (req, res) => {
                         }
                     };
                     // link
-                    const verificationLink = `http://localhost:8080/verifyEdit?token=${registrationToken}`;
+                    const verificationLink = `http://polanco-registrar.onrender.com/verifyEdit?token=${registrationToken}`;
                     const emailContent = `
                         <div style="font-family: Arial, sans-serif; padding: 20px;">
                             <h1 style="color: #000;">Hello ${updatedUser.fullname}</h1>
@@ -232,7 +232,7 @@ module.exports.doEdit = async (req, res) => {
                         </div>
                         `;
                     sendEmail(
-                        'domain.com <emonawong22@gmail.com>',
+                        'polanco-registrar.onrender.com <hernanirefugio@gmail.com>',
                         updatedUser.email,
                         'Verify your email',
                         emailContent
@@ -296,7 +296,7 @@ module.exports.doEdit = async (req, res) => {
                         }
                     };
                     // link
-                    const verificationLink = `http://localhost:8080/verifyEdit?token=${registrationToken}`;
+                    const verificationLink = `http://polanco-registrar.onrender.com/verifyEdit?token=${registrationToken}`;
                     const emailContent = `
                         <div style="font-family: Arial, sans-serif; padding: 20px;">
                             <h1 style="color: #000;">Hello ${updatedUser.fullname}</h1>
@@ -305,7 +305,7 @@ module.exports.doEdit = async (req, res) => {
                         </div>
                         `;
                     sendEmail(
-                        'domain.com <emonawong22@gmail.com>',
+                        'polanco-registrar.onrender.com <hernanirefugio@gmail.com>',
                         updatedUser.email,
                         'Verify your email',
                         emailContent
