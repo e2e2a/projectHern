@@ -41,7 +41,7 @@
                                             <input type="text" name="relativeName<%= index %>" id="relativeName<%= index %>" value="<%= relative.relativeName %>" placeholder="Surname, Firstname Middlename" style="text-transform: capitalize;" required/>
                                         </div>
                                         <div class="col-5 col-8-xsmall">
-                                            <input type="email" name="relativeEmail<%= index %>" id="relativeEmail<%= index %>" value="<%= relative.relativeEmail %>" placeholder="Email" required/>
+                                            <input type="text" name="relativeEmail<%= index %>" id="relativeEmail<%= index %>" value="<%= relative.relativeEmail %>" placeholder="Address" required/>
                                         </div>
                                     <% }); %>
                                 <% } %>
@@ -104,10 +104,10 @@
         newRelativeDiv2.className = 'col-6 col-12-xsmall relative-inputs'; // Add a specific class to identify relative input fields
 
         const newRelativeEmailInput = document.createElement('input');
-        newRelativeEmailInput.setAttribute('type', 'email');
+        newRelativeEmailInput.setAttribute('type', 'text');
         newRelativeEmailInput.setAttribute('name', 'relativeEmail');
         newRelativeEmailInput.setAttribute('id', 'relativeEmail');
-        newRelativeEmailInput.setAttribute('placeholder', 'Email');
+        newRelativeEmailInput.setAttribute('placeholder', 'Address');s
         newRelativeDiv2.appendChild(newRelativeEmailInput);
 
         addBeforeTheButtonDiv.parentNode.insertBefore(newRelativeDiv1, addBeforeTheButtonDiv);

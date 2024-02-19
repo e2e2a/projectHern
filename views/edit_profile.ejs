@@ -60,9 +60,9 @@
                                 <% user.relatives.forEach(function(relative, index) { %>
                             <div class="input-group mb-3" id="relativeInputGroup">
                                 <input type="text" class="form-control relativeName<%= index %>" name="relativeName" id="relativeName" value="<%= relative.relativeName %>"
-                                placeholder="Surname, Firstname Middlename" style="text-transform:capitalize;">
-                                <input type="email" class="form-control relativeEmail<%= index %>" name="relativeEmail" id="relativeEmail" value="<%= relative.relativeEmail %>"
-                                placeholder="name@example.com">
+                                placeholder="Fullname(Surname, Firstname Middlename)" style="text-transform:capitalize;">
+                                <input type="text" class="form-control relativeEmail<%= index %>" name="relativeEmail" id="relativeEmail" value="<%= relative.relativeEmail %>"
+                                placeholder="Address">
                                 <button type="button" class="rounded removeRelativeBtn2" data-index="<%= index %>" style="padding: 12px;"><i class="fa fa-trash"></i></button>
                             </div>
                             <% }); %>
@@ -122,15 +122,15 @@
         newRelativeNameInput.type = 'text';
         newRelativeNameInput.className = 'form-control';
         newRelativeNameInput.name = 'relativeName'; // Make sure the name matches the server-side expectation
-        newRelativeNameInput.placeholder = 'Surname, Firstname Middlename';
+        newRelativeNameInput.placeholder = 'Fullname(Surname, Firstname Middlename)';
         newRelativeNameInput.style.textTransform = 'capitalize';
 
         // Create the relative email input field
         const newRelativeEmailInput = document.createElement('input');
-        newRelativeEmailInput.type = 'email';
+        newRelativeEmailInput.type = 'text';
         newRelativeEmailInput.className = 'form-control';
         newRelativeEmailInput.name = 'relativeEmail'; // Make sure the name matches the server-side expectation
-        newRelativeEmailInput.placeholder = 'name@example.com';
+        newRelativeEmailInput.placeholder = 'Address';
 
         // Create the remove button for the relative input group
         const removeRelativeBtn = document.createElement('button');
