@@ -36,7 +36,12 @@ module.exports.doEdit = async (req, res) => {
             console.log(req.body.email)
             let relativesInputed;
             const capitalizeFirstLetter = (str) => {
-                return str.replace(/\b\w/g, (char) => char.toUpperCase());
+                // Check if str is defined before attempting to capitalize
+                if (str) {
+                    return str.replace(/\b\w/g, (char) => char.toUpperCase());
+                } else {
+                    return ''; // Return an empty string if str is undefined
+                }
             };
             if (Array.isArray(req.body.relativeName)) {
                 relativesInputed = req.body.relativeName.map((name, index) => ({
@@ -139,7 +144,12 @@ module.exports.doEdit = async (req, res) => {
             }
             let relativesInputed;
             const capitalizeFirstLetter = (str) => {
-                return str.replace(/\b\w/g, (char) => char.toUpperCase());
+                // Check if str is defined before attempting to capitalize
+                if (str) {
+                    return str.replace(/\b\w/g, (char) => char.toUpperCase());
+                } else {
+                    return ''; // Return an empty string if str is undefined
+                }
             };
             if (Array.isArray(req.body.relativeName)) {
                 relativesInputed = req.body.relativeName.map((name, index) => ({
