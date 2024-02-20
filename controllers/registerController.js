@@ -7,11 +7,13 @@ const nodemailer = require('nodemailer');
 const { customAlphabet } = require('nanoid');
 const sixDigitCode = customAlphabet('ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789', 6);
 module.exports.index = async (req, res) => {
+    const userLogin = await User.findById(req.session.login);
     res.render('register', {
         site_title: SITE_TITLE,
         title: 'Register',
         messages: req.flash(),
         login: req.session.login,
+        userLogin: userLogin,
     });
 }
 
