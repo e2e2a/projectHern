@@ -1,6 +1,7 @@
 const User = require('../models/user')
 const SITE_TITLE = 'Deceased profiling management system with email notification';
-module.exports.login = (req, res) => {
+module.exports.login =async (req, res) => {
+    const userLogin = await User.findById(req.session.login);
     res.render('login', {
         site_title: SITE_TITLE,
         title: 'Login',
@@ -8,6 +9,7 @@ module.exports.login = (req, res) => {
         messages: req.flash(),
         currentUrl: req.originalUrl,
         login: req.session.login,
+        userLogin:userLogin,
     });
 }
 module.exports.doLogin = async (req, res) => {
