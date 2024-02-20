@@ -30,9 +30,6 @@ module.exports = function(app){
     app.post('/doEdit', editController.doEdit);
     app.get('/verifyEdit', verifyEditController.verify);
     app.post('/verifyDoEdit', verifyEditController.doVerify);
-    app.get('/elements', (req,res) => {
-        res.render('elements');
-    });
     //admin
     app.get('/admin', adminIndexController.index);
     app.get('/users', adminUserController.index)
@@ -49,16 +46,4 @@ module.exports = function(app){
     app.post('/deleteuser', adminUserController.doDelete);
     app.get('/myprofile', adminProfileController.index)
     app.post('/profileUpdate', adminProfileController.doUpdate)
-    app.get('/table', (req,res) => {
-        res.render('admin/table')
-    })
-    app.get('/button', (req,res) => {
-        res.render('admin/button')
-    })
-    app.get('/form', (req,res) => {
-        res.render('admin/form')
-    })
-    app.get('/element', (req,res) => {
-        res.render('admin/element')
-    })
 }
