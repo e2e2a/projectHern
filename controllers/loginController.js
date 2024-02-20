@@ -39,13 +39,19 @@ module.exports.doLogin = async (req, res) => {
                     return res.redirect('/login');
                 }
             } else{
-                if(req.body.password === user.password){
+                user.comparePassword(req.body.password, (error, valid) => {
+                    if (error) {
+                        req.flash('message', 'WARNING DETECTED!');
+                        return res.status(403).send('Forbidden'); // 403 Forbidden
+                    }
+                    if (!valid) {
+                        // 400 Bad Request
+                        req.flash('message', 'WARNING DETECTED!');
+                        return res.redirect('/login');
+                    }
                     req.session.login = user.id;
                     return res.redirect('/admin');
-                }else {
-                    req.flash('message', 'WARNING DETECTED!');
-                    return res.redirect('/login')
-                }
+                });
             }
             
         }
@@ -62,7 +68,7 @@ module.exports.logout = (req, res) => {
             console.error('error destroying session', err);
         } else {
             console.log('user logout', login)
-            return res.redirect('/');
+            return res.redirect('/login');
         }
     })
 }

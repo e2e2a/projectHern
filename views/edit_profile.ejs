@@ -26,7 +26,7 @@
                     <h4 class="text-center p-5">Edit Profile</h4>
                     <div class="col-sm-12 col-md-6 col-lg-6">
                         <div class="mb-3">
-                            <label for="fullname" class="form-label">Full Name</label>
+                            <label for="fullname" class="form-label">Fullname(Surname, Firstname Middlename)</label>
                             <input type="text" class="form-control" name="fullname" id="fullname" value="<%= user.fullname %>"
                                 placeholder="Surname, Firstname Middlename" style="text-transform:capitalize;">
                         </div>
@@ -55,7 +55,7 @@
                     
                     <div class="col-12" id="create">
                         <div class="mb-3">
-                            <label for="relatives" class="form-label">Relatives:</label>
+                            <label for="relatives" class="form-label">Relatives<small>(Surname, Firstname Middlename)</small></label>
                             <% if (user.relatives && user.relatives.length > 0) { %>
                                 <% user.relatives.forEach(function(relative, index) { %>
                             <div class="input-group mb-3" id="relativeInputGroup">

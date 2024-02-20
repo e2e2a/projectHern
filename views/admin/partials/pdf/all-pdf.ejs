@@ -53,8 +53,8 @@
             </tr>
         </thead>
         <tbody>
-            <% if(deceaseds && deceaseds.length > 0) { %>
-                <% deceaseds.forEach(deceased=> { %>
+            <% if(filteredDeceaseds && filteredDeceaseds.length > 0) { %>
+                <% filteredDeceaseds.forEach(deceased=> { %>
             <tr>
                     <td>
                         <%= deceased.fullname %>
@@ -101,7 +101,7 @@
                 </tr>
                 <% }); %>
             <% } else { %>
-                <p>No vehicles Found.</p>
+                <p>No Deceased Found.</p>
                 <% } %>
         </tbody>
     </table>

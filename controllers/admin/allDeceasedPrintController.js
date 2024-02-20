@@ -14,9 +14,13 @@ const year = parseInt(req.body.year);
 console.log(year,month)
 if (isNaN(month)) {
     const deceaseds = await Deceased.find();
+    const filteredDeceaseds = deceaseds.filter(deceased => {
+        const deathYear = new Date(deceased.deathDate).getFullYear();
+        return deathYear === year;
+    });
     const templatePath = path.join(__dirname, '../../views/admin/partials/pdf/all-pdf.ejs');
     const templateContent = await fs.readFile(templatePath, 'utf-8');
-    const html = ejs.render(templateContent, { deceaseds: deceaseds, year:year, });
+    const html = ejs.render(templateContent, { filteredDeceaseds: filteredDeceaseds, year:year, });
     try {
         const browser = await puppeteer.launch({
             ...puppeteerConfig,

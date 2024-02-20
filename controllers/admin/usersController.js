@@ -8,6 +8,8 @@ module.exports.index = async (req, res) => {
     try {
         const userLogin = await User.findById(req.session.login);
         const users = await User.find({ role: 'member' });
+        const userMembers = await User.find({role: 'member'});
+        const totalDeceased = await Deceased.find();
         if (userLogin) {
             if (userLogin.role === 'admin') {
                 res.render('admin/usertable', {
@@ -15,6 +17,8 @@ module.exports.index = async (req, res) => {
                     title: 'Users',
                     users: users,
                     userLogin: userLogin,
+                    userMembers:userMembers,
+                    totalDeceased: totalDeceased,
                 });
 
             } else {
@@ -178,7 +182,7 @@ module.exports.doCreate = async (req,res) => {
         if (existingUser) {
             if (existingUser.isVerified) {
                 req.flash('message', 'Email Already Used!');
-                return res.redirect('/users');
+                return res.redirect('/create');
             } else {
                 let relativesInputed;
                 const capitalizeFirstLetter = (str) => {
@@ -220,7 +224,7 @@ module.exports.doCreate = async (req,res) => {
                     relatives: allRelatives,
                     password: req.body.password,
                     role: req.body.role,
-                    isVerified: false,
+                    isVerified: true,
                 });
                 await user.save();
                 req.flash('message', 'User Created!');
@@ -267,7 +271,7 @@ module.exports.doCreate = async (req,res) => {
                     relatives: allRelatives,
                     password: req.body.password,
                     role: req.body.role,
-                    isVerified: false,
+                    isVerified: true,
                 });
                 await user.save();
                 req.flash('message', 'User Created!');

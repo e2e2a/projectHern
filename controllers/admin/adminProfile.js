@@ -1,6 +1,6 @@
 const User = require('../../models/user')
 const SITE_TITLE = 'Deceased profiling management system with email notification';
-
+const bcrypt = require('bcrypt');
 module.exports.index = async(req,res) => {
     try {
         const userLogin = await User.findById(req.session.login);
@@ -30,16 +30,18 @@ module.exports.doUpdate = async (req,res) => {
             req.flash('message', 'password does not match.')
             return res.redirect('/myprofile')
         }
+        const hashedPassword = await bcrypt.hash(password, 10);
         const data = {
             fullname: req.body.fullname,
             email: req.body.email,
-            password: password,
+            password: hashedPassword,
         }
-        const user = await User.findByIdAndUpdate(req.session.login,data,{new:true});
+        const user = await User.findByIdAndUpdate(req.session.login ,data, {new:true});
         req.flash('message', 'Profile Updated.')
         return res.redirect('/myprofile');
     } catch (error) {
-        
+        console.log('error:', error)
+        return res.status(500).render('500')
     }
     
 }

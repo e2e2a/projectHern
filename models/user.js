@@ -2,7 +2,6 @@ var mongoose = require("mongoose");
 var bcrypt = require("bcrypt");
 // const DateOnly = require('mongoose-dateonly')(mongoose);
 var schema = mongoose.Schema({
-
         fullname: {
             type: String,
             required: true
@@ -13,11 +12,9 @@ var schema = mongoose.Schema({
         },
         contact: {
             type: String,
-            required: true
         },
         address: {
             type: String,
-            required: true
         },
         relatives: [{
             relativeName: String,

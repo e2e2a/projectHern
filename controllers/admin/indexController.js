@@ -5,6 +5,8 @@ const SITE_TITLE = 'Deceased profiling management system with email notification
 module.exports.index = async (req, res) => {
     try {
         const userLogin = await User.findById(req.session.login);
+        const userMembers = await User.find({role: 'member'})
+        const totalDeceased = await Deceased.find();
         if (userLogin) {
             if (userLogin.role === 'admin') {
                 const deceaseds = await Deceased.find();
@@ -14,6 +16,8 @@ module.exports.index = async (req, res) => {
                     deceaseds: deceaseds,
                     messages: req.flash(),
                     userLogin:userLogin,
+                    userMembers:userMembers,
+                    totalDeceased:totalDeceased
                 })
             } else {
                 return res.status(404).render('404',{

@@ -26,7 +26,7 @@
                 <h4 class="text-center p-5">Registration</h4>
                 <div class="col-sm-12 col-md-6 col-lg-6">
                     <div class="mb-3">
-                        <label for="fullname" class="form-label">Full Name</label>
+                        <label for="fullname" class="form-label">Fullname(Surname, Firstname Middlename)</label>
                         <input type="text" class="form-control" name="fullname" id="fullname"
                             placeholder="Surname, Firstname Middlename" style="text-transform:capitalize;"  required/>
                     </div>
@@ -54,7 +54,7 @@
                 </div>
                 <div class="col-12" id="create">
                     <div class="mb-3">
-                        <label for="relatives" class="form-label">Relatives:</label>
+                            <label for="relatives" class="">Relatives<small>(Surname, Firstname Middlename)</small></label>
                         <div class="input-group mb-3" id="relatives">
                             <input type="text" class="form-control" name="relativeName" id="relativeName"
                             placeholder="Fullname(Surname, Firstname Middlename)" style="text-transform:capitalize;">
@@ -64,7 +64,7 @@
                         <!-- put it here -->
                     </div>
                 </div>
-                <div class="col-12 col-sm-12 mt-3" id="addBeforeTheButton">
+                <div class="col-12 col-sm-12 mt-3 mb-5" id="addBeforeTheButton">
                     <div class="btn-group" role="group">
                         <input type="button" value="+ Add" class="primary" id="addRelativeBtn" />
                         <input type="button" value="- Remove" id="removeRelativeBtn"  />
