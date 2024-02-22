@@ -1,6 +1,7 @@
 require('dotenv').config();
 const express = require('express');
 const session = require('express-session');
+const MongoDBSessionStore = require('connect-mongodb-session')(session);
 const bodyparser = require('body-parser');
 var path = require('path');
 const dbConnect = require('./database/dbConnect');
@@ -10,10 +11,18 @@ const User = require('./models/user')
 
 const app = express();
 const conn = dbConnect();
-
+const store = new MongoDBSessionStore({
+    uri: process.env.MONGODB_CONNECT_URI,
+    collection: 'sessions'
+});
 app.use(session({
-    secret: 'sessionsecret777', resave: false,
+    secret: 'sessionsecret777', 
+    cookie: {
+        maxAge: 1000 * 60 * 60 * 24 * 7 // 1 week
+      },
+    resave: false,
     saveUninitialized: true,
+    store: store,
 }));
 app.use(bodyparser.urlencoded({ extended: true }));
 app.set('view engine', 'ejs');
