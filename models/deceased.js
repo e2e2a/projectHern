@@ -51,6 +51,9 @@ var schema = mongoose.Schema({
     guardianEmail: {
         type: String,
     },
+    dateBuried: {
+        type: String,
+    },
     nameCemetery: {
         type: String,
     },

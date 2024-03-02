@@ -168,7 +168,14 @@
                                                     <label for="guardianEmail">Guardian Email</label>
                                                 </div>
                                             </div>
-                                            <div class="col-12 col-sm-12 col-lg-12 col-xl-12">
+                                            <div class="col-12 col-sm-12 col-lg-6 col-xl-6">
+                                                <div class="form-floating mb-3">
+                                                    <input type="date" class="form-control" id="dateBuried" name="dateBuried" value="<%= deceased.dateBuried %>"
+                                                        placeholder="dateBuried" required/>
+                                                    <label for="dateBuried">Date Buried</label>
+                                                </div>
+                                            </div>
+                                            <div class="col-12 col-sm-12 col-lg-6 col-xl-6">
                                                 <div class="form-floating mb-3">
                                                     <select class="form-select" id="causeDeath" name="causeDeath"
                                                         aria-label="Floating label select example" required>

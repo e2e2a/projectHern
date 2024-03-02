@@ -57,6 +57,7 @@ module.exports.create = async (req, res) => {
             causeDeath: req.body.causeDeath,
             guardian: req.body.guardian,
             guardianEmail: req.body.guardianEmail,
+            dateBuried: req.body.dateBuried,
             nameCemetery: req.body.nameCemetery,
         });
         const transporter = nodemailer.createTransport({

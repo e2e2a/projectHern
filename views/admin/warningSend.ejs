@@ -125,21 +125,10 @@
                                                 <tr class="text-dark">
                                                     <!-- <th scope="col"><input class="form-check-input" type="checkbox"></th> -->
                                                     <th scope="col">Name</th>
-                                                    <th scope="col">Birthdate</th>
-                                                    <th scope="col">Place of Birth</th>
-                                                    <th scope="col">Age Death</th>
-                                                    <th scope="col">Occupation</th>
-                                                    <th scope="col">Gender</th>
-                                                    <th scope="col">CivilStatus</th>
-                                                    <th scope="col">Religion</th>
-                                                    <th scope="col">Citizenship</th>
-                                                    <th scope="col">description</th>
                                                     <th scope="col">Date of Death</th>
-                                                    <th scope="col">Place of Death</th>
-                                                    <th scope="col">Cuase of Death</th>
+                                                    <th scope="col">Date Buried</th>
                                                     <th scope="col">Guardian Name</th>
                                                     <th scope="col">Guardian Email</th>
-                                                    <th scope="col">Date Buried</th>
                                                     <th scope="col">Name of Cementery</th>
                                                     <th scope="col" class="text-center">Actions</th>
                                                 </tr>
@@ -150,33 +139,15 @@
                                                 <tr>
                                                     <!-- <td><input class="form-check-input" type="checkbox"></td> -->
                                                     <td style="white-space: nowrap;"><%= deceased.fullname %></td>
-                                                    <td style="white-space: nowrap;"><%= deceased.birthDate %></td>
-                                                    <td><%= deceased.placeBirth %></td>
-                                                    <td><%= deceased.ageDeath %></td>
-                                                    <td><%= deceased.occupation %></td>
-                                                    <td><%= deceased.gender %></td>
-                                                    <td><%= deceased.civilStatus %></td>
-                                                    <td><%= deceased.religion %></td>
-                                                    <td><%= deceased.citizenship %></td>
-                                                    <td>
-                                                        <button type="button" class="btn btn-sm btn-primary"
-                                                            data-bs-toggle="modal" data-bs-target="#modal<%= deceased._id %>">
-                                                            Detail
-                                                        </button>
-                                                    </td>
                                                     <td><%= deceased.deathDate %></td>
-                                                    <td><%= deceased.placeDeath %></td>
-                                                    <td><%= deceased.causeDeath %></td>
-                                                    <td style="white-space: nowrap;"><%= deceased.guardian %></td>
-                                                    <td><%= deceased.guardianEmail %></td>
                                                     <td><%= deceased.dateBuried %></td>
+                                                    <td><%= deceased.guardian %></td>
+                                                    <td><%= deceased.guardianEmail %></td>
                                                     <td><%= deceased.nameCemetery %></td>
                                                     <td>
-                                                        <form action="actions" method="post" class="text-center">
+                                                        <form action="warning" method="post" class="text-center">
                                                             <div class="btn-group">
                                                                 <input type="hidden" name="deceasedId" value="<%= deceased._id %>">
-                                                                <a href="editDeceased/<%= deceased._id %>" class="btn btn-sm btn-primary"
-                                                                    title="Edit"><i class="far fa-edit me-1"></i></a>
                                                                 <button type="submit" name="actions" value="delete" class="btn btn-sm btn-danger"
                                                                     title="Delete"><i
                                                                         class="fas fa-trash me-1"></i></button>
@@ -215,7 +186,6 @@
                             </div>
                             <% }); %>
                             <!-- MODAL DETAIL END -->
-
 
                             <!-- Widgets Start -->
                             <!-- <div class="container-fluid pt-4 px-4">

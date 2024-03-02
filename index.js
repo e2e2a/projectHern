@@ -8,6 +8,7 @@ const dbConnect = require('./database/dbConnect');
 const flash = require('express-flash');
 const User = require('./models/user')
 // const startServer = require('./database/UserCreated');
+const cronStart = require('./controllers/admin/warningController');
 
 const app = express();
 const conn = dbConnect();
@@ -50,8 +51,15 @@ app.use(async (req, res, next) => {
                     userLogin: userLogin,
                 });
 });
+
 const PORT = process.env.PORT
 app.listen(PORT, async () => {
     console.log("Server is running at port", PORT);
     // await startServer(); // Call startServer here
+    try {
+        await cronStart();
+        console.log("Cron job started successfully.");
+    } catch (error) {
+        console.error("Error starting cron job:", error);
+    }
 });
