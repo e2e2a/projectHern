@@ -39,7 +39,7 @@ const cronStart = async () => {
                         const burialDate = moment(deceased.dateBuried, 'YYYY-MM-DD');
                         const fiveYearsLater = moment(burialDate).add(5, 'years');
                         const currentDate = moment();
-                        console.log('burialDate:', burialDate, 'dateBuried:', 'fiveYearsLater:',fiveYearsLater);
+                        console.log('burialDate:', burialDate, 'fiveYearsLater:',fiveYearsLater);
                         // Check if current date is 5 years after the burial date
                         if (currentDate.isSameOrAfter(fiveYearsLater, 'day')) {
                             if (deceased.guardianEmail && deceased.guardianEmail.trim() !== '') {
