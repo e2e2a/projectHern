@@ -45,6 +45,12 @@ var schema = mongoose.Schema({
         enum: ['Natural', 'Accident', 'Murder', 'Unknown', 'Suicide', 'Homicide'],
         required: true
     },
+    guardian: {
+        type: String,
+    },
+    guardianEmail: {
+        type: String,
+    },
     nameCemetery: {
         type: String,
     },

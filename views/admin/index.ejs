@@ -137,6 +137,8 @@
                                                     <th scope="col">Date of Death</th>
                                                     <th scope="col">Place of Death</th>
                                                     <th scope="col">Cuase of Death</th>
+                                                    <th scope="col">Guardian Name</th>
+                                                    <th scope="col">Guardian Email</th>
                                                     <th scope="col">Name of Cementery</th>
                                                     <th scope="col" class="text-center">Actions</th>
                                                 </tr>
@@ -164,6 +166,8 @@
                                                     <td><%= deceased.deathDate %></td>
                                                     <td><%= deceased.placeDeath %></td>
                                                     <td><%= deceased.causeDeath %></td>
+                                                    <td><%= deceased.guardian %></td>
+                                                    <td><%= deceased.guardianEmail %></td>
                                                     <td><%= deceased.nameCemetery %></td>
                                                     <td>
                                                         <form action="actions" method="post" class="text-center">
