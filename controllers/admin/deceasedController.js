@@ -7,6 +7,7 @@ const User = require('../../models/user')
 const Deceased = require('../../models/deceased');
 const SITE_TITLE = 'Deceased profiling management system with email notification';
 const nodemailer = require('nodemailer');
+const moment = require('moment');
 
 module.exports.index = async (req, res) => {
     try {
@@ -41,13 +42,19 @@ module.exports.create = async (req, res) => {
             return str.replace(/\b\w/g, (char) => char.toUpperCase());
         };
         const capitalizedFullname = capitalizeFirstLetter(req.body.fullname);
+        function calculateAge(birthDate, deathDate) {
+            const birthMoment = moment(birthDate, 'YYYY-MM-DD');
+            const deathMoment = moment(deathDate, 'YYYY-MM-DD');
+            const age = deathMoment.diff(birthMoment, 'years');
+            return age.toString();
+        }
         const deceased = new Deceased({
             fullname: capitalizedFullname,
             deathDate: req.body.deathDate,
             placeDeath: req.body.placeDeath,
             birthDate: req.body.birthDate,
             placeBirth: req.body.placeBirth,
-            ageDeath: req.body.ageDeath,
+            ageDeath: calculateAge(req.body.birthDate, req.body.deathDate),
             gender: req.body.gender,
             occupation: req.body.occupation,
             civilStatus: req.body.civilStatus,

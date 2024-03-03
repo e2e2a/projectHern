@@ -38,6 +38,13 @@
                                             </div>
                                             <div class="col-12 col-sm-12 col-lg-6 col-xl-6">
                                                 <div class="form-floating mb-3">
+                                                    <input type="date" class="form-control" id="birthDate" name="birthDate"
+                                                        placeholder="Birthdate" required/>
+                                                    <label for="birthDate">Birthdate</label>
+                                                </div>
+                                            </div>
+                                            <div class="col-12 col-sm-12 col-lg-6 col-xl-6">
+                                                <div class="form-floating mb-3">
                                                     <input type="date" class="form-control" id="deathDate" name="deathDate"
                                                         placeholder="MM/DD/YYYY" required/>
                                                     <label for="deathDate">Death of Date</label>
@@ -52,23 +59,9 @@
                                             </div>
                                             <div class="col-12 col-sm-12 col-lg-6 col-xl-6">
                                                 <div class="form-floating mb-3">
-                                                    <input type="date" class="form-control" id="birthDate" name="birthDate"
-                                                        placeholder="Birthdate" required/>
-                                                    <label for="birthDate">Birthdate</label>
-                                                </div>
-                                            </div>
-                                            <div class="col-12 col-sm-12 col-lg-6 col-xl-6">
-                                                <div class="form-floating mb-3">
                                                     <input type="text" class="form-control" id="placeBirth" name="placeBirth"
                                                         placeholder="Place Of Birth" required/>
                                                     <label for="placeBirth">Place Of Birth</label>
-                                                </div>
-                                            </div>
-                                            <div class="col-12 col-sm-12 col-lg-6 col-xl-6">
-                                                <div class="form-floating mb-3">
-                                                    <input type="number" class="form-control" id="ageDeath" name="ageDeath"
-                                                        placeholder="Age of Death" required/>
-                                                    <label for="ageDeath">Age of Death</label>
                                                 </div>
                                             </div>
                                             <div class="col-12 col-sm-12 col-lg-6 col-xl-6">
@@ -120,10 +113,17 @@
                                                     <select class="form-select" id="nameCemetery" name="nameCemetery"
                                                         aria-label="Floating label select example" required>
                                                         <option value="" selected hidden>Select menu</option>
-                                                        <option value="Block A">Block A</option>
-                                                        <option value="Block B">Block B</option>
+                                                        <option value="Block A">Polanco Municipal Cemetery</option>
+                                                        <option value="Block B">Polanco Catholic Cemetery</option>
                                                     </select>
                                                     <label for="nameCemetery">Name of Cemetery</label>
+                                                </div>
+                                            </div>
+                                            <div class="col-12 col-sm-12 col-lg-6 col-xl-6">
+                                                <div class="form-floating mb-3">
+                                                    <input type="date" class="form-control" id="dateBuried" name="dateBuried"
+                                                        placeholder="dateBuried" required/>
+                                                    <label for="dateBuried">Date Buried</label>
                                                 </div>
                                             </div>
                                             <div class="col-12 col-sm-12 col-lg-6 col-xl-6">
@@ -140,14 +140,7 @@
                                                     <label for="guardianEmail">Guardian Email</label>
                                                 </div>
                                             </div>
-                                            <div class="col-12 col-sm-12 col-lg-6 col-xl-6">
-                                                <div class="form-floating mb-3">
-                                                    <input type="date" class="form-control" id="dateBuried" name="dateBuried"
-                                                        placeholder="dateBuried" required/>
-                                                    <label for="dateBuried">Date Buried</label>
-                                                </div>
-                                            </div>
-                                            <div class="col-12 col-sm-12 col-lg-6 col-xl-6">
+                                            <div class="col-12 col-sm-12 col-lg-12 col-xl-12">
                                                 <div class="form-floating mb-3">
                                                     <select class="form-select" id="causeDeath" name="causeDeath"
                                                         aria-label="Floating label select example" required>
