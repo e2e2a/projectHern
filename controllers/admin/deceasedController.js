@@ -110,7 +110,6 @@ module.exports.create = async (req, res) => {
                 'Notification: Deceased Registration',
                 emailContentToGuardian
             );
-
             console.log('Email sent to guardian.');
         }
 

@@ -69,6 +69,13 @@
                                             </div>
                                             <div class="col-12 col-sm-12 col-lg-6 col-xl-6">
                                                 <div class="form-floating mb-3">
+                                                    <input type="date" class="form-control" id="birthDate" name="birthDate"
+                                                        placeholder="Birthdate"  required/>
+                                                    <label for="birthDate">Birthdate</label>
+                                                </div>
+                                            </div>
+                                            <div class="col-12 col-sm-12 col-lg-6 col-xl-6">
+                                                <div class="form-floating mb-3">
                                                     <input type="date" class="form-control" id="deathDate" name="deathDate"
                                                         placeholder="MM/DD/YYYY" required/>
                                                     <label for="deathDate">Death of Date</label>
@@ -83,23 +90,9 @@
                                             </div>
                                             <div class="col-12 col-sm-12 col-lg-6 col-xl-6">
                                                 <div class="form-floating mb-3">
-                                                    <input type="date" class="form-control" id="birthDate" name="birthDate"
-                                                        placeholder="Birthdate"  required/>
-                                                    <label for="birthDate">Birthdate</label>
-                                                </div>
-                                            </div>
-                                            <div class="col-12 col-sm-12 col-lg-6 col-xl-6">
-                                                <div class="form-floating mb-3">
                                                     <input type="text" class="form-control" id="placeBirth" name="placeBirth"
                                                         placeholder="Place Of Birth" value="<%= deceased.placeBirth %>" required/>
                                                     <label for="placeBirth">Place Of Birth</label>
-                                                </div>
-                                            </div>
-                                            <div class="col-12 col-sm-12 col-lg-6 col-xl-6">
-                                                <div class="form-floating mb-3">
-                                                    <input type="number" class="form-control" id="ageDeath" name="ageDeath"
-                                                        placeholder="Age of Death" value="<%= deceased.ageDeath %>" required/>
-                                                    <label for="ageDeath">Age of Death</label>
                                                 </div>
                                             </div>
                                             <div class="col-12 col-sm-12 col-lg-6 col-xl-6">
@@ -156,6 +149,13 @@
                                             </div>
                                             <div class="col-12 col-sm-12 col-lg-6 col-xl-6">
                                                 <div class="form-floating mb-3">
+                                                    <input type="date" class="form-control" id="dateBuried" name="dateBuried" value="<%= deceased.dateBuried %>"
+                                                        placeholder="dateBuried" required/>
+                                                    <label for="dateBuried">Date Buried</label>
+                                                </div>
+                                            </div>
+                                            <div class="col-12 col-sm-12 col-lg-6 col-xl-6">
+                                                <div class="form-floating mb-3">
                                                     <input type="text" class="form-control" id="guardian" name="guardian" value="<%= deceased.guardian %>"
                                                         placeholder="guardian(Fullname)" required/>
                                                     <label for="guardian">Guardian</label>
@@ -168,14 +168,7 @@
                                                     <label for="guardianEmail">Guardian Email</label>
                                                 </div>
                                             </div>
-                                            <div class="col-12 col-sm-12 col-lg-6 col-xl-6">
-                                                <div class="form-floating mb-3">
-                                                    <input type="date" class="form-control" id="dateBuried" name="dateBuried" value="<%= deceased.dateBuried %>"
-                                                        placeholder="dateBuried" required/>
-                                                    <label for="dateBuried">Date Buried</label>
-                                                </div>
-                                            </div>
-                                            <div class="col-12 col-sm-12 col-lg-6 col-xl-6">
+                                            <div class="col-12 col-sm-12 col-lg-12 col-xl-12">
                                                 <div class="form-floating mb-3">
                                                     <select class="form-select" id="causeDeath" name="causeDeath"
                                                         aria-label="Floating label select example" required>
