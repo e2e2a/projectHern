@@ -1,7 +1,8 @@
 const User = require('../../models/user')
 const Deceased = require('../../models/deceased');
 const SITE_TITLE = 'Deceased profiling management system with email notification';
-const nodemailer = require('nodemailer')
+const nodemailer = require('nodemailer');
+const moment = require('moment');
 module.exports.index = async (req, res) => {
     try {
 
