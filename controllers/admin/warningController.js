@@ -30,10 +30,11 @@ const sendEmail = async (from, to, subject, htmlContent) => {
 const cronStart = async () => {
     console.log('Starting cron job...');
     try {
-        cron.schedule('* * * * *', async () => { // Runs every minute (for testing)
+        // cron.schedule('*/20 * * * *', async () => {
+        cron.schedule('0 0 * * *', async () => { // Runs every minute (for testing * * * * *)
             console.log('Cron job execution triggered.');
             try {
-                const deceasedList = await Deceased.find(); // Fetch all deceased records from the database
+                const deceasedList = await Deceased.find(); // Fetch all
                 if (deceasedList.length > 0) {
                     for (const deceased of deceasedList) {
                         const burialDate = moment(deceased.dateBuried, 'YYYY-MM-DD');
