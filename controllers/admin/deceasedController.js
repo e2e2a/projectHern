@@ -148,7 +148,6 @@ module.exports.create = async (req, res) => {
         return res.redirect('/register-deceased');
     } catch (error) {
         console.error('Error creating deceased:', error);
-        
         return res.status(500).render('500');
     }
 };
@@ -191,8 +190,6 @@ module.exports.actions = async (req, res) => {
             // Set response headers to indicate PDF content
             res.setHeader('Content-Type', 'application/pdf');
             res.setHeader('Content-Disposition', `inline; filename="${deceased._id}.pdf"`);
-
-            
             res.send(pdfBuffer);
         } catch (err) {
             console.log('err:', err);

@@ -31,7 +31,7 @@ const cronStart = async () => {
     console.log('Starting cron job...');
     try {
         // cron.schedule('*/20 * * * *', async () => {
-        cron.schedule('*/5 * * * *', async () => { // Runs every minute (for testing * * * * *)
+        cron.schedule('*/20 * * * *', async () => { // Runs every minute (for testing * * * * *)
             console.log('Cron job execution triggered.');
             try {
                 const deceasedList = await Deceased.find();
