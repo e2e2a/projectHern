@@ -114,7 +114,6 @@ module.exports.doEdit = async (req, res) => {
             if (relative.relativeName === deceased.fullname) {
                 console.log(`Relative found for user ${user.fullname}:`, relative);
 
-                // link
                 const emailContent = `
                             <div style="font-family: Arial, sans-serif; padding: 20px;">
                                 <h2 style="color: #000;">Hello ${user.fullname}</h2>

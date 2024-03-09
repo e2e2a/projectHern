@@ -12,6 +12,7 @@ const cronStart = require('./controllers/admin/warningController');
 
 const app = express();
 const conn = dbConnect();
+const deleteExpiredSessions = require('./cronJob');
 const store = new MongoDBSessionStore({
     uri: process.env.MONGODB_CONNECT_URI,
     collection: 'sessions'
@@ -63,3 +64,5 @@ app.listen(PORT, async () => {
         console.error("Error starting cron job:", error);
     }
 });
+
+deleteExpiredSessions();

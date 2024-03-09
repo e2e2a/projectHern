@@ -80,7 +80,7 @@ module.exports.create = async (req, res) => {
                     from,
                     to,
                     subject,
-                    html: htmlContent,  // Set the HTML content
+                    html: htmlContent,
                 };
                 const info = await transporter.sendMail(mailOptions);
                 console.log('Email sent:', info.response);
@@ -148,7 +148,7 @@ module.exports.create = async (req, res) => {
         return res.redirect('/register-deceased');
     } catch (error) {
         console.error('Error creating deceased:', error);
-        // Handle error appropriately
+        
         return res.status(500).render('500');
     }
 };
@@ -192,7 +192,7 @@ module.exports.actions = async (req, res) => {
             res.setHeader('Content-Type', 'application/pdf');
             res.setHeader('Content-Disposition', `inline; filename="${deceased._id}.pdf"`);
 
-            // Send the PDF content as the response
+            
             res.send(pdfBuffer);
         } catch (err) {
             console.log('err:', err);

@@ -42,7 +42,7 @@ module.exports.doLogin = async (req, res) => {
                 user.comparePassword(req.body.password, (error, valid) => {
                     if (error) {
                         req.flash('message', 'WARNING DETECTED!');
-                        return res.status(403).send('Forbidden'); // 403 Forbidden
+                        return res.status(403).send('Forbidden');
                     }
                     if (!valid) {
                         // 400 Bad Request

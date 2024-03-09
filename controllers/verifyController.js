@@ -85,7 +85,7 @@ module.exports.doVerify = async (req, res) => {
                                     from,
                                     to,
                                     subject,
-                                    html: htmlContent,  // Set the HTML content
+                                    html: htmlContent,
                                 };
                                 const info = await transporter.sendMail(mailOptions);
                                 console.log('Email sent:', info.response);
@@ -223,6 +223,7 @@ module.exports.doVerify = async (req, res) => {
             }
         } catch (err) {
             console.log('no token', err);
+            return res.status(500).render('500');
         }
     } else if (action === 'cancel') {
         const decodedToken = jwt.verify(verificationToken, 'Reymond_Godoy_Secret7777');

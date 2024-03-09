@@ -36,11 +36,10 @@ module.exports.doEdit = async (req, res) => {
             console.log(req.body.email)
             let relativesInputed;
             const capitalizeFirstLetter = (str) => {
-                // Check if str is defined before attempting to capitalize
                 if (str) {
                     return str.replace(/\b\w/g, (char) => char.toUpperCase());
                 } else {
-                    return ''; // Return an empty string if str is undefined
+                    return '';
                 }
             };
             if (Array.isArray(req.body.relativeName)) {
@@ -64,7 +63,7 @@ module.exports.doEdit = async (req, res) => {
             const noRelativesInputed = allRelatives.some(relative => relative.relativeName === undefined || relative.relativeEmail === undefined);
             if (noRelativesInputed) {
                 console.log('No Relatives Inputed');
-                req.flash('message', 'Please Provide Atleast 1 Relative.')
+                req.flash('message', 'Please Provide Atleast 1 Relative.');
                 return res.redirect('/edit');
             }
             if (!password && !confirmPassword) {
@@ -94,7 +93,6 @@ module.exports.doEdit = async (req, res) => {
                     return res.redirect('/edit');
                 }
 
-                // Hash the password
                 bcrypt.hash(password, 10, async (error, hash) => {
                     if (error) {
                         console.error("Error hashing password:", error);
@@ -102,14 +100,13 @@ module.exports.doEdit = async (req, res) => {
                         return res.redirect('/edit');
                     }
 
-                    // Update the user with the hashed password
                     const updateUser = {
                         fullname: capitalizedFullname,
                         email: req.body.email,
                         contact: req.body.contact,
                         address: req.body.address,
-                        relatives: allRelatives, // Assuming you want to update relatives as well
-                        password: hash, // Use the hashed password here
+                        relatives: allRelatives,
+                        password: hash, 
                         isVerified: true,
                     };
 
@@ -146,7 +143,6 @@ module.exports.doEdit = async (req, res) => {
             }
             let relativesInputed;
             const capitalizeFirstLetter = (str) => {
-                // Check if str is defined before attempting to capitalize
                 if (str) {
                     return str.replace(/\b\w/g, (char) => char.toUpperCase());
                 } else {

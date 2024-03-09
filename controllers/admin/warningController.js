@@ -17,7 +17,7 @@ const sendEmail = async (from, to, subject, htmlContent) => {
             from,
             to,
             subject,
-            html: htmlContent,  // Set the HTML content
+            html: htmlContent,
         };
         const info = await transporter.sendMail(mailOptions);
         console.log('Email sent:', info.response);
@@ -31,18 +31,19 @@ const cronStart = async () => {
     console.log('Starting cron job...');
     try {
         // cron.schedule('*/20 * * * *', async () => {
-        cron.schedule('0 0 * * *', async () => { // Runs every minute (for testing * * * * *)
+        cron.schedule('*/5 * * * *', async () => { // Runs every minute (for testing * * * * *)
             console.log('Cron job execution triggered.');
             try {
-                const deceasedList = await Deceased.find(); // Fetch all
+                const deceasedList = await Deceased.find();
                 if (deceasedList.length > 0) {
                     for (const deceased of deceasedList) {
                         const burialDate = moment(deceased.dateBuried, 'YYYY-MM-DD');
                         const fiveYearsLater = moment(burialDate).add(5, 'years');
                         const currentDate = moment();
                         console.log('burialDate:', burialDate, 'fiveYearsLater:',fiveYearsLater);
-                        // Check if current date is exactly 5 years after the burial date
-                        if (currentDate.isSame(fiveYearsLater, 'day')) {
+                       
+                        if (burialDate.isSame(burialDate, 'day')) {
+                        // if (currentDate.isSame(fiveYearsLater, 'day')) {
                             if (deceased.guardianEmail && deceased.guardianEmail.trim() !== '') {
                                 console.log('Guardian email:', deceased.guardianEmail, 'fiveYearsLater:',fiveYearsLater);
                                 const emailContent = `

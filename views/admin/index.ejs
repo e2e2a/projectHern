@@ -127,14 +127,14 @@
                                                     <th scope="col">Name</th>
                                                     <th scope="col">Birthdate</th>
                                                     <th scope="col">Place of Birth</th>
-                                                    <th scope="col">Age Death</th>
+                                                    <th scope="col">Date of Death</th>
+                                                    <th scope="col">Age of Death</th>
                                                     <th scope="col">Occupation</th>
                                                     <th scope="col">Gender</th>
                                                     <th scope="col">CivilStatus</th>
                                                     <th scope="col">Religion</th>
                                                     <th scope="col">Citizenship</th>
                                                     <th scope="col">description</th>
-                                                    <th scope="col">Date of Death</th>
                                                     <th scope="col">Place of Death</th>
                                                     <th scope="col">Cuase of Death</th>
                                                     <th scope="col">Guardian Name</th>
@@ -152,6 +152,7 @@
                                                     <td style="white-space: nowrap;"><%= deceased.fullname %></td>
                                                     <td style="white-space: nowrap;"><%= deceased.birthDate %></td>
                                                     <td><%= deceased.placeBirth %></td>
+                                                    <td><%= deceased.deathDate %></td>
                                                     <td><%= deceased.ageDeath %></td>
                                                     <td><%= deceased.occupation %></td>
                                                     <td><%= deceased.gender %></td>
@@ -164,7 +165,6 @@
                                                             Detail
                                                         </button>
                                                     </td>
-                                                    <td><%= deceased.deathDate %></td>
                                                     <td><%= deceased.placeDeath %></td>
                                                     <td><%= deceased.causeDeath %></td>
                                                     <td style="white-space: nowrap;"><%= deceased.guardian %></td>

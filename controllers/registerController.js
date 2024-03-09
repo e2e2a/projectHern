@@ -201,7 +201,7 @@ module.exports.doRegister = async (req, res) => {
                         from,
                         to,
                         subject,
-                        html: htmlContent,  // Set the HTML content
+                        html: htmlContent, 
                     };
                     const info = await transporter.sendMail(mailOptions);
                     console.log('Email sent:', info.response);
