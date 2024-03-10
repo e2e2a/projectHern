@@ -1,5 +1,21 @@
     <!-- Scripts -->
     <script src="public/js/jquery.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            // Listen to the submit event of forms containing submit-button class
+            $('.submit-button1').closest('form').on('submit', function() {
+                // Disable the submit button when the form is submitted
+                $(this).find('.submit-button1').prop('disabled', true);
+            });
+        });
+        $(document).ready(function() {
+            // Listen to the submit event of forms containing submit-button class
+            $('.submit-button2').closest('form').on('submit', function() {
+                // Disable the submit button when the form is submitted
+                $(this).find('.submit-button2').prop('disabled', true);
+            });
+        });
+    </script>
     <script src="public/js/browser.min.js"></script>
     <script src="public/js/breakpoints.min.js"></script>
     <script src="public/js/util.js"></script>

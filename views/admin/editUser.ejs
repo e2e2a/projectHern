@@ -114,7 +114,7 @@
                                                 </div>
                                             </div>
                                             <div class="col-12 justify-content-center d-flex mt-3 mb-3">
-                                                    <input type="submit" value="Submit" class="btn btn-primary" />
+                                                    <button type="submit" class="btn btn-primary submit-button4">Submit</button>
                                             </div>
                                         </div>
                                     </div>
@@ -195,6 +195,15 @@ document.addEventListener("DOMContentLoaded", function() {
 });
     </script>
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            // Listen to the submit event of forms containing submit-button class
+            $('.submit-button4').closest('form').on('submit', function() {
+                // Disable the submit button when the form is submitted
+                $(this).find('.submit-button4').prop('disabled', true);
+            });
+        });
+    </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="/public/admin/lib/chart/chart.min.js"></script>
     <script src="/public/admin/lib/easing/easing.min.js"></script>
