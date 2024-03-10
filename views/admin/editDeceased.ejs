@@ -69,6 +69,23 @@
                                             </div>
                                             <div class="col-12 col-sm-12 col-lg-6 col-xl-6">
                                                 <div class="form-floating mb-3">
+                                                    <select class="form-select" id="gender" name="gender"
+                                                        aria-label="Floating label select example" required>
+                                                        <option value="Male" <% if (deceased.gender == 'Male') { %> selected <% } %>>Male</option>
+                                                        <option value="Female" <% if (deceased.gender == 'Female') { %> selected <% } %>>Female</option>
+                                                    </select>
+                                                    <label for="gender">Gender</label>
+                                                </div>
+                                            </div>
+                                            <div class="col-12 col-sm-12 col-lg-6 col-xl-6">
+                                                <div class="form-floating mb-3">
+                                                    <input type="text" class="form-control" id="placeBirth" name="placeBirth"
+                                                        placeholder="Place Of Birth" value="<%= deceased.placeBirth %>" required/>
+                                                    <label for="placeBirth">Place of Birth</label>
+                                                </div>
+                                            </div>
+                                            <div class="col-12 col-sm-12 col-lg-6 col-xl-6">
+                                                <div class="form-floating mb-3">
                                                     <input type="date" class="form-control" id="birthDate" name="birthDate"
                                                         placeholder="Birthdate"  required/>
                                                     <label for="birthDate">Birthdate</label>
@@ -76,33 +93,16 @@
                                             </div>
                                             <div class="col-12 col-sm-12 col-lg-6 col-xl-6">
                                                 <div class="form-floating mb-3">
-                                                    <input type="date" class="form-control" id="deathDate" name="deathDate"
-                                                        placeholder="MM/DD/YYYY" required/>
-                                                    <label for="deathDate">Death of Date</label>
-                                                </div>
-                                            </div>
-                                            <div class="col-12 col-sm-12 col-lg-6 col-xl-6">
-                                                <div class="form-floating mb-3">
                                                     <input type="text" class="form-control" id="placeDeath" name="placeDeath"
                                                         placeholder="Place Of Death" value="<%= deceased.placeDeath %>" required/>
-                                                    <label for="placeDeath">Place Of Death</label>
+                                                    <label for="placeDeath">Place of Death</label>
                                                 </div>
                                             </div>
                                             <div class="col-12 col-sm-12 col-lg-6 col-xl-6">
                                                 <div class="form-floating mb-3">
-                                                    <input type="text" class="form-control" id="placeBirth" name="placeBirth"
-                                                        placeholder="Place Of Birth" value="<%= deceased.placeBirth %>" required/>
-                                                    <label for="placeBirth">Place Of Birth</label>
-                                                </div>
-                                            </div>
-                                            <div class="col-12 col-sm-12 col-lg-6 col-xl-6">
-                                                <div class="form-floating mb-3">
-                                                    <select class="form-select" id="gender" name="gender"
-                                                        aria-label="Floating label select example" required>
-                                                        <option value="Male" <% if (deceased.gender == 'Male') { %> selected <% } %>>Male</option>
-                                                        <option value="Female" <% if (deceased.gender == 'Female') { %> selected <% } %>>Female</option>
-                                                    </select>
-                                                    <label for="gender">Gender</label>
+                                                    <input type="date" class="form-control" id="deathDate" name="deathDate"
+                                                        placeholder="MM/DD/YYYY" required/>
+                                                    <label for="deathDate">Date of Death</label>
                                                 </div>
                                             </div>
                                             <div class="col-12 col-sm-12 col-lg-6 col-xl-6">

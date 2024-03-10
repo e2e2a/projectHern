@@ -61,41 +61,47 @@
         <thead>
             <tr>
                 <th >Name</th>
-                <th >Birthdate</th>
-                <th >Place of Birth</th>
-                <th >Age Death</th>
-                <th >Occupation</th>
                 <th >Gender</th>
+                <th style="white-space: nowrap;">Place of Birth</th>
+                <th >Birthdate</th>
+                <th style="white-space: nowrap;">Place of Death</th>
+                <th style="white-space: nowrap;">Date of Death</th>
+                <th style="white-space: nowrap;">Age of Death</th>
+                <th >Occupation</th>
                 <th >CivilStatus</th>
                 <th >Religion</th>
                 <th >Citizenship</th>
-                <th >Date of Death</th>
-                <th >Place of Death</th>
-                <th >Cuase of Death</th>
-                <th >Name of Cementery</th>
+                <th style="white-space: nowrap;">Cuase of Death</th>
+                <th style="white-space: nowrap;">Name of Cementery</th>
             </tr>
         </thead>
         <tbody>
             <% if(filteredDeceaseds && filteredDeceaseds.length> 0) { %>
                 <% filteredDeceaseds.forEach(deceased=> { %>
-            <tr>
+            <tr style="white-space: nowrap;">
                 <td>
                     <%= deceased.fullname %>
+                </td>
+                <td>
+                    <%= deceased.gender %>
+                </td>
+                <td>
+                    <%= deceased.placeBirth %>
                 </td>
                 <td>
                     <%= deceased.birthDate %>
                 </td>
                 <td>
-                    <%= deceased.placeBirth %>
+                    <%= deceased.placeDeath %>
+                </td>
+                <td>
+                    <%= deceased.deathDate %>
                 </td>
                 <td>
                     <%= deceased.ageDeath %>
                 </td>
                 <td>
                     <%= deceased.occupation %>
-                </td>
-                <td>
-                    <%= deceased.gender %>
                 </td>
                 <td>
                     <%= deceased.civilStatus %>
@@ -105,12 +111,6 @@
                 </td>
                 <td>
                     <%= deceased.citizenship %>
-                </td>
-                <td>
-                    <%= deceased.deathDate %>
-                </td>
-                <td>
-                    <%= deceased.placeDeath %>
                 </td>
                 <td>
                     <%= deceased.causeDeath %>
