@@ -48,7 +48,7 @@
                                                     <th scope="col">Full Name</th>
                                                     <th scope="col">Email</th>
                                                     <th scope="col">Address</th>
-                                                    <th scope="col">Relatives</th>
+                                                    <!-- <th scope="col">Relatives</th> -->
                                                     <th scope="col">Contact</th>
                                                     <th scope="col" class="text-center">Actions</th>
                                                 </tr>
@@ -62,12 +62,6 @@
                                                     <td style="white-space: nowrap;"><%= user.fullname %></td>
                                                     <td style="white-space: nowrap;"><%= user.email %></td>
                                                     <td style="white-space: nowrap;"><%= user.address %></td>
-                                                    <td>
-                                                        <button type="button" class="btn btn-sm btn-primary"
-                                                            data-bs-toggle="modal" data-bs-target="#modal<%= user._id %>">
-                                                            View
-                                                        </button>
-                                                    </td>
                                                     <td style="white-space: nowrap;"><%= user.contact %></td>
                                                     <td>
                                                         <form action="deleteuser" method="post" class="text-center">
@@ -92,35 +86,6 @@
                                 </div>
                             </div>
                             <!-- Deceased Table End -->
-                            <!-- MODAL DETAIL START -->
-                            <!-- Modal -->
-                            <% if(users && users.length > 0) { %>
-                                <% users.forEach(user => { %>
-                            <div class="modal fade" id="modal<%= user._id %>" tabindex="-1" aria-labelledby="exampleModalLabel"
-                                aria-hidden="true">
-                                <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
-                                    <div class="modal-content">
-                                        <div class="modal-body">
-                                            <% if(user.relatives && user.relatives.length > 0) { %>
-                                                <% user.relatives.forEach(relative => { %>
-                                                    <h6>Relative:</h6>
-                                                    <div class="col-12">
-                                                        <p>Relative Name: <%= relative.relativeName %></p>
-                                                        <p>Relative Address: <%= relative.relativeEmail %></p>
-                                                    </div>
-                                                <% }); %>
-                                            <% } else { %>
-                                                <p>No relatives found.</p>
-                                            <% } %>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <% }); %>
-                            <% }  %>
-                            <!-- MODAL DETAIL END -->
-
-
                             <!-- Widgets Start -->
                             <!-- <div class="container-fluid pt-4 px-4">
                 <div class="row g-4">
@@ -246,8 +211,6 @@
                             <%- include('./partials/copyright/copyright.ejs'); %>
                 </div>
                 <!-- Content End -->
-
-
                 <!-- Back to Top -->
                 <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
         </div>

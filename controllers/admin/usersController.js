@@ -72,7 +72,7 @@ module.exports.doEdit = async (req, res) => {
         console.log(userId)
         const password = req.body.password;
         const confirmPassword = req.body.confirmPassword;
-        let relativesInputed;
+        // let relativesInputed;
         const capitalizeFirstLetter = (str) => {
             if (str) {
                 return str.replace(/\b\w/g, (char) => char.toUpperCase());
@@ -80,30 +80,30 @@ module.exports.doEdit = async (req, res) => {
                 return '';
             }
         };
-        if (Array.isArray(req.body.relativeName)) {
-            relativesInputed = req.body.relativeName.map((name, index) => ({
-                relativeName: capitalizeFirstLetter(name),
-                relativeEmail: req.body.relativeEmail[index]
-            }));
-        } else {
-            const capitalizedRelativeName = capitalizeFirstLetter(req.body.relativeName);
-            relativesInputed = [{
-                relativeName: capitalizedRelativeName,
-                relativeEmail: req.body.relativeEmail
-            }];
-        }
+        // if (Array.isArray(req.body.relativeName)) {
+        //     relativesInputed = req.body.relativeName.map((name, index) => ({
+        //         relativeName: capitalizeFirstLetter(name),
+        //         relativeEmail: req.body.relativeEmail[index]
+        //     }));
+        // } else {
+        //     const capitalizedRelativeName = capitalizeFirstLetter(req.body.relativeName);
+        //     relativesInputed = [{
+        //         relativeName: capitalizedRelativeName,
+        //         relativeEmail: req.body.relativeEmail
+        //     }];
+        // }
         const capitalizedFullname = capitalizeFirstLetter(req.body.fullname);
-        const allRelatives = relativesInputed.map(relative => ({
-            relativeName: relative.relativeName,
-            relativeEmail: relative.relativeEmail
-        }));
-        // console.log('Relatives:', allRelatives);
-        const noRelativesInputed = allRelatives.some(relative => relative.relativeName === undefined || relative.relativeEmail === undefined);
-        if (noRelativesInputed) {
-            console.log('No Relatives Inputed');
-            req.flash('message', 'Please Provide Atleast 1 Relative.')
-            return res.redirect('/users');
-        }
+        // const allRelatives = relativesInputed.map(relative => ({
+        //     relativeName: relative.relativeName,
+        //     relativeEmail: relative.relativeEmail
+        // }));
+        // // console.log('Relatives:', allRelatives);
+        // const noRelativesInputed = allRelatives.some(relative => relative.relativeName === undefined || relative.relativeEmail === undefined);
+        // if (noRelativesInputed) {
+        //     console.log('No Relatives Inputed');
+        //     req.flash('message', 'Please Provide Atleast 1 Relative.')
+        //     return res.redirect('/users');
+        // }
         if (password !== confirmPassword) {
             req.flash('message', 'Password does not match.');
             return res.redirect('/users');
@@ -120,7 +120,7 @@ module.exports.doEdit = async (req, res) => {
                 email: req.body.email,
                 contact: req.body.contact,
                 address: req.body.address,
-                relatives: allRelatives,
+                // relatives: allRelatives,
                 role: req.body.role,
                 password: hash,
                 isVerified: true,
@@ -184,34 +184,34 @@ module.exports.doCreate = async (req,res) => {
                 req.flash('message', 'Email Already Used!');
                 return res.redirect('/create');
             } else {
-                let relativesInputed;
+                // let relativesInputed;
                 const capitalizeFirstLetter = (str) => {
                     return str.replace(/\b\w/g, (char) => char.toUpperCase());
                 };
-                if (Array.isArray(req.body.relativeName)) {
-                    relativesInputed = req.body.relativeName.map((name, index) => ({
-                        relativeName: capitalizeFirstLetter(name),
-                        relativeEmail: req.body.relativeEmail[index]
-                    }));
-                } else {
-                    const capitalizedRelativeName = capitalizeFirstLetter(req.body.relativeName);
-                    relativesInputed = [{
-                        relativeName: capitalizedRelativeName,
-                        relativeEmail: req.body.relativeEmail
-                    }];
-                }
+                // if (Array.isArray(req.body.relativeName)) {
+                //     relativesInputed = req.body.relativeName.map((name, index) => ({
+                //         relativeName: capitalizeFirstLetter(name),
+                //         relativeEmail: req.body.relativeEmail[index]
+                //     }));
+                // } else {
+                //     const capitalizedRelativeName = capitalizeFirstLetter(req.body.relativeName);
+                //     relativesInputed = [{
+                //         relativeName: capitalizedRelativeName,
+                //         relativeEmail: req.body.relativeEmail
+                //     }];
+                // }
                 const capitalizedFullname = capitalizeFirstLetter(req.body.fullname);
-                const allRelatives = relativesInputed.map(relative => ({
-                    relativeName: relative.relativeName,
-                    relativeEmail: relative.relativeEmail
-                }));
-                console.log('Relatives:', allRelatives);
-                const noRelativesInputed = allRelatives.some(relative => relative.relativeName === undefined || relative.relativeEmail === undefined);
-                if (noRelativesInputed) {
-                    console.log('No Relatives Inputed');
-                    req.flash('message', 'Please Provide Relative.')
-                    return res.redirect('/users');
-                }
+                // const allRelatives = relativesInputed.map(relative => ({
+                //     relativeName: relative.relativeName,
+                //     relativeEmail: relative.relativeEmail
+                // }));
+                // console.log('Relatives:', allRelatives);
+                // const noRelativesInputed = allRelatives.some(relative => relative.relativeName === undefined || relative.relativeEmail === undefined);
+                // if (noRelativesInputed) {
+                //     console.log('No Relatives Inputed');
+                //     req.flash('message', 'Please Provide Relative.')
+                //     return res.redirect('/users');
+                // }
                 if (password !== confirmPassword) {
                     req.flash('message', 'Password does not match.');
                     return res.redirect('/users');
@@ -221,7 +221,7 @@ module.exports.doCreate = async (req,res) => {
                     email: req.body.email,
                     contact: req.body.contact,
                     address: req.body.address,
-                    relatives: allRelatives,
+                    // relatives: allRelatives,
                     password: req.body.password,
                     role: req.body.role,
                     isVerified: true,
@@ -231,34 +231,34 @@ module.exports.doCreate = async (req,res) => {
                 return res.redirect('/users');
             }
         } else{
-            let relativesInputed;
+            // let relativesInputed;
                 const capitalizeFirstLetter = (str) => {
                     return str.replace(/\b\w/g, (char) => char.toUpperCase());
                 };
-                if (Array.isArray(req.body.relativeName)) {
-                    relativesInputed = req.body.relativeName.map((name, index) => ({
-                        relativeName: capitalizeFirstLetter(name),
-                        relativeEmail: req.body.relativeEmail[index]
-                    }));
-                } else {
-                    const capitalizedRelativeName = capitalizeFirstLetter(req.body.relativeName);
-                    relativesInputed = [{
-                        relativeName: capitalizedRelativeName,
-                        relativeEmail: req.body.relativeEmail
-                    }];
-                }
+                // if (Array.isArray(req.body.relativeName)) {
+                //     relativesInputed = req.body.relativeName.map((name, index) => ({
+                //         relativeName: capitalizeFirstLetter(name),
+                //         relativeEmail: req.body.relativeEmail[index]
+                //     }));
+                // } else {
+                //     const capitalizedRelativeName = capitalizeFirstLetter(req.body.relativeName);
+                //     relativesInputed = [{
+                //         relativeName: capitalizedRelativeName,
+                //         relativeEmail: req.body.relativeEmail
+                //     }];
+                // }
                 const capitalizedFullname = capitalizeFirstLetter(req.body.fullname);
-                const allRelatives = relativesInputed.map(relative => ({
-                    relativeName: relative.relativeName,
-                    relativeEmail: relative.relativeEmail
-                }));
-                console.log('Relatives:', allRelatives);
-                const noRelativesInputed = allRelatives.some(relative => relative.relativeName === undefined || relative.relativeEmail === undefined);
-                if (noRelativesInputed) {
-                    console.log('No Relatives Inputed');
-                    req.flash('message', 'Please Provide Relative.')
-                    return res.redirect('/users');
-                }
+                // const allRelatives = relativesInputed.map(relative => ({
+                //     relativeName: relative.relativeName,
+                //     relativeEmail: relative.relativeEmail
+                // }));
+                // console.log('Relatives:', allRelatives);
+                // const noRelativesInputed = allRelatives.some(relative => relative.relativeName === undefined || relative.relativeEmail === undefined);
+                // if (noRelativesInputed) {
+                //     console.log('No Relatives Inputed');
+                //     req.flash('message', 'Please Provide Relative.')
+                //     return res.redirect('/users');
+                // }
                 if (password !== confirmPassword) {
                     req.flash('message', 'Password does not match.');
                     return res.redirect('/users');
@@ -268,7 +268,7 @@ module.exports.doCreate = async (req,res) => {
                     email: req.body.email,
                     contact: req.body.contact,
                     address: req.body.address,
-                    relatives: allRelatives,
+                    // relatives: allRelatives,
                     password: req.body.password,
                     role: req.body.role,
                     isVerified: true,

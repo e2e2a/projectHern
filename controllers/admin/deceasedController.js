@@ -114,33 +114,33 @@ module.exports.create = async (req, res) => {
         }
 
         const users = await User.find();
-        for (const user of users) {
-            for (const relative of user.relatives) {
-                if (relative.relativeName === deceased.fullname) {
-                    console.log(`Relative found for user ${user.fullname}:`, relative);
+        // for (const user of users) {
+        //     for (const relative of user.relatives) {
+        //         if (relative.relativeName === deceased.fullname) {
+        //             console.log(`Relative found for user ${user.fullname}:`, relative);
 
-                    // link
-                    const emailContent = `
-                            <div style="font-family: Arial, sans-serif; padding: 20px;">
-                                <h2 style="color: #000;">Hello ${user.fullname}</h2>
-                                <p style="color: #000;">Your Relative <strong>${deceased.fullname}</strong> has been buried in the <strong>${deceased.nameCemetery}</strong></p>
-                                <a href="http://polanco-registrar.onrender.com/deceased">Click here</a>
-                            </div>
-                            <div style="background-color: #f2f2f2; padding: 10px; width: 60%; text-align: justify;">
-                                <h3 style="color: #000;">Description</h3>
-                                <p style="color: #000;">${deceased.description}</p>
-                            </div>
-                            `;
-                    sendEmail(
-                        'polanco-registrar.onrender.com <hernanirefugio@gmail.com>',
-                        user.email,
-                        'Notification',
-                        emailContent
-                    );
-                    console.log('Email Notification in buried location send to the users with equal name to the deceased person.');
-                }
-            }
-        }
+        //             // link
+        //             const emailContent = `
+        //                     <div style="font-family: Arial, sans-serif; padding: 20px;">
+        //                         <h2 style="color: #000;">Hello ${user.fullname}</h2>
+        //                         <p style="color: #000;">Your Relative <strong>${deceased.fullname}</strong> has been buried in the <strong>${deceased.nameCemetery}</strong></p>
+        //                         <a href="http://polanco-registrar.onrender.com/deceased">Click here</a>
+        //                     </div>
+        //                     <div style="background-color: #f2f2f2; padding: 10px; width: 60%; text-align: justify;">
+        //                         <h3 style="color: #000;">Description</h3>
+        //                         <p style="color: #000;">${deceased.description}</p>
+        //                     </div>
+        //                     `;
+        //             sendEmail(
+        //                 'polanco-registrar.onrender.com <hernanirefugio@gmail.com>',
+        //                 user.email,
+        //                 'Notification',
+        //                 emailContent
+        //             );
+        //             console.log('Email Notification in buried location send to the users with equal name to the deceased person.');
+        //         }
+        //     }
+        // }
 
         // console.log('Deceased created:', deceased);
         await deceased.save();

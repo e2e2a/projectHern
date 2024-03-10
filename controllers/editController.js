@@ -34,7 +34,7 @@ module.exports.doEdit = async (req, res) => {
     if (user) {
         if (user.email === req.body.email) {
             console.log(req.body.email)
-            let relativesInputed;
+            // let relativesInputed;
             const capitalizeFirstLetter = (str) => {
                 if (str) {
                     return str.replace(/\b\w/g, (char) => char.toUpperCase());
@@ -42,37 +42,37 @@ module.exports.doEdit = async (req, res) => {
                     return '';
                 }
             };
-            if (Array.isArray(req.body.relativeName)) {
-                relativesInputed = req.body.relativeName.map((name, index) => ({
-                    relativeName: capitalizeFirstLetter(name),
-                    relativeEmail: req.body.relativeEmail[index]
-                }));
-            } else {
-                const capitalizedRelativeName = capitalizeFirstLetter(req.body.relativeName);
-                relativesInputed = [{
-                    relativeName: capitalizedRelativeName,
-                    relativeEmail: req.body.relativeEmail
-                }];
-            }
+            // if (Array.isArray(req.body.relativeName)) {
+            //     relativesInputed = req.body.relativeName.map((name, index) => ({
+            //         relativeName: capitalizeFirstLetter(name),
+            //         relativeEmail: req.body.relativeEmail[index]
+            //     }));
+            // } else {
+            //     const capitalizedRelativeName = capitalizeFirstLetter(req.body.relativeName);
+            //     relativesInputed = [{
+            //         relativeName: capitalizedRelativeName,
+            //         relativeEmail: req.body.relativeEmail
+            //     }];
+            // }
             const capitalizedFullname = capitalizeFirstLetter(req.body.fullname);
-            const allRelatives = relativesInputed.map(relative => ({
-                relativeName: relative.relativeName,
-                relativeEmail: relative.relativeEmail
-            }));
+            // const allRelatives = relativesInputed.map(relative => ({
+            //     relativeName: relative.relativeName,
+            //     relativeEmail: relative.relativeEmail
+            // }));
             // console.log('Relatives:', allRelatives);
-            const noRelativesInputed = allRelatives.some(relative => relative.relativeName === undefined || relative.relativeEmail === undefined);
-            if (noRelativesInputed) {
-                console.log('No Relatives Inputed');
-                req.flash('message', 'Please Provide Atleast 1 Relative.');
-                return res.redirect('/edit');
-            }
+            // const noRelativesInputed = allRelatives.some(relative => relative.relativeName === undefined || relative.relativeEmail === undefined);
+            // if (noRelativesInputed) {
+            //     console.log('No Relatives Inputed');
+            //     req.flash('message', 'Please Provide Atleast 1 Relative.');
+            //     return res.redirect('/edit');
+            // }
             if (!password && !confirmPassword) {
                 const updateUser = {
                     fullname: capitalizedFullname,
                     email: req.body.email,
                     contact: req.body.contact,
                     address: req.body.address,
-                    relatives: allRelatives,
+                    // relatives: allRelatives,
                     isVerified: true,
                 };
                 const updatedUser = await User.findByIdAndUpdate(userId, updateUser, {
@@ -105,7 +105,7 @@ module.exports.doEdit = async (req, res) => {
                         email: req.body.email,
                         contact: req.body.contact,
                         address: req.body.address,
-                        relatives: allRelatives,
+                        // relatives: allRelatives,
                         password: hash, 
                         isVerified: true,
                     };
@@ -141,7 +141,7 @@ module.exports.doEdit = async (req, res) => {
                 return res.redirect('/edit');
             }
             }
-            let relativesInputed;
+            // let relativesInputed;
             const capitalizeFirstLetter = (str) => {
                 if (str) {
                     return str.replace(/\b\w/g, (char) => char.toUpperCase());
@@ -149,30 +149,30 @@ module.exports.doEdit = async (req, res) => {
                     return ''; // Return an empty string if str is undefined
                 }
             };
-            if (Array.isArray(req.body.relativeName)) {
-                relativesInputed = req.body.relativeName.map((name, index) => ({
-                    relativeName: capitalizeFirstLetter(name),
-                    relativeEmail: req.body.relativeEmail[index]
-                }));
-            } else {
-                const capitalizedRelativeName = capitalizeFirstLetter(req.body.relativeName);
-                relativesInputed = [{
-                    relativeName: capitalizedRelativeName,
-                    relativeEmail: req.body.relativeEmail
-                }];
-            }
+            // if (Array.isArray(req.body.relativeName)) {
+            //     relativesInputed = req.body.relativeName.map((name, index) => ({
+            //         relativeName: capitalizeFirstLetter(name),
+            //         relativeEmail: req.body.relativeEmail[index]
+            //     }));
+            // } else {
+            //     const capitalizedRelativeName = capitalizeFirstLetter(req.body.relativeName);
+            //     relativesInputed = [{
+            //         relativeName: capitalizedRelativeName,
+            //         relativeEmail: req.body.relativeEmail
+            //     }];
+            // }
             const capitalizedFullname = capitalizeFirstLetter(req.body.fullname);
-            const allRelatives = relativesInputed.map(relative => ({
-                relativeName: relative.relativeName,
-                relativeEmail: relative.relativeEmail
-            }));
-            // console.log('Relatives:', allRelatives);
-            const noRelativesInputed = allRelatives.some(relative => relative.relativeName === undefined || relative.relativeEmail === undefined);
-            if (noRelativesInputed) {
-                console.log('No Relatives Inputed');
-                req.flash('message', 'Please Provide Atleast 1 Relative.')
-                return res.redirect('/edit');
-            }
+            // const allRelatives = relativesInputed.map(relative => ({
+            //     relativeName: relative.relativeName,
+            //     relativeEmail: relative.relativeEmail
+            // }));
+            // // console.log('Relatives:', allRelatives);
+            // const noRelativesInputed = allRelatives.some(relative => relative.relativeName === undefined || relative.relativeEmail === undefined);
+            // if (noRelativesInputed) {
+            //     console.log('No Relatives Inputed');
+            //     req.flash('message', 'Please Provide Atleast 1 Relative.')
+            //     return res.redirect('/edit');
+            // }
             const userEdit = await UserEdit.findOne({ userId: req.session.login })
             if (userEdit) {
                 const userId = req.session.login
@@ -193,7 +193,7 @@ module.exports.doEdit = async (req, res) => {
                         email: req.body.email,
                         contact: req.body.contact,
                         address: req.body.address,
-                        relatives: allRelatives,
+                        // relatives: allRelatives,
                         password: hash,
                         isVerified: true,
                     };
@@ -276,7 +276,7 @@ module.exports.doEdit = async (req, res) => {
                         email: req.body.email,
                         contact: req.body.contact,
                         address: req.body.address,
-                        relatives: allRelatives,
+                        // relatives: allRelatives,
                         password: hash,
                         isVerified: true,
                     });

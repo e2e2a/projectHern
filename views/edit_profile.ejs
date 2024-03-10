@@ -52,29 +52,6 @@
                                 placeholder="+63912-345-6789" pattern="(\+639\d{2}-\d{3}-\d{4}|\+639\d{9}|09\d{2}-\d{3}-\d{4}|09\d{9})" required/>
                         </div>
                     </div>
-                    
-                    <div class="col-12" id="create">
-                        <div class="mb-3">
-                            <label for="relatives" class="form-label">Relatives<small>(Surname, Firstname Middlename)</small></label>
-                            <% if (user.relatives && user.relatives.length > 0) { %>
-                                <% user.relatives.forEach(function(relative, index) { %>
-                            <div class="input-group mb-3" id="relativeInputGroup">
-                                <input type="text" class="form-control relativeName<%= index %>" name="relativeName" id="relativeName" value="<%= relative.relativeName %>"
-                                placeholder="Fullname(Surname, Firstname Middlename)" style="text-transform:capitalize;">
-                                <input type="text" class="form-control relativeEmail<%= index %>" name="relativeEmail" id="relativeEmail" value="<%= relative.relativeEmail %>"
-                                placeholder="Address">
-                                <button type="button" class="rounded removeRelativeBtn2" data-index="<%= index %>" style="padding: 12px;"><i class="fa fa-trash"></i></button>
-                            </div>
-                            <% }); %>
-                            <% } %>
-                        </div>
-                    </div>
-                    <div class="col-12 col-sm-12 mt-3" id="addBeforeTheButton">
-                        <div class="btn-group" role="group">
-                            <input type="button" value="+ Add" class="primary" id="addRelativeBtn" />
-                            <!-- <input type="button" value="- Remove" id="removeRelativeBtn"  /> -->
-                        </div>
-                    </div>
                     <div class="col-sm-12 col-md-6 col-lg-6 mt-3">
                         <div class="mb-3">
                             <label for="password" class="form-label">Password</label>

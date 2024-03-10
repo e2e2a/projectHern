@@ -18,10 +18,10 @@ var schema = mongoose.Schema({
     address: {
         type: String,
     },
-    relatives: [{
-        relativeName: String,
-        relativeEmail: String,
-    }],
+    // relatives: [{
+    //     relativeName: String,
+    //     relativeEmail: String,
+    // }],
     password: {
         type: String,
     },

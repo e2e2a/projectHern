@@ -240,7 +240,7 @@ module.exports.doVerify = async (req, res) => {
         try {
             await User.findByIdAndDelete(decodedToken.userId);
             await UserToken.findByIdAndDelete(userToken._id);
-            res.redirect('/register')
+            res.redirect('/edit')
         } catch (error) {
             console.error('Deletion error:', error.message);
             return res.status(500).render('500');
