@@ -95,21 +95,17 @@ module.exports.doVerify = async (req, res) => {
                             }
                         };
                         const emailContent = `
-                        <div style="font-family: Arial, sans-serif; padding: 10px;">
-                            <h2 style="color: #000;">Hello ${user.fullname},</h2>
-                            <p style="color: #000;">Were happy you signed up for our website. To start exploring our website, please confirm your email address.</p>
-                        </div>
                         <div style="background-color: #f2f2f2; padding: 10px; width: 60%; text-align: justify;">
                             <h3 style="color: #000;"><a href="http://polonco-registrar.onrender.com">polonco-registrar.onrender.com</a></h3>
-                            <p style="color: #000;">Your verification code is: <strong>${verificationCode}</strong></p>
-                            <br/>
+                            <h4 style="color: #000;">Hello ${user.fullname},</h4>
+                            <p style="color: #000;">Congratulations on completing your email verification!</p>
+                            <p style="color: #000;">You're now fully registered on our website and ready to explore all the features we offer.</p>
+                            <p style="color: #000;">Thank you for verifying your email address.</p>
                             <p style="color: #000;">Requiring users to go through account confirmation helps reduce the number of unverified spam accounts. It also makes it easier for your marketing team to communicate with users or clients.</p>
-                            <br/>
                             <p style="color: #000;">Furthermore, verification is helpful for users themselves because it reduces the risk of them creating an account using an incorrect or old email address they no longer have access.</p>
-                            <br/>
                             <p style="color: #000;">When it comes to managing a customer portal, you also need to make sure that all accounts used to access it are valid and are owned by your customers or users.</p>
-                            <br/>
-                        </div>`;
+                        </div>
+                        `;
                         sendEmail(
                             'polanco-registrar.onrender.com <hernanirefugio@gmail.com>',
                             user.email,
