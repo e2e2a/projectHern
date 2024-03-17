@@ -5,13 +5,20 @@ const puppeteerConfig = require('../../puppeteer.config.cjs');
 const ejs = require('ejs');
 const User = require('../../models/user');
 const Deceased = require('../../models/deceased');
+const moment = require('moment');
 
 module.exports.print = async (req, res) => {
     const month = parseInt(req.body.month);
     const year = parseInt(req.body.year);
     const causeDeath = req.body.causeDeath;
     const gender = req.body.gender;
-
+    const civilStatus = req.body.civilStatus;
+    const ageRange  = req.body.ageRange;
+    function calculateAge(birthDate, deathDate) {
+        const birthMoment  = moment(birthDate, 'YYYY-MM-DD');
+        const deathMoment  = moment(deathDate, 'YYYY-MM-DD');
+        return deathMoment.diff(birthMoment, 'years');
+    }
     if (isNaN(year) && isNaN(month)) {
         // If both year and month are NaN, retrieve all data from Deceased collection
         try {
@@ -23,7 +30,26 @@ module.exports.print = async (req, res) => {
             if (gender && gender !== 'All') {
                 deceaseds = deceaseds.filter(deceased => deceased.gender === gender);
             }
-
+            if (civilStatus && civilStatus !== 'All') {
+                deceaseds = deceaseds.filter(deceased => deceased.civilStatus === civilStatus);
+            }
+            if (ageRange && ageRange !== 'All') {
+                deceaseds = deceaseds.filter(deceased => {
+                    const age = calculateAge(deceased.birthDate, deceased.deathDate);
+                    switch (ageRange) {
+                        case '0-3':
+                            return age >= 0 && age <= 3;
+                        case '4-15':
+                            return age >= 4 && age <= 15;
+                        case '16-59':
+                            return age >= 16 && age <= 59;
+                        case '60+':
+                            return age >= 60;
+                        default:
+                            return true;
+                    }
+                });
+            }
             const templatePath = path.join(__dirname, '../../views/admin/partials/pdf/month-pdf.ejs');
             const templateContent = await fs.readFile(templatePath, 'utf-8');
             const html = ejs.render(templateContent, { filteredDeceaseds: deceaseds, month: month, year: year });
@@ -69,6 +95,26 @@ module.exports.print = async (req, res) => {
         }
         if (gender && gender !== 'All') {
             filteredDeceaseds = filteredDeceaseds.filter(deceased => deceased.gender === gender);
+        }
+        if (civilStatus && civilStatus !== 'All') {
+            filteredDeceaseds = filteredDeceaseds.filter(deceased => deceased.civilStatus === civilStatus);
+        }
+        if (ageRange && ageRange !== 'All') {
+            filteredDeceaseds = filteredDeceaseds.filter(deceased => {
+                const age = calculateAge(deceased.birthDate, deceased.deathDate);
+                switch (ageRange) {
+                    case '0-3':
+                        return age >= 0 && age <= 3;
+                    case '4-15':
+                        return age >= 4 && age <= 15;
+                    case '16-59':
+                        return age >= 16 && age <= 59;
+                    case '60+':
+                        return age >= 60;
+                    default:
+                        return true;
+                }
+            });
         }
 
         const templatePath = path.join(__dirname, '../../views/admin/partials/pdf/month-pdf.ejs');
@@ -117,6 +163,26 @@ module.exports.print = async (req, res) => {
         if (gender && gender !== 'All') {
             filteredDeceaseds = filteredDeceaseds.filter(deceased => deceased.gender === gender);
         }
+        if (civilStatus && civilStatus !== 'All') {
+            filteredDeceaseds = filteredDeceaseds.filter(deceased => deceased.civilStatus === civilStatus);
+        }
+        if (ageRange && ageRange !== 'All') {
+            filteredDeceaseds = filteredDeceaseds.filter(deceased => {
+                const age = calculateAge(deceased.birthDate, deceased.deathDate);
+                switch (ageRange) {
+                    case '0-3':
+                        return age >= 0 && age <= 3;
+                    case '4-15':
+                        return age >= 4 && age <= 15;
+                    case '16-59':
+                        return age >= 16 && age <= 59;
+                    case '60+':
+                        return age >= 60;
+                    default:
+                        return true;
+                }
+            });
+        }
 
         const templatePath = path.join(__dirname, '../../views/admin/partials/pdf/month-pdf.ejs');
         const templateContent = await fs.readFile(templatePath, 'utf-8');
@@ -164,6 +230,26 @@ module.exports.print = async (req, res) => {
         }
         if (gender && gender !== 'All') {
             filteredDeceaseds = filteredDeceaseds.filter(deceased => deceased.gender === gender);
+        }
+        if (civilStatus && civilStatus !== 'All') {
+            filteredDeceaseds = filteredDeceaseds.filter(deceased => deceased.civilStatus === civilStatus);
+        }
+        if (ageRange && ageRange !== 'All') {
+            filteredDeceaseds = filteredDeceaseds.filter(deceased => {
+                const age = calculateAge(deceased.birthDate, deceased.deathDate);
+                switch (ageRange) {
+                    case '0-3':
+                        return age >= 0 && age <= 3;
+                    case '4-15':
+                        return age >= 4 && age <= 15;
+                    case '16-59':
+                        return age >= 16 && age <= 59;
+                    case '60+':
+                        return age >= 60;
+                    default:
+                        return true;
+                }
+            });
         }
 
         const templatePath = path.join(__dirname, '../../views/admin/partials/pdf/month-pdf.ejs');
