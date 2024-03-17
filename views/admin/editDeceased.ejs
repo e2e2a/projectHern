@@ -139,6 +139,20 @@
                                             </div>
                                             <div class="col-12 col-sm-12 col-lg-6 col-xl-6">
                                                 <div class="form-floating mb-3">
+                                                    <input type="text" class="form-control" id="fatherName" name="fatherName"
+                                                        placeholder="Name of Father" value="<%= deceased.fatherName %>" required/>
+                                                    <label for="fatherName">Name of Father</label>
+                                                </div>
+                                            </div>
+                                            <div class="col-12 col-sm-12 col-lg-6 col-xl-6">
+                                                <div class="form-floating mb-3">
+                                                    <input type="text" class="form-control" id="motherName" name="motherName"
+                                                        placeholder="Maiden Name of Mother" value="<%= deceased.motherName %>" required/>
+                                                    <label for="motherName">Maiden Name of Mother</label>
+                                                </div>
+                                            </div>
+                                            <div class="col-12 col-sm-12 col-lg-6 col-xl-6">
+                                                <div class="form-floating mb-3">
                                                     <select class="form-select" id="nameCemetery" name="nameCemetery"
                                                         aria-label="Floating label select example" required>
                                                         <option value="Polanco Municipal Cemetery" <% if (deceased.nameCemetery == 'Polanco Municipal Cemetery') { %> selected <% } %>>Polanco Municipal Cemetery</option>
@@ -150,13 +164,6 @@
                                                         <option value="San Lazaro Memorial Place" <% if (deceased.nameCemetery == 'San Lazaro Memorial Place') { %> selected <% } %>>San Lazaro Memorial Place</option>
                                                     </select>
                                                     <label for="nameCemetery">Name of Cemetery</label>
-                                                </div>
-                                            </div>
-                                            <div class="col-12 col-sm-12 col-lg-6 col-xl-6">
-                                                <div class="form-floating mb-3">
-                                                    <input type="date" class="form-control" id="dateBuried" name="dateBuried" value="<%= deceased.dateBuried %>"
-                                                        placeholder="dateBuried" required/>
-                                                    <label for="dateBuried">Date Buried</label>
                                                 </div>
                                             </div>
                                             <div class="col-12 col-sm-12 col-lg-6 col-xl-6">

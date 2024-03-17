@@ -56,6 +56,8 @@ module.exports.doEdit = async (req, res) => {
         civilStatus: req.body.civilStatus,
         religion: req.body.religion,
         citizenship: req.body.citizenship,
+        fatherName: req.body.fatherName,
+        motherName: req.body.motherName,
         description: req.body.description,
         causeDeath: req.body.causeDeath,
         guardian: req.body.guardian,

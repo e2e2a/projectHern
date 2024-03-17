@@ -135,11 +135,12 @@
                                                     <th scope="col">CivilStatus</th>
                                                     <th scope="col">Religion</th>
                                                     <th scope="col">Citizenship</th>
+                                                    <th scope="col">Name of Father</th>
+                                                    <th scope="col">Maiden Name of Mother</th>
                                                     <th scope="col">description</th>
                                                     <th scope="col">Cuase of Death</th>
                                                     <th scope="col">Informant</th>
                                                     <th scope="col">Informant Email</th>
-                                                    <th scope="col">Date Buried</th>
                                                     <th scope="col">Name of Cementery</th>
                                                     <th scope="col" class="text-center">Actions</th>
                                                 </tr>
@@ -160,6 +161,8 @@
                                                     <td><%= deceased.civilStatus %></td>
                                                     <td><%= deceased.religion %></td>
                                                     <td><%= deceased.citizenship %></td>
+                                                    <td><%= deceased.fatherName %></td>
+                                                    <td><%= deceased.motherName %></td>
                                                     <td>
                                                         <button type="button" class="btn btn-sm btn-primary"
                                                             data-bs-toggle="modal" data-bs-target="#modal<%= deceased._id %>">
@@ -170,7 +173,6 @@
                                                     <td><%= deceased.causeDeath %></td>
                                                     <td style="white-space: nowrap;"><%= deceased.guardian %></td>
                                                     <td style="white-space: nowrap;"><%= deceased.guardianEmail %></td>
-                                                    <td style="white-space: nowrap;"><%= deceased.dateBuried %></td>
                                                     <td style="white-space: nowrap;"><%= deceased.nameCemetery %></td>
                                                     <td>
                                                         <form action="actions" method="post" class="text-center">

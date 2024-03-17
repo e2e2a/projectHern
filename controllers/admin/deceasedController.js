@@ -60,11 +60,12 @@ module.exports.create = async (req, res) => {
             civilStatus: req.body.civilStatus,
             religion: req.body.religion,
             citizenship: req.body.citizenship,
+            fatherName: req.body.fatherName,
+            motherName: req.body.motherName,
             description: req.body.description,
             causeDeath: req.body.causeDeath,
             guardian: req.body.guardian,
             guardianEmail: req.body.guardianEmail,
-            dateBuried: req.body.dateBuried,
             nameCemetery: req.body.nameCemetery,
         });
         const transporter = nodemailer.createTransport({
@@ -89,7 +90,6 @@ module.exports.create = async (req, res) => {
                 throw new Error('Failed to send email');
             }
         };
-
         const emailContentToGuardian = `
         <div style="font-family: Arial, sans-serif; padding: 20px; background-color: #f2f2f2; width: 100%; border-radius: 10px; box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);">
             <p style="color: #333; margin-bottom: 10px;">Hello <strong style="font-weight:bold; font-size: 18px;">${deceased.guardian}</strong>,</p>
@@ -100,7 +100,6 @@ module.exports.create = async (req, res) => {
             <a href="http://polanco-registrar.onrender.com/deceased" style="display: inline-block; padding: 10px 20px; background-color: #007bff; color: #fff; text-decoration: none; border-radius: 5px;">View More Details</a>
         </div>
         `;
-
         // Send email to guardian
         if (deceased.guardianEmail) {
             sendEmail(

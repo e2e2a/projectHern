@@ -36,6 +36,12 @@ var schema = mongoose.Schema({
     citizenship: {
         type: String,
     },
+    fatherName: {
+        type: String,
+    },
+    motherName: {
+        type: String,
+    },
     description: {
         type: String,
         unique: false
@@ -49,9 +55,6 @@ var schema = mongoose.Schema({
         type: String,
     },
     guardianEmail: {
-        type: String,
-    },
-    dateBuried: {
         type: String,
     },
     nameCemetery: {
