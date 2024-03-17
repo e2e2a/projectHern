@@ -1,6 +1,5 @@
 var mongoose = require("mongoose");
 
-
 var schema = mongoose.Schema({
 
     fullname: {
@@ -55,6 +54,9 @@ var schema = mongoose.Schema({
         type: String,
     },
     guardianEmail: {
+        type: String,
+    },
+    informantEmailBrgy: {
         type: String,
     },
     nameCemetery: {

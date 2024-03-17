@@ -62,6 +62,7 @@ module.exports.doEdit = async (req, res) => {
         causeDeath: req.body.causeDeath,
         guardian: req.body.guardian,
         guardianEmail: req.body.guardianEmail,
+        informantEmailBrgy: req.body.informantEmailBrgy,
         nameCemetery: req.body.nameCemetery,
     };
     const transporter = nodemailer.createTransport({

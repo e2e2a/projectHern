@@ -141,6 +141,7 @@
                                                     <th scope="col">Cuase of Death</th>
                                                     <th scope="col">Informant</th>
                                                     <th scope="col">Informant Email</th>
+                                                    <th scope="col">Informant Email(Brgy. Email)</th>
                                                     <th scope="col">Name of Cementery</th>
                                                     <th scope="col" class="text-center">Actions</th>
                                                 </tr>
@@ -173,6 +174,7 @@
                                                     <td><%= deceased.causeDeath %></td>
                                                     <td style="white-space: nowrap;"><%= deceased.guardian %></td>
                                                     <td style="white-space: nowrap;"><%= deceased.guardianEmail %></td>
+                                                    <td style="white-space: nowrap;"><%= deceased.informantEmailBrgy %></td>
                                                     <td style="white-space: nowrap;"><%= deceased.nameCemetery %></td>
                                                     <td>
                                                         <form action="actions" method="post" class="text-center">
