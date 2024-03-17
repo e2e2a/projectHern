@@ -37,12 +37,12 @@ const cronStart = async () => {
                 const deceasedList = await Deceased.find();
                 if (deceasedList.length > 0) {
                     for (const deceased of deceasedList) {
-                        const burialDate = moment(deceased.dateBuried, 'YYYY-MM-DD');
-                        const fiveYearsLater = moment(burialDate).add(5, 'years');
+                        const deathDate = moment(deceased.deathDate, 'YYYY-MM-DD');
+                        const fiveYearsLater = moment(deathDate).add(5, 'years');
                         const currentDate = moment();
-                        console.log('burialDate:', burialDate, 'fiveYearsLater:',fiveYearsLater);
+                        console.log('burialDate:', deathDate, 'fiveYearsLater:',fiveYearsLater);
                        
-                        if (burialDate.isSame(burialDate, 'day')) {
+                        if (deathDate.isSame(deathDate, 'day')) {
                         // if (currentDate.isSame(fiveYearsLater, 'day')) {
                             if (deceased.guardianEmail && deceased.guardianEmail.trim() !== '') {
                                 console.log('Guardian email:', deceased.guardianEmail, 'fiveYearsLater:',fiveYearsLater);
