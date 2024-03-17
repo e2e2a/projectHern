@@ -36,17 +36,19 @@
     <table>
         <thead>
             <tr>
-                <th >Name</th>
-                <th >Gender</th>
+                <th style="white-space: nowrap;">Name</th>
+                <th style="white-space: nowrap;">Gender</th>
                 <th style="white-space: nowrap;">Place of Birth</th>
-                <th >Birthdate</th>
+                <th style="white-space: nowrap;">Birthdate</th>
                 <th style="white-space: nowrap;">Place of Death</th>
                 <th style="white-space: nowrap;">Date of Death</th>
                 <th style="white-space: nowrap;">Age of Death</th>
-                <th >Occupation</th>
-                <th >CivilStatus</th>
-                <th >Religion</th>
-                <th >Citizenship</th>
+                <th style="white-space: nowrap;">Occupation</th>
+                <th style="white-space: nowrap;">CivilStatus</th>
+                <th style="white-space: nowrap;">Religion</th>
+                <th style="white-space: nowrap;">Citizenship</th>
+                <th style="white-space: nowrap;">Name of Father</th>
+                <th style="white-space: nowrap;">Maiden Name of Mother</th>
                 <th style="white-space: nowrap;">Cuase of Death</th>
                 <th style="white-space: nowrap;">Name of Cementery</th>
             </tr>
@@ -87,6 +89,12 @@
                     </td>
                     <td>
                         <%= deceased.citizenship %>
+                    </td>
+                    <td>
+                        <%= deceased.fatherName %>
+                    </td>
+                    <td>
+                        <%= deceased.motherName %>
                     </td>
                     <td>
                         <%= deceased.causeDeath %>

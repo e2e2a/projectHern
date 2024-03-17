@@ -29,7 +29,83 @@
             </div>
         </div> -->
             <!-- Spinner End -->
-
+            <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="staticBackdropLabel">PRINT</h5>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <form action="print" method="post" >
+                        <div class="modal-body">
+                            <div class="row">
+                                <div class="col-6 align-items-center justify-content-between">
+                                    <select class="form-select form-select-sm mb-3" name="month" id="month" required>
+                                        <option value="" hidden>Month</option>
+                                        <option value="All">All</option>
+                                        <option value="01">January</option>
+                                        <option value="02">February</option>
+                                        <option value="03">March</option>
+                                        <option value="04">April</option>
+                                        <option value="05">May</option>
+                                        <option value="06">June</option>
+                                        <option value="07">July</option>
+                                        <option value="08">August</option>
+                                        <option value="09">September</option>
+                                        <option value="10">October</option>
+                                        <option value="11">November</option>
+                                        <option value="12">Decembeer</option>
+                                    </select>
+                                </div>
+                                <div class="col-6 align-items-center justify-content-between ">
+                                    <select class="form-select form-select-sm mb-3" name="year" id="year" required>
+                                        <option value="" hidden>Year</option>
+                                        <option value="All">All</option>
+                                        <option value="2020">2020</option>
+                                        <option value="2021">2021</option>
+                                        <option value="2022">2022</option>
+                                        <option value="2023">2023</option>
+                                        <option value="2024">2024</option>
+                                        <option value="2025">2025</option>
+                                        <option value="2026">2026</option>
+                                        <option value="2027">2027</option>
+                                        <option value="2028">2028</option>
+                                        <option value="2029">2029</option>
+                                        <option value="2030">2030</option>
+                                        <option value="2031">2031</option>
+                                        <option value="2032">2032</option>
+                                    </select>
+                                </div>
+                                <div class="col-6 align-items-center justify-content-between ">
+                                    <select class="form-select form-select-sm mb-3" name="gender" id="gender" required>
+                                        <option value="" hidden>Gender</option>
+                                        <option value="All">All</option>
+                                        <option value="Male">Male</option>
+                                        <option value="Female">Female</option>
+                                    </select>
+                                </div>
+                                <div class="col-6 align-items-center justify-content-between ">
+                                    <select class="form-select form-select-sm mb-3" name="causeDeath" id="causeDeath" required>
+                                        <option value="" hidden>Cause of Death</option>
+                                        <option value="All">All</option>
+                                        <option value="Natural">Natural</option>
+                                        <option value="Accident">Accident</option>
+                                        <option value="Murder">Murder</option>
+                                        <option value="Suicide">Suicide</option>
+                                        <option value="Homicide">Homicide</option>
+                                        <option value="Unknown">Unknown</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="submit" class="btn btn-sm btn-secondary d-flex align-items-center"
+                            title="Print" >PRINT <i class="fas fa-download"></i></button>
+                        </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
 
             <%- include('./partials/sidebar/sidebar.ejs'); %>
 
@@ -54,47 +130,11 @@
                                                     class="fas fa-plus me-2"></i>Add</a>
                                         </form>
                                     </div>
-                                    <div class="d-flex align-items-center justify-content-between mb-4 me-2">
-                                        <form action="print" method="post" class="d-flex">
-                                            <div class="col-5 align-items-center justify-content-between me-2">
-                                                <select class="form-select form-select-sm mb-3" name="month" id="month" required>
-                                                    <option value="" hidden>Month</option>
-                                                    <option value="All">All</option>
-                                                    <option value="01">January</option>
-                                                    <option value="02">February</option>
-                                                    <option value="03">March</option>
-                                                    <option value="04">April</option>
-                                                    <option value="05">May</option>
-                                                    <option value="06">June</option>
-                                                    <option value="07">July</option>
-                                                    <option value="08">August</option>
-                                                    <option value="09">September</option>
-                                                    <option value="10">October</option>
-                                                    <option value="11">November</option>
-                                                    <option value="12">Decembeer</option>
-                                                </select>
-                                            </div>
-                                            <div class="col-5 align-items-center justify-content-between ">
-                                                <select class="form-select form-select-sm mb-3" name="year" id="year" required>
-                                                    <option value="" hidden>Year</option>
-                                                    <option value="2020">2020</option>
-                                                    <option value="2021">2021</option>
-                                                    <option value="2022">2022</option>
-                                                    <option value="2023">2023</option>
-                                                    <option value="2024">2024</option>
-                                                    <option value="2025">2025</option>
-                                                    <option value="2026">2026</option>
-                                                    <option value="2027">2027</option>
-                                                    <option value="2028">2028</option>
-                                                    <option value="2029">2029</option>
-                                                    <option value="2030">2030</option>
-                                                </select>
-                                            </div>
-                                            <div class="col-2 align-items-center justify-content-between">
-                                                <button type="submit" name="actions" value="print" class="btn btn-sm btn-secondary"
-                                                        title="Print"><i class="fas fa-download"></i></button>
-                                                </div>
-                                        </form>
+                                    <div class="d-flex align-items-center mb-4 me-2">
+                                        <div class="col-2 align-items-center">
+                                            <button type="submit" name="actions" value="print" class="btn btn-sm btn-secondary d-flex align-items-center"
+                                                    title="Print" data-bs-toggle="modal" data-bs-target="#staticBackdrop">PRINT <i class="fas fa-download"></i></button>
+                                        </div>
                                     </div>
                                     <!-- <div class="row">
                                         <div class="d-flex col-6 col-sm-6 col-md-3 col-lg-3 col-xl-3 mb-3">
@@ -159,19 +199,18 @@
                                                     <td style="white-space: nowrap;"><%= deceased.deathDate %></td>
                                                     <td style="white-space: nowrap; text-align: center;"><%= deceased.ageDeath %></td>
                                                     <td style="white-space: nowrap;"><%= deceased.occupation %></td>
-                                                    <td><%= deceased.civilStatus %></td>
-                                                    <td><%= deceased.religion %></td>
-                                                    <td><%= deceased.citizenship %></td>
-                                                    <td><%= deceased.fatherName %></td>
-                                                    <td><%= deceased.motherName %></td>
+                                                    <td style="white-space: nowrap;"><%= deceased.civilStatus %></td>
+                                                    <td style="white-space: nowrap;"><%= deceased.religion %></td>
+                                                    <td style="white-space: nowrap;"><%= deceased.citizenship %></td>
+                                                    <td style="white-space: nowrap;"><%= deceased.fatherName %></td>
+                                                    <td style="white-space: nowrap;"><%= deceased.motherName %></td>
                                                     <td>
                                                         <button type="button" class="btn btn-sm btn-primary"
-                                                            data-bs-toggle="modal" data-bs-target="#modal<%= deceased._id %>">
-                                                            Detail
+                                                            data-bs-toggle="modal" data-bs-target="#modal<%= deceased._id %>"> Detail
                                                         </button>
                                                     </td>
                                                     
-                                                    <td><%= deceased.causeDeath %></td>
+                                                    <td style="white-space: nowrap;"><%= deceased.causeDeath %></td>
                                                     <td style="white-space: nowrap;"><%= deceased.guardian %></td>
                                                     <td style="white-space: nowrap;"><%= deceased.guardianEmail %></td>
                                                     <td style="white-space: nowrap;"><%= deceased.informantEmailBrgy %></td>
