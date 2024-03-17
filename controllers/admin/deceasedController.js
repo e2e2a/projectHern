@@ -93,8 +93,18 @@ module.exports.create = async (req, res) => {
         };
         const emailContentToGuardian = `
         <div style="font-family: Arial, sans-serif; padding: 20px; background-color: #f2f2f2; width: 100%; border-radius: 10px; box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);">
-            <p style="color: #333; margin-bottom: 10px;">Hello <strong style="font-weight:bold; font-size: 18px;">${deceased.guardian}</strong>,</p>
-            <p style="color: #333; margin-bottom: 20px;">We regret to inform you that your relative <strong>${deceased.fullname}</strong>is now registered in civil registrar in Polanco Zamboang Del Norte and has been buried at <strong>${deceased.nameCemetery}</strong>.</p>
+            <p style="color: #333; margin-bottom: 10px;font-size: 18px;">Hello <strong style="font-weight:bold; font-size: 18px;">${deceased.guardian}</strong>,</p>
+            <p style="color: #333; margin-bottom: 20px;">We regret to inform you that your relative <strong>${deceased.fullname}</strong> is now registered in civil registrar in Polanco Zamboang Del Norte and has been buried at <strong>${deceased.nameCemetery}</strong>.</p>
+            <p style="color: #333; margin-bottom: 20px;">Please find more information about the deceased below:</p>
+            <h3 style="color: #333; margin-bottom: 10px;">Description</h3>
+            <p style="color: #333; text-align: justify; margin-bottom: 20px;">${deceased.description}</p>
+            <a href="http://polanco-registrar.onrender.com/deceased" style="display: inline-block; padding: 10px 20px; background-color: #007bff; color: #fff; text-decoration: none; border-radius: 5px;">View More Details</a>
+        </div>
+        `;
+        const emailContentToInformant = `
+        <div style="font-family: Arial, sans-serif; padding: 20px; background-color: #f2f2f2; width: 100%; border-radius: 10px; box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);">
+            <p style="color: #333; margin-bottom: 10px;font-size: 18px;">Hello <strong style="font-weight:bold; font-size: 18px;">Kabarangay </strong>,</p>
+            <p style="color: #333; margin-bottom: 20px;">We would like to inform you that <strong>${deceased.fullname}</strong> is now registered in civil registrar in Polanco Zamboang Del Norte and has been buried at <strong>${deceased.nameCemetery}</strong>.</p>
             <p style="color: #333; margin-bottom: 20px;">Please find more information about the deceased below:</p>
             <h3 style="color: #333; margin-bottom: 10px;">Description</h3>
             <p style="color: #333; text-align: justify; margin-bottom: 20px;">${deceased.description}</p>
@@ -110,6 +120,15 @@ module.exports.create = async (req, res) => {
                 emailContentToGuardian
             );
             console.log('Email sent to guardian.');
+        }
+        if (deceased.informantEmailBrgy) {
+            sendEmail(
+                'polanco-registrar.onrender.com <hernanirefugio@gmail.com>',
+                deceased.informantEmailBrgy,
+                'Notification: Deceased Registration',
+                emailContentToInformant
+            );
+            console.log('Email sent to Informant Barangay.');
         }
 
         const users = await User.find();
