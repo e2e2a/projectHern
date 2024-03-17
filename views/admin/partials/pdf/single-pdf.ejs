@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,10 +12,9 @@
             padding: 10px;
             margin: 5px;
         }
-        
+
         h2 {
             text-align: center;
-            padding: 10px;
         }
 
         p {
@@ -30,7 +30,8 @@
             margin-top: 20px;
         }
 
-        th, td {
+        th,
+        td {
             border: 1px solid #000;
             padding: 8px;
             text-align: left;
@@ -46,79 +47,110 @@
         }
     </style>
 </head>
+
 <body>
     <div class="border">
-        <h2>Profilling Records Relating to a Deceased Person<br />(under the subject
-            provisions of the Access to Unknown Act 1990)</h2>
-        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Earum blanditiis odit libero
-            officiis esse dicta non, aut aspernatur pariatur, voluptate soluta, quod quia ipsum a culpa? Sint pariatur,
-            velit officia sed tempora, debitis cupiditate a hic enim molestias dolor quia quae consectetur excepturi odit,
-            at aliquam! Cum error soluta nesciunt!</p>
+        <div style="text-align: center; margin-bottom: 30px;">
+            <span>Republic of the Philippines</span><br />
+            <span>OFFICE OF THE CIVIL REGISTRAR GENERAL</span><br/>
+            <span style="font-weight: bold; font-size: 34px;">CERTIFICATE OF DEATH</span><br/>
+        </div>
         <table>
             <tbody>
                 <tr>
                     <td class="table-active" style="background-color: #f2f2f2;">Fullname</td>
-                    <td style="text-align: center;"><%= deceased.fullname %></td>
+                    <td style="text-align: center;">
+                        <%= deceased.fullname %>
+                    </td>
                 </tr>
                 <tr>
                     <td class="table-active" style="background-color: #f2f2f2;">Gender</td>
-                    <td style="text-align: center;"><%= deceased.gender %></td>
+                    <td style="text-align: center;">
+                        <%= deceased.gender %>
+                    </td>
                 </tr>
                 <tr>
                     <td class="table-active" style="background-color: #f2f2f2;">Place of Birth</td>
-                    <td style="text-align: center;"><%= deceased.placeBirth %></td>
+                    <td style="text-align: center;">
+                        <%= deceased.placeBirth %>
+                    </td>
                 </tr>
                 <tr>
                     <td class="table-active" style="background-color: #f2f2f2;">Birthdate</td>
-                    <td style="text-align: center;"><%= deceased.birthDate %></td>
+                    <td style="text-align: center;">
+                        <%= deceased.birthDate %>
+                    </td>
                 </tr>
                 <tr>
                     <td class="table-active" style="background-color: #f2f2f2;">Place of Death</td>
-                    <td style="text-align: center;"><%= deceased.placeDeath %></td>
+                    <td style="text-align: center;">
+                        <%= deceased.placeDeath %>
+                    </td>
                 </tr>
                 <tr>
                     <td class="table-active" style="background-color: #f2f2f2;">Date of Death</td>
-                    <td style="text-align: center;"><%= deceased.deathDate %></td>
+                    <td style="text-align: center;">
+                        <%= deceased.deathDate %>
+                    </td>
                 </tr>
                 <tr>
                     <td class="table-active" style="background-color: #f2f2f2;">Age of Death</td>
-                    <td style="text-align: center;"><%= deceased.ageDeath %></td>
+                    <td style="text-align: center;">
+                        <%= deceased.ageDeath %>
+                    </td>
                 </tr>
                 <tr>
                     <td class="table-active" style="background-color: #f2f2f2;">Occupation</td>
-                    <td style="text-align: center;"><%= deceased.occupation %></td>
+                    <td style="text-align: center;">
+                        <%= deceased.occupation %>
+                    </td>
                 </tr>
                 <tr>
                     <td class="table-active" style="background-color: #f2f2f2;">Civil Status</td>
-                    <td style="text-align: center;"><%= deceased.civilStatus %></td>
+                    <td style="text-align: center;">
+                        <%= deceased.civilStatus %>
+                    </td>
                 </tr>
                 <tr>
                     <td class="table-active" style="background-color: #f2f2f2;">Religion</td>
-                    <td style="text-align: center;"><%= deceased.religion %></td>
+                    <td style="text-align: center;">
+                        <%= deceased.religion %>
+                    </td>
                 </tr>
                 <tr>
                     <td class="table-active" style="background-color: #f2f2f2;">Citizenship</td>
-                    <td style="text-align: center;"><%= deceased.citizenship %></td>
+                    <td style="text-align: center;">
+                        <%= deceased.citizenship %>
+                    </td>
                 </tr>
                 <tr>
                     <td class="table-active" style="background-color: #f2f2f2;">Name of Father</td>
-                    <td style="text-align: center;"><%= deceased.fatherName %></td>
+                    <td style="text-align: center;">
+                        <%= deceased.fatherName %>
+                    </td>
                 </tr>
                 <tr>
-                    <td class="table-active" style="background-color: #f2f2f2;">Maiden Name of Mother	</td>
-                    <td style="text-align: center;"><%= deceased.motherName %></td>
+                    <td class="table-active" style="background-color: #f2f2f2;">Maiden Name of Mother </td>
+                    <td style="text-align: center;">
+                        <%= deceased.motherName %>
+                    </td>
                 </tr>
                 <tr>
                     <td class="table-active" style="background-color: #f2f2f2;">Cause of Death</td>
-                    <td style="text-align: center;"><%= deceased.causeDeath %></td>
+                    <td style="text-align: center;">
+                        <%= deceased.causeDeath %>
+                    </td>
                 </tr>
                 <tr>
                     <td class="table-active" style="background-color: #f2f2f2;">Name of Cemetery</td>
-                    <td style="text-align: center;"><%= deceased.nameCemetery %></td>
+                    <td style="text-align: center;">
+                        <%= deceased.nameCemetery %>
+                    </td>
                 </tr>
             </tbody>
         </table>
         <small>ID:<%= deceased._id %>.doc</small>
     </div>
 </body>
+
 </html>
