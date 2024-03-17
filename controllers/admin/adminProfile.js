@@ -26,6 +26,11 @@ module.exports.doUpdate = async (req,res) => {
     try {
         const password = req.body.password;
         const confirmPassword = req.body.confirmPassword;
+        const existingUser = await User.findOne({ email: req.body.email, isVerified: true });
+        if (existingUser) {
+            req.flash('message', 'Email is already used.')
+            return res.redirect('/myprofile')
+        }
         if(password !== confirmPassword){
             req.flash('message', 'password does not match.')
             return res.redirect('/myprofile')
