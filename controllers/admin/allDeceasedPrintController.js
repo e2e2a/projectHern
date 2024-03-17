@@ -68,7 +68,7 @@ module.exports.print = async (req, res) => {
             const page = await browser.newPage();
             await page.setContent(html);
             const pdfBuffer = await page.pdf({
-                format: 'Letter',
+                format: 'Legal',
                 printBackground: true,
                 landscape: true
             });
@@ -135,7 +135,7 @@ module.exports.print = async (req, res) => {
             const page = await browser.newPage();
             await page.setContent(html);
             const pdfBuffer = await page.pdf({
-                format: 'Letter',
+                format: 'Legal',
                 printBackground: true,
                 landscape: true
             });
@@ -202,7 +202,7 @@ module.exports.print = async (req, res) => {
             const page = await browser.newPage();
             await page.setContent(html);
             const pdfBuffer = await page.pdf({
-                format: 'Letter',
+                format: 'Legal',
                 printBackground: true,
                 landscape: true
             });
@@ -270,7 +270,7 @@ module.exports.print = async (req, res) => {
             const page = await browser.newPage();
             await page.setContent(html);
             const pdfBuffer = await page.pdf({
-                format: 'Letter',
+                format: 'Legal',
                 printBackground: true,
                 landscape: true
             });
