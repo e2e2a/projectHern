@@ -1,0 +1,70 @@
+<%- include('./partials/header/header.ejs'); %>
+
+<body class="is-preload">
+    <%- include('./partials/nav/nav.ejs'); %>
+    <!-- Heading -->
+    <div id="heading">
+        <h1>Google Map</h1>
+    </div>
+<style>
+    th,td {
+        white-space: nowrap;    
+    }
+</style>
+    <!-- Main -->
+    <section id="main" class="wrapper">
+        <div class="inner">
+            <div class="content">
+                <div class="row">
+                    <div class="col-12 col-12-medium">
+                        <% if(map){ %>
+                            <% if(map === 'Polanco Municipal Cemetery') {%>
+                                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3945.6834675465884!2d123.35567927477443!3d8.530079291512669!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x325494053e4cdebf%3A0x4fd3d9acd536af1f!2sPolanco%20Municipal%20Cemetery!5e0!3m2!1sfil!2sph!4v1712504088034!5m2!1sfil!2sph" height="450" style="border:0; width: 100%;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                            <% } else if(map === 'Polanco Catholic Cemetery') {%>
+                                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3945.710351749049!2d123.3594436747744!3d8.52747609151518!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3254940f19ea8681%3A0x64e2804f5d6c4d9a!2sPolanco%20Catholic%20Cemetery!5e0!3m2!1sfil!2sph!4v1712504323745!5m2!1sfil!2sph" height="450" style="border:0; width: 100%;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                            <% } else if(map === 'North Zamboanga Garden') { %>    
+                                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3945.6265482569015!2d123.37018847477452!3d8.535588191507342!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3254946b6b681b3d%3A0x5b543444e207530!2sNorth%20Zamboanga%20Gardens!5e0!3m2!1sfil!2sph!4v1712504424259!5m2!1sfil!2sph" height="450" style="border:0; width: 100%;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                            <% } else if(map === 'Dansullan Municipal Cemetery') { %>    
+                                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3946.714379862835!2d123.3756713747734!3d8.429684591609682!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x32548d96c9075121%3A0xe5313147e0313316!2sDansullan%20Public%20Cementery!5e0!3m2!1sfil!2sph!4v1712504465636!5m2!1sfil!2sph" height="450" style="border:0; width: 100%;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                            <% } else if(map === 'De Vente Perla Municipal Cemetery') { %> 
+                                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3946.847909976632!2d123.39372367477297!3d8.416593891622306!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x32548deed39ab603%3A0x7216c33c1f0ecdf9!2sDe%20Venta%20Perla%20Cemetery!5e0!3m2!1sfil!2sph!4v1712504501221!5m2!1sfil!2sph" height="450" style="border:0; width: 100%;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                            <% } else if(map === 'Milinium Park') { %> 
+                                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d126280.32174022481!2d123.24639944221542!3d8.474074285594074!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x325492fb71576133%3A0x7045371eaf3ab95!2sBayan%20ng%20Polanco%2C%20Zamboanga%20del%20Norte!5e0!3m2!1sfil!2sph!4v1712504579119!5m2!1sfil!2sph" height="450" style="border:0; width: 100%;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                            <% } else if(map === 'San Lazaro Memorial Place') { %> 
+                                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3945.715977068051!2d123.35935507477441!3d8.52693129151573!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3254940f3b5287bf%3A0xaa12e3d0bc96db17!2sSan%20Lazaro%20Cemetery!5e0!3m2!1sfil!2sph!4v1712504630168!5m2!1sfil!2sph" height="450" style="border:0; width: 100%;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                            <% } else { %> 
+                                Nothing to show.
+                            <% } %>
+                        <% }else { %>
+                            Nothing to show.
+                        <% } %>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <%- include('./partials/copyright/copyright.ejs'); %>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const searchInput = document.getElementById('searchUserSide');
+            const deceasedRows = document.querySelectorAll('tbody tr');
+        
+            searchInput.addEventListener('input', function() {
+                const searchQuery = this.value.trim().toLowerCase();
+        
+                deceasedRows.forEach(row => {
+                    const fullName = row.querySelector('td:first-child').textContent.trim().toLowerCase();
+        
+                    if (fullName.includes(searchQuery)) {
+                        row.style.display = '';
+                    } else {
+                        row.style.display = 'none';
+                    }
+                });
+            });
+        });
+        </script>
+    <%- include('./partials/footer/footer.ejs') %>

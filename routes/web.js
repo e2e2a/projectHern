@@ -6,6 +6,7 @@ const aboutController = require('../controllers/aboutController');
 const deceasedController = require('../controllers/deceasedController');
 const editController = require('../controllers/editController');
 const verifyEditController = require('../controllers/verifyEditController');
+const mapController = require('../controllers/mapController');
 //admin
 const adminDeceasedController = require('../controllers/admin/deceasedController');
 const adminIndexController = require('../controllers/admin/indexController');
@@ -18,6 +19,7 @@ module.exports = function(app){
     app.get('/', indexController.index);
     app.get('/about', aboutController.index);
     app.get('/deceased', deceasedController.index);
+    app.get('/map/:map', mapController.index);
     app.get('/register', registerController.index);
     app.post('/doRegister', registerController.doRegister);
     app.get('/login', loginController.login);

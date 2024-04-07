@@ -59,7 +59,11 @@
                                         <td><%= deceased.deathDate %>, <br /><%= deceased.placeDeath %></td>
                                         <td><%= deceased.gender %></td>
                                         <td><%= deceased.causeDeath %></td>
-                                        <td><%= deceased.nameCemetery %></td>
+                                        <td>
+                                            <a href="/map/<%= deceased.nameCemetery %>">
+                                                <%= deceased.nameCemetery %>
+                                            </a>
+                                        </td>
                                     </tr>
                                     <% }); %>
                                     <% } else { %>

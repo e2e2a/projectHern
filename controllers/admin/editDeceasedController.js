@@ -34,8 +34,16 @@ module.exports.index = async (req, res) => {
 
 module.exports.doEdit = async (req, res) => {
     const deceasedId = req.params.id;
+    // const capitalizeFirstLetter = (str) => {
+    //     return str.replace(/\b\w/g, (char) => char.toUpperCase());
+    // };
     const capitalizeFirstLetter = (str) => {
-        return str.replace(/\b\w/g, (char) => char.toUpperCase());
+        // Check if str is defined and not empty
+        if (str && typeof str === 'string' && str.trim() !== '') {
+            return str.replace(/\b\w/g, (char) => char.toUpperCase());
+        } else {
+            return ''; // Return an empty string if str is undefined, empty, or not a string
+        }
     };
     const capitalizedFullname = capitalizeFirstLetter(req.body.fullname);
     function calculateAge(birthDate, deathDate) {
