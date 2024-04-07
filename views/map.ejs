@@ -1,7 +1,10 @@
 <%- include('./partials/header/header.ejs'); %>
 
 <body class="is-preload">
-    <%- include('./partials/nav/nav.ejs'); %>
+    <header id="header">
+        <a class="logo" href="">MUNICIPALITY OF POLANCO</a>
+        
+    </header>
     <!-- Heading -->
     <div id="heading">
         <h1>Google Map</h1>
@@ -16,6 +19,9 @@
         <div class="inner">
             <div class="content">
                 <div class="row">
+                    <div class="col-12 col-12-medium" style="text-align: right; margin-bottom: 10px;">
+                        <a href="" class="btn btn-primary btn-sm" >Go back home.</a>
+                    </div>
                     <div class="col-12 col-12-medium">
                         <% if(map){ %>
                             <% if(map === 'Polanco Municipal Cemetery') {%>

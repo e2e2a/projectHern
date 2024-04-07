@@ -14,6 +14,7 @@ module.exports.print = async (req, res) => {
     const gender = req.body.gender;
     const civilStatus = req.body.civilStatus;
     const ageRange  = req.body.ageRange;
+    const cemetery = req.body.cemetery
     function calculateAge(birthDate, deathDate) {
         const birthMoment  = moment(birthDate, 'YYYY-MM-DD');
         const deathMoment  = moment(deathDate, 'YYYY-MM-DD');
@@ -49,6 +50,9 @@ module.exports.print = async (req, res) => {
                             return true;
                     }
                 });
+            }
+            if (cemetery && cemetery !== 'All') {
+                deceaseds = deceaseds.filter(deceased => deceased.nameCemetery === cemetery);
             }
             const templatePath = path.join(__dirname, '../../views/admin/partials/pdf/month-pdf.ejs');
             const templateContent = await fs.readFile(templatePath, 'utf-8');
@@ -115,6 +119,9 @@ module.exports.print = async (req, res) => {
                         return true;
                 }
             });
+        }
+        if (cemetery && cemetery !== 'All') {
+            filteredDeceaseds = filteredDeceaseds.filter(deceased => deceased.nameCemetery === cemetery);
         }
 
         const templatePath = path.join(__dirname, '../../views/admin/partials/pdf/month-pdf.ejs');
@@ -183,6 +190,9 @@ module.exports.print = async (req, res) => {
                 }
             });
         }
+        if (cemetery && cemetery !== 'All') {
+            filteredDeceaseds = filteredDeceaseds.filter(deceased => deceased.nameCemetery === cemetery);
+        }
 
         const templatePath = path.join(__dirname, '../../views/admin/partials/pdf/month-pdf.ejs');
         const templateContent = await fs.readFile(templatePath, 'utf-8');
@@ -250,6 +260,9 @@ module.exports.print = async (req, res) => {
                         return true;
                 }
             });
+        }
+        if (cemetery && cemetery !== 'All') {
+            filteredDeceaseds = filteredDeceaseds.filter(deceased => deceased.nameCemetery === cemetery);
         }
 
         const templatePath = path.join(__dirname, '../../views/admin/partials/pdf/month-pdf.ejs');
