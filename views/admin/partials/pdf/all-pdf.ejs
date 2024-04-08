@@ -36,6 +36,7 @@
     <table>
         <thead>
             <tr>
+                <th>#</th>
                 <th style="white-space: nowrap;">Name</th>
                 <th style="white-space: nowrap;">Gender</th>
                 <th style="white-space: nowrap;">Place of Birth</th>
@@ -55,60 +56,59 @@
         </thead>
         <tbody>
             <% if(filteredDeceaseds && filteredDeceaseds.length > 0) { %>
+                <% let count = 1; %>
                 <% filteredDeceaseds.forEach(deceased=> { %>
-            <tr style="white-space: nowrap;">
-                    <td>
-                        <%= deceased.fullname %>
-                    </td>
-                    <td>
-                        <%= deceased.gender %>
-                    </td>
-                    <td>
-                        <%= deceased.placeBirth %>
-                    </td>
-                    <td>
-                        <%= deceased.birthDate %>
-                    </td>
-                    <td>
-                        <%= deceased.placeDeath %>
-                    </td>
-                    <td>
-                        <%= deceased.deathDate %>
-                    </td>
-                    <td>
-                        <%= deceased.ageDeath %>
-                    </td>
-                    <td>
-                        <%= deceased.occupation %>
-                    </td>
-                    <td>
-                        <%= deceased.civilStatus %>
-                    </td>
-                    <td>
-                        <%= deceased.religion %>
-                    </td>
-                    <td>
-                        <%= deceased.citizenship %>
-                    </td>
-                    <td>
-                        <%= deceased.fatherName %>
-                    </td>
-                    <td>
-                        <%= deceased.motherName %>
-                    </td>
-                    <td>
-                        <%= deceased.causeDeath %>
-                    </td>
-                    <td>
-                        <%= deceased.nameCemetery %>
-                    </td>
-                </tr>
+                    <tr style="white-space: nowrap;">
+                        <td>
+                            <%= count++ %>
+                        </td>
+                        <td>
+                            <%= deceased.fullname %>
+                        </td>
+                        <td>
+                            <%= deceased.gender %>
+                        </td>
+                        <td>
+                            <%= deceased.placeBirth %>
+                        </td>
+                        <td>
+                            <%= deceased.birthDate %>
+                        </td>
+                        <td>
+                            <%= deceased.placeDeath %>
+                        </td>
+                        <td>
+                            <%= deceased.deathDate %>
+                        </td>
+                        <td>
+                            <%= deceased.ageDeath %>
+                        </td>
+                        <td>
+                            <%= deceased.occupation %>
+                        </td>
+                        <td>
+                            <%= deceased.civilStatus %>
+                        </td>
+                        <td>
+                            <%= deceased.religion %>
+                        </td>
+                        <td>
+                            <%= deceased.citizenship %>
+                        </td>
+                        <td>
+                            <%= deceased.fatherName %>
+                        </td>
+                        <td>
+                            <%= deceased.motherName %>
+                        </td>
+                        <td>
+                            <%= deceased.causeDeath %>
+                        </td>
+                        <td>
+                            <%= deceased.nameCemetery %>
+                        </td>
+                    </tr>
                 <% }); %>
-                <tr>
-                    <td>Total Deceased:
-                        <%= filteredDeceaseds.length %>
-                    </td>
-                </tr>
             <% } else { %>
                 <p>No Deceased Found.</p>
                 <% } %>

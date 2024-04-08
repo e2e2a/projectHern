@@ -60,6 +60,7 @@
     <table>
         <thead>
             <tr>
+                <th style="white-space: nowrap;">#</th>
                 <th style="white-space: nowrap;">Name</th>
                 <th style="white-space: nowrap;">Gender</th>
                 <th style="white-space: nowrap;">Residence</th>
@@ -79,8 +80,12 @@
         </thead>
         <tbody>
             <% if(filteredDeceaseds && filteredDeceaseds.length> 0) { %>
+                <% let count = 1; %>
                 <% filteredDeceaseds.forEach(deceased=> { %>
             <tr style="white-space: nowrap;">
+                <td>
+                    <%= count++ %>
+                </td>
                 <td>
                     <%= deceased.fullname %>
                 </td>
@@ -128,11 +133,6 @@
                 </td>
             </tr>
                 <% }); %>
-                <tr>
-                    <td>
-                        <%= filteredDeceaseds.length %>
-                    </td>
-                </tr>
             <% } else { %>
                 <p>No Deceased Found.</p>
                 <% } %>

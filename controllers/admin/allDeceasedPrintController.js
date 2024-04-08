@@ -76,7 +76,7 @@ module.exports.print = async (req, res) => {
                 printBackground: true,
                 landscape: true
             });
-
+            await browser.close();
             res.setHeader('Content-Type', 'application/pdf');
             res.setHeader('Content-Disposition', 'inline; filename="pdf-print.pdf"');
             res.send(pdfBuffer);
@@ -146,7 +146,7 @@ module.exports.print = async (req, res) => {
                 printBackground: true,
                 landscape: true
             });
-
+            await browser.close();
             res.setHeader('Content-Type', 'application/pdf');
             res.setHeader('Content-Disposition', 'inline; filename="pdf-print.pdf"');
             res.send(pdfBuffer);
@@ -216,7 +216,7 @@ module.exports.print = async (req, res) => {
                 printBackground: true,
                 landscape: true
             });
-
+            await browser.close();
             res.setHeader('Content-Type', 'application/pdf');
             res.setHeader('Content-Disposition', 'inline; filename="pdf-print.pdf"');
             res.send(pdfBuffer);
@@ -287,7 +287,7 @@ module.exports.print = async (req, res) => {
                 printBackground: true,
                 landscape: true
             });
-
+            await browser.close();
             res.setHeader('Content-Type', 'application/pdf');
             res.setHeader('Content-Disposition', 'inline; filename="pdf-print.pdf"');
             res.send(pdfBuffer);
