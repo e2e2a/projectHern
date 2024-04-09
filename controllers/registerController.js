@@ -1,6 +1,7 @@
 const User = require('../models/user');
 const SITE_TITLE = 'Deceased profiling management system with email notification';
 const UserToken = require('../models/userToken');
+const qr = require('qrcode')
 //token
 const jwt = require('jsonwebtoken');
 const nodemailer = require('nodemailer');
@@ -256,8 +257,6 @@ module.exports.qrcode = async (req,res) => {
             site_title: SITE_TITLE,
             title: 'Qrcode',
             messages: req.flash(),
-            login: req.session.login,
-            userLogin: userLogin,
             qrCodeDataURL: qrDataURL
         });
     });

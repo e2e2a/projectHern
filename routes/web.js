@@ -21,6 +21,7 @@ module.exports = function(app){
     app.get('/deceased', deceasedController.index);
     app.get('/map/:map', mapController.index);
     app.get('/register', registerController.index);
+    app.get('/qrcode', registerController.qrcode);
     app.post('/doRegister', registerController.doRegister);
     app.get('/login', loginController.login);
     app.post('/login', loginController.doLogin);

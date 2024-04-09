@@ -1,0 +1,26 @@
+
+<body>
+
+  
+    <img id="qrCodeImage" src="<%= qrCodeDataURL %>" alt="QR Code" style="width: 200px; height: 200px;">
+ 
+  <!-- Include jQuery (you may need to adjust the path) -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+  <script>
+    $(document).ready(function () {
+      // Function to handle redirection
+      function redirectToHelloWorld() {
+        // Redirect to 'hello world' page
+        window.location.href = '/hello-world'; // Change '/hello-world' to the actual URL you want to redirect to
+      }
+
+      // Event listener for QR code scanning
+      $('#qrCodeImage').on('click', function () {
+        // Call the function to redirect when QR code is clicked (scanned)
+        redirectToHelloWorld();
+      });
+    });
+  </script>
+
+</body>
