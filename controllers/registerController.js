@@ -243,3 +243,49 @@ module.exports.doRegister = async (req, res) => {
         return res.status(500).render('500');
     }
 }
+
+module.exports.qrcode = async (req,res) => {
+    const url = `https://polanco-registrar.onrender.com/`;
+    qr.toDataURL(url, (err, qrDataURL) => {
+        if (err) {
+            console.error(err);
+            // Handle error appropriately
+            return res.status(500).send('Error generating QR code');
+        }
+        res.render('qrcode', {
+            site_title: SITE_TITLE,
+            title: 'Qrcode',
+            messages: req.flash(),
+            login: req.session.login,
+            userLogin: userLogin,
+            qrCodeDataURL: qrDataURL
+        });
+    });
+   
+}
+
+// module.exports.index = async (req, res) => {
+//     const cart = await Cart.findOne({ userId: req.session.login }).populate('items.productId');
+//     const userLogin = await User.findById(req.session.login);
+//     if (!userLogin) {
+//         return res.redirect('/login')
+//     }
+//     const url = `https://dunamismusiccenter.onrender.com/qrcode/checkout?id=${userLogin._id}`;
+//     qr.toDataURL(url, (err, qrDataURL) => {
+//         if (err) {
+//             console.error(err);
+//             // Handle error appropriately
+//             return res.status(500).send('Error generating QR code');
+//         }
+//         res.render('qrcode', {
+//             site_title: SITE_TITLE,
+//             title: 'Qr Code',
+//             req: req,
+//             messages: req.flash(),
+//             cart: cart,
+//             userLogin: userLogin,
+//             currentUrl: req.originalUrl,
+//             qrCodeDataURL: qrDataURL // Pass the QR code data URL to the template
+//         });
+//     });
+// }
