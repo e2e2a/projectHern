@@ -23,173 +23,186 @@
                 <div class="content">
                     <%- include('./partials/navbar/navbar.ejs'); %>
 
-                            <!-- Deceased Table Start -->
-                            <div class="container-fluid pt-4 px-4">
-                                <form action="doCreateDeceased" method="post">
-                                    <div class="bg-light rounded h-100 p-4">
-                                        <div class="row">
-                                            <h6 class="mb-4">Adding Deceased Person</h6>
-                                            <div class="col-12 col-sm-12 col-lg-6 col-xl-6">
-                                                <div class="form-floating mb-3">
-                                                    <input type="text" class="form-control" id="fullname" name="fullname" style="text-transform: capitalize;"
-                                                        placeholder="Alpha, Alpha Alpha" required/>
-                                                    <label for="fullname">Full Name<small>(Surname, Firstname Middlename)</small></label>
-                                                </div>
-                                            </div>
-                                            <div class="col-12 col-sm-12 col-lg-6 col-xl-6">
-                                                <div class="form-floating mb-3">
-                                                    <select class="form-select" id="gender" name="gender"
-                                                        aria-label="Floating label select example" required>
-                                                        <option value="" selected hidden>Select menu</option>
-                                                        <option value="Male">Male</option>
-                                                        <option value="Female">Female</option>
-                                                    </select>
-                                                    <label for="gender">Gender</label>
-                                                </div>
-                                            </div>
-                                            <div class="col-12 col-sm-12 col-lg-6 col-xl-6">
-                                                <div class="form-floating mb-3">
-                                                    <input type="text" class="form-control" id="placeBirth" name="placeBirth"
-                                                        placeholder="Place Of Birth" required/>
-                                                    <label for="placeBirth">Residence</label>
-                                                </div>
-                                            </div>
-                                            <div class="col-12 col-sm-12 col-lg-6 col-xl-6">
-                                                <div class="form-floating mb-3">
-                                                    <input type="date" class="form-control" id="birthDate" name="birthDate"
-                                                        placeholder="Birthdate" required/>
-                                                    <label for="birthDate">Birthdate</label>
-                                                </div>
-                                            </div>
-                                            <div class="col-12 col-sm-12 col-lg-6 col-xl-6">
-                                                <div class="form-floating mb-3">
-                                                    <input type="text" class="form-control" id="placeDeath" name="placeDeath"
-                                                        placeholder="Place Of Death" required/>
-                                                    <label for="placeDeath">Place of Death</label>
-                                                </div>
-                                            </div>
-                                            <div class="col-12 col-sm-12 col-lg-6 col-xl-6">
-                                                <div class="form-floating mb-3">
-                                                    <input type="date" class="form-control" id="deathDate" name="deathDate"
-                                                        placeholder="MM/DD/YYYY" required/>
-                                                    <label for="deathDate">Date of Death</label>
-                                                </div>
-                                            </div>
-                                            <div class="col-12 col-sm-12 col-lg-6 col-xl-6">
-                                                <div class="form-floating mb-3">
-                                                    <input type="text" class="form-control" id="occupation" name="occupation"
-                                                        placeholder="Occupation" required/>
-                                                    <label for="occupation">Occupation</label>
-                                                </div>
-                                            </div>
-                                            <div class="col-12 col-sm-12 col-lg-6 col-xl-6">
-                                                <div class="form-floating mb-3">
-                                                    <select class="form-select" id="civilStatus" name="civilStatus"
-                                                        aria-label="Floating label select example" required>
-                                                        <option value="" selected hidden>Select menu</option>
-                                                        <option value="Married">Married</option>
-                                                        <option value="Single">Single</option>
-                                                        <option value="Widow">Widow</option>
-                                                    </select>
-                                                    <label for="civilStatus">Civil Status</label>
-                                                </div>
-                                            </div>
-                                            <div class="col-12 col-sm-12 col-lg-6 col-xl-6">
-                                                <div class="form-floating mb-3">
-                                                    <input type="text" class="form-control" id="religion" name="religion"
-                                                        placeholder="Religion" required/>
-                                                    <label for="religion">Religion</label>
-                                                </div>
-                                            </div>
-                                            <div class="col-12 col-sm-12 col-lg-6 col-xl-6">
-                                                <div class="form-floating mb-3">
-                                                    <input type="text" class="form-control" id="citizenship" name="citizenship"
-                                                        placeholder="Citizenship" required/>
-                                                    <label for="citizenship">Citizenship</label>
-                                                </div>
-                                            </div>
-                                            <div class="col-12 col-sm-12 col-lg-6 col-xl-6">
-                                                <div class="form-floating mb-3">
-                                                    <input type="text" class="form-control" id="fatherName" name="fatherName"
-                                                        placeholder="Name of Father" required/>
-                                                    <label for="fatherName">Name of Father</label>
-                                                </div>
-                                            </div>
-                                            <div class="col-12 col-sm-12 col-lg-6 col-xl-6">
-                                                <div class="form-floating mb-3">
-                                                    <input type="text" class="form-control" id="motherName" name="motherName"
-                                                        placeholder="Maiden Name of Mother" required/>
-                                                    <label for="motherName">Maiden Name of Mother</label>
-                                                </div>
-                                            </div>
-                                            <div class="col-12 col-sm-12 col-lg-6 col-xl-6">
-                                                <div class="form-floating mb-3">
-                                                    <select class="form-select" id="nameCemetery" name="nameCemetery"
-                                                        aria-label="Floating label select example" required>
-                                                        <option value="" selected hidden>Select menu</option>
-                                                        <option value="Polanco Municipal Cemetery">Polanco Municipal Cemetery</option>
-                                                        <option value="Polanco Catholic Cemetery">Polanco Catholic Cemetery</option>
-                                                        <option value="North Zamboanga Garden">North Zamboanga Garden</option>
-                                                        <option value="Dansullan Municipal Cemetery">Dansullan Municipal Cemetery</option>
-                                                        <option value="De Venta Perla Municipal Cemetery">De Venta Perla Municipal Cemetery</option>
-                                                        <option value="Milinium Park">Milinium Park</option>
-                                                        <option value="San Lazaro Memorial Place">San Lazaro Memorial Place</option>
-                                                    </select>
-                                                    <label for="nameCemetery">Name of Cemetery</label>
-                                                </div>
-                                            </div>
-                                            <div class="col-12 col-sm-12 col-lg-6 col-xl-6">
-                                                <div class="form-floating mb-3">
-                                                    <input type="text" class="form-control" id="guardian" name="guardian"
-                                                        placeholder="guardian(Fullname)" required/>
-                                                    <label for="guardian">Informant</label>
-                                                </div>
-                                            </div>
-                                            <div class="col-12 col-sm-12 col-lg-6 col-xl-6">
-                                                <div class="form-floating mb-3">
-                                                    <input type="email" class="form-control" id="guardianEmail" name="guardianEmail"
-                                                        placeholder="guardianEmail" required/>
-                                                    <label for="guardianEmail">Informant Email</label>
-                                                </div>
-                                            </div>
-                                            <div class="col-12 col-sm-12 col-lg-6 col-xl-6">
-                                                <div class="form-floating mb-3">
-                                                    <input type="email" class="form-control" id="informantEmailBrgy" name="informantEmailBrgy"
-                                                        placeholder="Informant Email(Brgy. Email)" required/>
-                                                    <label for="informantEmailBrgy">Informant Email(Brgy. Email)</label>
-                                                </div>
-                                            </div>
-                                            <div class="col-12 col-sm-12 col-lg-12 col-xl-12">
-                                                <div class="form-floating mb-3">
-                                                    <select class="form-select" id="causeDeath" name="causeDeath"
-                                                        aria-label="Floating label select example" required>
-                                                        <option value="" selected hidden>Select menu</option>
-                                                        <option value="Natural">Natural</option>
-                                                        <option value="Accident">Accident</option>
-                                                        <option value="Murder">Murder</option>
-                                                        <option value="Suicide">Suicide</option>
-                                                        <option value="Homicide">Homicide</option>
-                                                        <option value="Unknown">Unknown</option>
-                                                    </select>
-                                                    <label for="causeDeath">Cause of Death</label>
-                                                </div>
-                                            </div>
-                                            <div class="col-12 col-sm-12 col-lg-12 col-xl-12">
-                                                <div class="form-floating">
-                                                    <textarea class="form-control" placeholder="Leave a Description here"
-                                                        id="description" name="description" style="height: 150px;" required></textarea>
-                                                    <label for="description">Description</label>
-                                                </div>
-                                            </div>
-                                            <div class="col-12 mt-3 text-center">
-                                                <button class="btn btn-primary w-50 submit-button1" type="submit">Submit</button>
+                        <!-- Deceased Table Start -->
+                        <div class="container-fluid pt-4 px-4">
+                            <form action="doCreateDeceased" method="post">
+                                <div class="bg-light rounded h-100 p-4">
+                                    <div class="row">
+                                        <h6 class="mb-4">Adding Deceased Person</h6>
+                                        <div class="col-12 col-sm-12 col-lg-6 col-xl-6">
+                                            <div class="form-floating mb-3">
+                                                <input type="text" class="form-control" id="fullname" name="fullname"
+                                                    style="text-transform: capitalize;" placeholder="Alpha, Alpha Alpha"
+                                                    required />
+                                                <label for="fullname">Full Name<small>(Surname, Firstname
+                                                        Middlename)</small></label>
                                             </div>
                                         </div>
+                                        <div class="col-12 col-sm-12 col-lg-6 col-xl-6">
+                                            <div class="form-floating mb-3">
+                                                <select class="form-select" id="gender" name="gender"
+                                                    aria-label="Floating label select example" required>
+                                                    <option value="" selected hidden>Select menu</option>
+                                                    <option value="Male">Male</option>
+                                                    <option value="Female">Female</option>
+                                                </select>
+                                                <label for="gender">Gender</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-12 col-sm-12 col-lg-6 col-xl-6">
+                                            <div class="form-floating mb-3">
+                                                <input type="text" class="form-control" id="placeBirth"
+                                                    name="placeBirth" placeholder="Place Of Birth" required />
+                                                <label for="placeBirth">Residence</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-12 col-sm-12 col-lg-6 col-xl-6">
+                                            <div class="form-floating mb-3">
+                                                <input type="date" class="form-control" id="birthDate" name="birthDate"
+                                                    placeholder="Birthdate" required />
+                                                <label for="birthDate">Birthdate</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-12 col-sm-12 col-lg-6 col-xl-6">
+                                            <div class="form-floating mb-3">
+                                                <input type="text" class="form-control" id="placeDeath"
+                                                    name="placeDeath" placeholder="Place Of Death" required />
+                                                <label for="placeDeath">Place of Death</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-12 col-sm-12 col-lg-6 col-xl-6">
+                                            <div class="form-floating mb-3">
+                                                <input type="date" class="form-control" id="deathDate" name="deathDate"
+                                                    placeholder="MM/DD/YYYY" required />
+                                                <label for="deathDate">Date of Death</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-12 col-sm-12 col-lg-6 col-xl-6">
+                                            <div class="form-floating mb-3">
+                                                <input type="text" class="form-control" id="occupation"
+                                                    name="occupation" placeholder="Occupation" required />
+                                                <label for="occupation">Occupation</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-12 col-sm-12 col-lg-6 col-xl-6">
+                                            <div class="form-floating mb-3">
+                                                <select class="form-select" id="civilStatus" name="civilStatus"
+                                                    aria-label="Floating label select example" required>
+                                                    <option value="" selected hidden>Select menu</option>
+                                                    <option value="Married">Married</option>
+                                                    <option value="Single">Single</option>
+                                                    <option value="Widow">Widow</option>
+                                                </select>
+                                                <label for="civilStatus">Civil Status</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-12 col-sm-12 col-lg-6 col-xl-6">
+                                            <div class="form-floating mb-3">
+                                                <input type="text" class="form-control" id="religion" name="religion"
+                                                    placeholder="Religion" required />
+                                                <label for="religion">Religion</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-12 col-sm-12 col-lg-6 col-xl-6">
+                                            <div class="form-floating mb-3">
+                                                <input type="text" class="form-control" id="citizenship"
+                                                    name="citizenship" placeholder="Citizenship" required />
+                                                <label for="citizenship">Citizenship</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-12 col-sm-12 col-lg-6 col-xl-6">
+                                            <div class="form-floating mb-3">
+                                                <input type="text" class="form-control" id="fatherName"
+                                                    name="fatherName" placeholder="Name of Father" required />
+                                                <label for="fatherName">Name of Father</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-12 col-sm-12 col-lg-6 col-xl-6">
+                                            <div class="form-floating mb-3">
+                                                <input type="text" class="form-control" id="motherName"
+                                                    name="motherName" placeholder="Maiden Name of Mother" required />
+                                                <label for="motherName">Maiden Name of Mother</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-12 col-sm-12 col-lg-6 col-xl-6">
+                                            <div class="form-floating mb-3">
+                                                <input type="text" class="form-control" id="nameCemetery"
+                                                    list="placeCemtery" name="nameCemetery"
+                                                    placeholder="Maiden Name of Mother" required />
+                                                <label for="motherName">Name of Cemetery</label>
+                                            </div>
+                                        </div>
+                                        <datalist id="placeCemtery">
+                                            <option value="" selected hidden>Select menu</option>
+                                            <option value="Polanco Municipal Cemetery">Polanco Municipal
+                                                Cemetery</option>
+                                            <option value="Polanco Catholic Cemetery">Polanco Catholic Cemetery
+                                            </option>
+                                            <option value="North Zamboanga Garden">North Zamboanga Garden
+                                            </option>
+                                            <option value="Dansullan Municipal Cemetery">Dansullan Municipal
+                                                Cemetery</option>
+                                            <option value="De Venta Perla Municipal Cemetery">De Venta Perla
+                                                Municipal Cemetery</option>
+                                            <option value="Milinium Park">Milinium Park</option>
+                                            <option value="San Lazaro Memorial Place">San Lazaro Memorial Place
+                                            </option>
+                                        </datalist>
+                                        <div class="col-12 col-sm-12 col-lg-6 col-xl-6">
+                                            <div class="form-floating mb-3">
+                                                <input type="text" class="form-control" id="guardian" name="guardian"
+                                                    placeholder="guardian(Fullname)" required />
+                                                <label for="guardian">Informant</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-12 col-sm-12 col-lg-6 col-xl-6">
+                                            <div class="form-floating mb-3">
+                                                <input type="email" class="form-control" id="guardianEmail"
+                                                    name="guardianEmail" placeholder="guardianEmail" required />
+                                                <label for="guardianEmail">Informant Email</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-12 col-sm-12 col-lg-6 col-xl-6">
+                                            <div class="form-floating mb-3">
+                                                <input type="email" class="form-control" id="informantEmailBrgy"
+                                                    name="informantEmailBrgy" placeholder="Informant Email(Brgy. Email)"
+                                                    required />
+                                                <label for="informantEmailBrgy">Informant Email(Brgy. Email)</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-12 col-sm-12 col-lg-12 col-xl-12">
+                                            <div class="form-floating mb-3">
+                                                <select class="form-select" id="causeDeath" name="causeDeath"
+                                                    aria-label="Floating label select example" required>
+                                                    <option value="" selected hidden>Select menu</option>
+                                                    <option value="Natural">Natural</option>
+                                                    <option value="Accident">Accident</option>
+                                                    <option value="Murder">Murder</option>
+                                                    <option value="Suicide">Suicide</option>
+                                                    <option value="Homicide">Homicide</option>
+                                                    <option value="Unknown">Unknown</option>
+                                                </select>
+                                                <label for="causeDeath">Cause of Death</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-12 col-sm-12 col-lg-12 col-xl-12">
+                                            <div class="form-floating">
+                                                <textarea class="form-control" placeholder="Leave a Description here"
+                                                    id="description" name="description" style="height: 150px;"
+                                                    required></textarea>
+                                                <label for="description">Description</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-12 mt-3 text-center">
+                                            <button class="btn btn-primary w-50 submit-button1"
+                                                type="submit">Submit</button>
+                                        </div>
                                     </div>
-                                </form>
-                            </div>
-                            <!-- Widgets Start -->
-                            <!-- <div class="container-fluid pt-4 px-4">
+                                </div>
+                            </form>
+                        </div>
+                        <!-- Widgets Start -->
+                        <!-- <div class="container-fluid pt-4 px-4">
                 <div class="row g-4">
                     <div class="col-sm-12 col-md-6 col-xl-4">
                         <div class="h-100 bg-light rounded p-4">
@@ -307,8 +320,8 @@
                     </div>
                 </div>
             </div> -->
-                            <!-- Widgets End -->
-                            <%- include('./partials/copyright/copyright.ejs'); %>
+                        <!-- Widgets End -->
+                        <%- include('./partials/copyright/copyright.ejs'); %>
                 </div>
                 <!-- Content End -->
 
